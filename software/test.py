@@ -1,22 +1,32 @@
-
-from psonic import *
 from pynput.keyboard import Key, Listener, KeyCode
-from sonic_pi_tool import Server
+from pythonosc import udp_client
 
-server = Server('127.0.0.1',4557,4559)
+
+client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
+letters =  ['a','s','d','f','g','h','j']
+letters_dict = {i:False for i in letters}
 
 def on_press(key):
-    letters = ['a','s','d','f','g','h','j']
-    print('{0} pressed'.format(key))
     key_char = str(key)[1:-1]
-    if(key_char in letters):
-        #play(60+letters.index(str(key)[1:-1]))
-        server.run_code("play("+str(48+letters.index(str(key)[1:-1]))+")")
+    if(key_char in letters and not letters_dict[key_char]):
+        letters_dict[key_char] = True
+        print('{0} on'.format(key))
+        note = 60+letters.index(key_char)
+        client.send_message('/noteOn',note)
+        
     
 def on_release(key):
     if key == Key.esc:
         # Stop listener
         return False
+    
+    print('{0} off'.format(key))
+    key_char = str(key)[1:-1]
+    if(key_char in letters):
+        note = 60+letters.index(key_char)
+        client.send_message('/noteOff',note)
+        letters_dict[key_char] = False
+    
 
 # Collect events until released
 with Listener(
