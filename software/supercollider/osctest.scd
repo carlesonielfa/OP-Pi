@@ -7,12 +7,11 @@ OSCdef.new(
 		arg msg, time, addr, port;
 
 		~notes[msg[1]] = Synth.new(
-		\organdonor,
+		\organ,
 		[
-			\freq, note.midicps,
+			\freq, msg[1].midicps,
 			\gate, 1,
 		]);
-	);
 	},
 	'/noteOn'
 );
@@ -25,25 +24,6 @@ OSCdef.new(
 	},
 	'/noteOff'
 );
-/*
-MIDIdef.noteOn(\noteOn, {
-	arg vel, note, chan ,src;
-	[note, vel]++" on".postln;
-	~notes[note] = Synth.new(
-		\organdonor,
-		[
-			\freq, note.midicps,
-			\gate, 1,
-		]
-	);
-});
-
-MIDIdef.noteOff(\noteOff, {
-	arg vel, note;
-	[vel, note].postln;
-	~notes[note].set(\gate,0);
-	~notes[note] = nil;
-});*/
 )
 
 //ORGAN
