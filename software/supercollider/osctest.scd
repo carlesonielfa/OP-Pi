@@ -24,10 +24,9 @@ OSCdef.new(
 	},
 	'/noteOff'
 );
-)
+
 
 //ORGAN
-(
 SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
 
 	var vibrato, pulse, filter, env;
