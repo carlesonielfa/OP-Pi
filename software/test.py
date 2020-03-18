@@ -6,6 +6,7 @@ client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
 letters =  ['a','s','d','f','g','h','j']
 letters_dict = {i:False for i in letters}
 
+
 def on_press(key):
     key_char = str(key)[1:-1]
     if(key_char in letters and not letters_dict[key_char]):

@@ -1,16 +1,40 @@
 (
 s.boot;
 ~notes = Array.newClear(128);
+~bend = 0;
+~amp = 1;
+OSCdef.new(
+	\pitchBend,
+	{
+		arg msg, time, addr, port;
+		msg.postln;
+		~bend = msg[1];
+		~notes.do{arg synth; synth.set(\bend, ~bend)};
+	};,
+	'/pitchBend'
+);
+OSCdef.new(
+	\ampChange,
+	{
+		arg msg, time, addr, port;
+		msg.postln;
+		~amp = msg[1];
+		~notes.do{arg synth; synth.set(\amp, ~amp)};
+	};,
+	'/ampChange'
+);
 OSCdef.new(
 	\noteOn,
 	{
 		arg msg, time, addr, port;
-
+		msg.postln;
 		~notes[msg[1]] = Synth.new(
 		\organ,
 		[
 			\freq, msg[1].midicps,
 			\gate, 1,
+			\bend, ~bend,
+			\amp, ~amp
 		]);
 	},
 	'/noteOn'
@@ -19,15 +43,29 @@ OSCdef.new(
 	\noteOff,
 	{
 		arg msg, time, addr, port;
+		msg.postln;
 		~notes[msg[1]].set(\gate,0);
 		~notes[msg[1]] = nil;
 	},
 	'/noteOff'
 );
 
+//PROPHET
+
+SynthDef(\prophet,{
+	arg out=0, freq =440, bend = 0,amp=1, gate=1, lforate=10, lfowidth=0.5, cutoff=12000, rq=0.5, pan=0.0;
+	var lfo, pulse, filter, env;
+
+	lfo = LFTri.kr(lforate*[1,1.01],Rand(0,2.0)!2);
+	pulse = Pulse.ar(bend.midiratio*freq*[1,1.01],lfo*lfowidth+0.5);
+	filter = RLPF.ar(pulse,cutoff,rq);
+	env = EnvGen.ar(Env.adsr(0.01,0.0,1.0,0.5),gate,doneAction:2);
+	Out.ar(out,Pan2.ar(Mix(filter)*env*amp*0.5,pan));
+
+}).add;
 
 //ORGAN
-SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
+SynthDef(\organ,{|out= 0 bend= 0 freq = 440 amp =1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
 
 	var vibrato, pulse, filter, env;
 
@@ -42,7 +80,7 @@ SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cu
 	//pulse = Mix(Pulse.ar(([1,1.9953843530485,3.0139733629359]*freq)*(1.0+(lfowidth*vibrato)),Rand(0.4,0.6)!3,[1.0,0.7,0.3]))*0.5;
 
 	//better alternative
-	pulse = Mix(VarSaw.ar(([1,1.9953843530485,3.0139733629359]*freq)*(1.0+(lfowidth*vibrato)),Rand(0.0,1.0)!3,Rand(0.3,0.5)!3,[1.0,0.7,0.3]))*0.5;
+	pulse = Mix(VarSaw.ar(([1,1.9953843530485,3.0139733629359]*freq*bend.midiratio)*(1.0+(lfowidth*vibrato)),Rand(0.0,1.0)!3,Rand(0.3,0.5)!3,[1.0,0.7,0.3]))*0.5;
 
 	filter = RLPF.ar(pulse,cutoff,rq);
 
