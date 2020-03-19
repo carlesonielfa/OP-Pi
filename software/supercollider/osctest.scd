@@ -3,52 +3,68 @@ s.boot;
 ~notes = Array.newClear(128);
 ~bend = 0;
 ~amp = 1;
-OSCdef.new(
-	\pitchBend,
-	{
-		arg msg, time, addr, port;
-		msg.postln;
-		~bend = msg[1];
-		~notes.do{arg synth; synth.set(\bend, ~bend)};
-	};,
-	'/pitchBend'
-);
-OSCdef.new(
-	\ampChange,
-	{
-		arg msg, time, addr, port;
-		msg.postln;
-		~amp = msg[1];
-		~notes.do{arg synth; synth.set(\amp, ~amp)};
-	};,
-	'/ampChange'
-);
-OSCdef.new(
-	\noteOn,
-	{
-		arg msg, time, addr, port;
-		msg.postln;
-		~notes[msg[1]] = Synth.new(
-		\organ,
-		[
-			\freq, msg[1].midicps,
-			\gate, 1,
-			\bend, ~bend,
-			\amp, ~amp
-		]);
-	},
-	'/noteOn'
-);
-OSCdef.new(
-	\noteOff,
-	{
-		arg msg, time, addr, port;
-		msg.postln;
-		~notes[msg[1]].set(\gate,0);
-		~notes[msg[1]] = nil;
-	},
-	'/noteOff'
-);
+~preset = "organ";
+~max_synths = 2;
+~max_synths.do{arg synthn;
+	var address = '/'++synthn.asString;
+	OSCdef.new(
+		"\\presetChange"++synthn.asString,
+		{
+			arg msg, time, addr, port;
+			
+			~preset = msg[1];
+			~preset.postln;
+		};,
+		address++'/presetChange'
+	);
+	OSCdef.new(
+		"\\pitchBend"++synthn.asString,
+		{
+			arg msg, time, addr, port;
+			msg.postln;
+			~bend = msg[1];
+			~notes.do{arg synth; synth.set(\bend, ~bend)};
+		};,
+		address++'/pitchBend'
+	);
+	OSCdef.new(
+		"\\ampChange"++synthn.asString,
+		{
+			arg msg, time, addr, port;
+			msg.postln;
+			~amp = msg[1];
+			~notes.do{arg synth; synth.set(\amp, ~amp)};
+		};,
+		address++'/ampChange'
+	);
+	OSCdef.new(
+		"\\noteOn"++synthn.asString,
+		{
+			arg msg, time, addr, port;
+			msg.postln;
+			~notes[msg[1]] = Synth.new(
+			("\\"++~preset).interpret,
+			[
+				\freq, msg[1].midicps,
+				\gate, 1,
+				\bend, ~bend,
+				\amp, ~amp
+			]);
+		},
+		address++'/noteOn'
+	);
+	OSCdef.new(
+		"\\noteOff"++synthn.asString,
+		{
+			arg msg, time, addr, port;
+			msg.postln;
+			~notes[msg[1]].set(\gate,0);
+			~notes[msg[1]] = nil;
+		},
+		address++'/noteOff'
+	);
+};
+
 
 //PROPHET
 
