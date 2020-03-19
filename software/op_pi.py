@@ -39,41 +39,51 @@ class Synth:
             note_state[input] = False
     def message(self, s):
         print("LOG | SYNTH {}: ".format(self.synthn)+s)
-#General parameters
-max_synths = 2
-active_synth = 1
 
-#OSC client
-client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
+class OP_Pi:
 
-#Synths array
-synths = [Synth(client,i) for i in range(max_synths)]
+    def __init__(self):
+        #General parameters
+        self.max_synths = 2
+        self.active_synthn = 0
 
-#Aux button
-aux_pin = 29
-#Keyboard buttons pins in order starting from C4 (60)
-button_pins = [37,35,33,31]
-#Indicates if note is on or off
-note_state = {i+60:False for i in range(len(button_pins))}
+        #OSC client
+        self.client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
 
-#GPIO setup
-GPIO.setmode(GPIO.BOARD)
-# Hardware SPI configuration for dials:
-SPI_PORT   = 0
-SPI_DEVICE = 0
-mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
-#Setup keyboard buttons pins and interrupts
-for i,pin in enumerate(button_pins):
-    GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(pin, GPIO.BOTH, callback = lambda pin,i=i: synths[active_synth].osc_note(i+60, note_state))
+        #Synths array
+        self.synths = [Synth(self.client,i) for i in range(self.max_synths)]
 
-#Aux button for testing
-GPIO.setup(aux_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.add_event_detect(aux_pin, GPIO.RISING, callback = lambda pin: synths[active_synth].osc_preset('prophet'))
+        #Aux button
+        self.aux_pin = 29
+        #Keyboard buttons pins in order starting from C4 (60)
+        button_pins = [37,35,33,31]
+        #Indicates if note is on or off
+        self.note_state = {i+60:False for i in range(len(button_pins))}
+
+        self.gpio_setup(button_pins)
+    def active_synth(self):
+        return self.synths[self.active_synthn]
+    def gpio_setup(self, button_pins):
+        #GPIO setup
+        GPIO.setmode(GPIO.BOARD)
+        # Hardware SPI configuration for dials:
+        SPI_PORT   = 0
+        SPI_DEVICE = 0
+        mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+        #Setup keyboard buttons pins and interrupts
+        for i,pin in enumerate(button_pins):
+            GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(pin, GPIO.BOTH, callback = lambda pin,i=i: self.active_synth().osc_note(i+60, self.note_state))
+
+        #Aux button for testing
+        GPIO.setup(self.aux_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.aux_pin, GPIO.RISING, callback = lambda pin: self.active_synth().osc_preset('prophet'))
+
+
+op_pi = OP_Pi()
 while True:
     #Dial 1 amplitude
     #synths[active_synth].osc_amp(mcp.read_adc(0))
     #Dial 2 pitch
     #synths[active_synth].osc_pitch(mcp.read_adc(3))
     time.sleep(0.1)
-
