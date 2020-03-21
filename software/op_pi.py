@@ -9,6 +9,8 @@ class Synth:
     def __init__(self, client, synthn):
         #Client for osc communication with supercollider
         self.client = client
+        #current octave
+        self.octave = 0
         self.synthn = synthn
         self.synth_address = '/'+str(synthn)
         self.preset = 'organ'
@@ -26,16 +28,17 @@ class Synth:
         corrected_input = input/1024.0
         self.client.send_message(self.synth_address+'/ampChange', corrected_input)
     def osc_note(self,input, note_state):
+        note_number = input+12*self.octave
         #Button wasn't pressed before then note on
         if(not note_state[input]):
             self.message("Note on: {}".format(input))
-            self.client.send_message(self.synth_address+'/noteOn',input)
+            self.client.send_message(self.synth_address+'/noteOn',note_number)
             note_state[input] = True
             time.sleep(0.2)
         #else note off
         else:
             self.message("Note off: {}".format(input))
-            self.client.send_message(self.synth_address+'/noteOff',input)
+            self.client.send_message(self.synth_address+'/noteOff',note_number)
             note_state[input] = False
     def message(self, s):
         print("LOG | SYNTH {}: ".format(self.synthn)+s)

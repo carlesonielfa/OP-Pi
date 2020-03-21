@@ -1,5 +1,10 @@
 (
 s.boot;
+//LOAD ALL SYNTHS
+//s.loadDirectory("./supercollider/synths/");
+//"synths/organ.scd".load();
+PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
+
 ~notes = Array.newClear(128);
 ~bend = 0;
 ~amp = 1;
@@ -68,7 +73,7 @@ s.boot;
 
 //PROPHET
 
-SynthDef(\prophet,{
+/*SynthDef(\prophet,{
 	arg out=0, freq =440, bend = 0,amp=1, gate=1, lforate=10, lfowidth=0.5, cutoff=12000, rq=0.5, pan=0.0;
 	var lfo, pulse, filter, env;
 
@@ -105,4 +110,5 @@ SynthDef(\organ,{|out= 0 bend= 0 freq = 440 amp =1 gate=1 lforate = 10 lfowidth=
 	Out.ar(out,Pan2.ar(filter*env*10*amp,pan));
 
 }).add;
+*/
 )
