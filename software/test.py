@@ -1,10 +1,21 @@
+# Turns on each pin of an mcp23017 on address 0x20 ( quick2wire IO expander )
+import wiringpi
+import time
 
-functions = []
-for i in range(5):
+pin_base = 65
+mcp23017_addr1 = 0x20
+
+wiringpi.wiringPiSetup()
+wiringpi.mcp23017Setup(pin_base,mcp23017_addr1)
+
+wiringpi.pinMode(pin_base, wiringpi.INPUT)
+wiringpi.pullUpDnControl(pin_base, wiringpi.PUD_UP)
+
+
+
+print("Pin setup done")
+while True:
+    if(not wiringpi.digitalRead(pin_base)):
+        print("Button Pressed")
+        time.sleep(0.2)
     
-    #GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    functions.append( lambda : print(i))
-
-for i in range(5):
-    #GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    functions[i]()
