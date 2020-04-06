@@ -1,9 +1,19 @@
 (
 s.boot;
+~g_synth = Group.new(s);
+~g_fx = Group.after(~g_synth);
+~g_router = Group.after(~g_fx);
+
 //LOAD ALL SYNTHS
-//s.loadDirectory("./supercollider/synths/");
-//"synths/organ.scd".load();
 PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
+
+//CHANNEL ROUTER
+SynthDef(\router, {
+	arg in, out = 0;
+	var source;
+	source = In.ar(in);
+	Out.ar(out, source);
+}).add;
 
 ~notes = Array.newClear(128);
 ~bend = 0;
@@ -12,6 +22,9 @@ PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
 ~max_synths = 2;
 ~max_synths.do{arg synthn;
 	var address = '/'++synthn.asString;
+
+	var bus = Bus.audio(s);
+	var r = Synth(\router, [\in, bus], ~g_router);
 	OSCdef.new(
 		"\\presetChange"++synthn.asString,
 		{
@@ -50,6 +63,7 @@ PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
 			~notes[msg[1]] = Synth.new(
 			("\\"++~preset).interpret,
 			[
+				\out, bus,
 				\freq, msg[1].midicps,
 				\gate, 1,
 				\bend, ~bend,
@@ -69,46 +83,4 @@ PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
 		address++'/noteOff'
 	);
 };
-
-
-//PROPHET
-
-/*SynthDef(\prophet,{
-	arg out=0, freq =440, bend = 0,amp=1, gate=1, lforate=10, lfowidth=0.5, cutoff=12000, rq=0.5, pan=0.0;
-	var lfo, pulse, filter, env;
-
-	lfo = LFTri.kr(lforate*[1,1.01],Rand(0,2.0)!2);
-	pulse = Pulse.ar(bend.midiratio*freq*[1,1.01],lfo*lfowidth+0.5);
-	filter = RLPF.ar(pulse,cutoff,rq);
-	env = EnvGen.ar(Env.adsr(0.01,0.0,1.0,0.5),gate,doneAction:2);
-	Out.ar(out,Pan2.ar(Mix(filter)*env*amp*0.5,pan));
-
-}).add;
-
-//ORGAN
-SynthDef(\organ,{|out= 0 bend= 0 freq = 440 amp =1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
-
-	var vibrato, pulse, filter, env;
-
-	vibrato = SinOsc.ar(lforate,Rand(0,2.0));
-
-	//up octave, detune by 4 cents
-	//11.96.midiratio = 1.9953843530485
-	//up octave and a half, detune up by 10 cents
-	//19.10.midiratio = 3.0139733629359
-
-	//Pulse version
-	//pulse = Mix(Pulse.ar(([1,1.9953843530485,3.0139733629359]*freq)*(1.0+(lfowidth*vibrato)),Rand(0.4,0.6)!3,[1.0,0.7,0.3]))*0.5;
-
-	//better alternative
-	pulse = Mix(VarSaw.ar(([1,1.9953843530485,3.0139733629359]*freq*bend.midiratio)*(1.0+(lfowidth*vibrato)),Rand(0.0,1.0)!3,Rand(0.3,0.5)!3,[1.0,0.7,0.3]))*0.5;
-
-	filter = RLPF.ar(pulse,cutoff,rq);
-
-	env = EnvGen.ar(Env.adsr(0.01,0.5,1.0,0.5),gate,doneAction:2);
-
-	Out.ar(out,Pan2.ar(filter*env*10*amp,pan));
-
-}).add;
-*/
 )

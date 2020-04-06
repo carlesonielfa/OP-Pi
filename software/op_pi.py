@@ -67,12 +67,14 @@ class InputManager:
         self.dial_values = [self.mcp.read_adc(i) for i in range(self.n_dials)]
         self.dial_actions = [lambda i=i: self.op_pi.dial_change(i,self.dial_values[i]) for i in range(self.n_dials)]
 
-    def input_loop(self,op_pi):
+        print("INPUT TEST MODE")
+        self.input_loop()
+    def input_loop(self):
         while True:
             self.check_buttons()
-            self.check_dials()
+            #self.check_dials()
             
-            time.sleep(0.1)
+            time.sleep(0.2)
     def check_dials(self):
         #If the value changed more than this, we notify it
         #TODO call actions in main thread
@@ -89,7 +91,7 @@ class InputManager:
     def check_buttons(self):
         for i in range(self.n_buttons):
             #If the button is pressed, trigger action on main thread
-            if(not wiringpi.digitalRead(i+pin_base)):
+            if(not wiringpi.digitalRead(i+self.pin_base)):
                 try:
                     #TODO call actions in main thread
                     self.button_actions[i]()
@@ -98,13 +100,13 @@ class InputManager:
     def mcp23017_setup(self):
         #MCP23017 setup
         self.pin_base = 65
-        mcp23017_addr = [0x20,0x21]
-        self.n_buttons = len(mcp23017_addr)*18
+        mcp23017_addr = [0x20,0x21,0x27]
+        self.n_buttons = len(mcp23017_addr)*16
 
         wiringpi.wiringPiSetup()
         #Setup all mcp23017
         for i,addr in enumerate(mcp23017_addr):
-            wiringpi.mcp23017Setup(self.pin_base+18*i,addr)
+            wiringpi.mcp23017Setup(self.pin_base+16*i,addr)
 
         #Setup all pins as input with pull up
         for i in  range(self.pin_base, self.pin_base+self.n_buttons):

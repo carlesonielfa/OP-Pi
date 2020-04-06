@@ -8,14 +8,16 @@ mcp23017_addr1 = 0x20
 wiringpi.wiringPiSetup()
 wiringpi.mcp23017Setup(pin_base,mcp23017_addr1)
 
-wiringpi.pinMode(pin_base, wiringpi.INPUT)
-wiringpi.pullUpDnControl(pin_base, wiringpi.PUD_UP)
+for i in range(16):
+    wiringpi.pinMode(pin_base, wiringpi.INPUT)
+    wiringpi.pullUpDnControl(pin_base, wiringpi.PUD_UP)
 
 
 
 print("Pin setup done")
 while True:
-    if(not wiringpi.digitalRead(pin_base)):
-        print("Button Pressed")
-        time.sleep(0.2)
+    for i in range(16):
+        if(not wiringpi.digitalRead(i+pin_base)):
+            print("Button {} Pressed".format(i))
+    time.sleep(0.2)
     
