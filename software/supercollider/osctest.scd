@@ -19,6 +19,7 @@ PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
 
 	var bus = Bus.audio(s, 2);
 	var r = Synth.new(\router, [\in, bus], ~g_router);
+	var reverb = Synth.new(\reverb, [\in, bus, \out, bus], ~g_fx);
 	OSCdef.new(
 		"\\presetChange"++synthn.asString,
 		{
@@ -79,16 +80,30 @@ PathName.new("./supercollider/synths").filesDo{|sf| sf.asAbsolutePath.load};
 };
 )
 (
+s.boot;
+//REBERB
+SynthDef(\reverb, {|in, out, mix = 0.5, room = 0.15, damp = 0.5|
+	var source = FreeVerb.ar(In.ar(in,2), mix, room, damp);
+    Out.ar(out,source);
+}).add;
+
+SynthDef(\delay, {arg delaytime=0.5, in, out=0;
+	var input, effect;
+	input=In.ar(in,2); //get two channels of input starting (and ending) on bus 0
+	effect= DelayN.ar(input, 1,delaytime); //max delay of one second
+	Out.ar(out,effect); //adds to bus 0
+
+}).add;
+
 //CHANNEL ROUTER
 SynthDef(\router, {
 	arg in, out = 0;
 	var source;
-	source = In.ar(in);
+	source = In.ar(in,2);
 	Out.ar(out, source);
 }).add;
 
 //ORGAN
-
 SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
 
 	var vibrato, pulse, filter, env;
@@ -113,4 +128,6 @@ SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cu
 	Out.ar(out,Pan2.ar(filter*env*10*amp,pan));
 
 }).add;
+
+
 )
