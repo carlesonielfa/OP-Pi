@@ -1,7 +1,8 @@
 # TODO
 ##Software
 - Sequencer
-- FX
+- Add more FX
+- Mastering
 - Drum Samples
 - Keyboard samples
 - Synth parameter independence
