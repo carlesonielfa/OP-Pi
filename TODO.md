@@ -8,3 +8,4 @@
 - Synth parameter independence
 - Automation
 - Recording
+- Screen Visuals
