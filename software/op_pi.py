@@ -1,10 +1,14 @@
-import RPi.GPIO as GPIO
+
 import time
 from pythonosc import udp_client
+
+import RPi.GPIO as GPIO
+import OLED_Driver as OLED
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 import wiringpi
 
+from PIL  import Image, ImageDraw, ImageFont, ImageColor
 
 class Synth:
     def __init__(self, client, synthn):
