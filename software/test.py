@@ -19,7 +19,10 @@ class InputManager:
 
     def init_keys(self):
         self.pin_base = 65
-        self.pins_order = {0:0,2:1,3:2,1:3,5:4,4:5}
+        pins_used = [0,2,3,1,5,4]
+        self.pins_order = dict(zip(pins_used,range(len(pins_used))))
+        buttons = [4,5,28,3,29,2,0,1]+list(range(20,28))
+        self.buttons_order = dict(zip(buttons,range(len(buttons))))
         self.cols = range(7+self.pin_base,7-5+self.pin_base,-1)
         self.rows = range(8+self.pin_base,8+6+self.pin_base)
         mcp23017_addr1 = 0x20
@@ -59,14 +62,16 @@ class InputManager:
                     if(button_n <= 19 and button_n >= 6):
                         queue.put([KEYBOARD_PRESS, button_n-6])
                     else:
-                        queue.put([BUTTON_PRESS, button_n])
+                        queue.put([BUTTON_PRESS, self.buttons_order[button_n]])
                     while(not wiringpi.digitalRead(row)):
                         pass
             wiringpi.digitalWrite(col, 1)
 
     def check_potentiometer(self, queue):
         pot_value = self.mcp.read_adc(7)
-        if(abs(pot_value-self.previous_pot_value)>5):
+        if(pot_value== 0 and self.previous_pot_value!=0):
+            self.previous_pot_value = 0
+        elif(abs(pot_value-self.previous_pot_value)>5):
             self.previous_pot_value = pot_value
             pot_value = round(pot_value/1023*100) 
             #JUST TO TEST
