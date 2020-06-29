@@ -96,8 +96,10 @@ class OP_Pi:
         self.default_loop()
     def default_loop(self):
         while True:
-            self.check_queue()
-            self.sm.refresh_screen()
+            input_recieved = self.check_queue()
+            if(input_recieved):
+                self.sm.refresh_screen()
+                
     def start_input_thread(self):
         self.input_queue = Queue()
         im = InputManager()
@@ -111,7 +113,9 @@ class OP_Pi:
         #Synths array
         self.synths = [Synth(self.client,i) for i in range(self.max_synths)]
     def check_queue(self):
+        action_recieved = False
         while(not self.input_queue.empty()):
+            action_recieved = True
             action = self.input_queue.get()
             self.last_action = str(action[0]) + " | " + str(action[1])
             print("OP_Pi | Action recieved: {} {}".format(action[0],action[1]))
@@ -126,6 +130,7 @@ class OP_Pi:
                     self.state = 1
             else:
                 print("OP_Pi ERROR unrecognized action")
+        return action_recieved
 
 OP_Pi()
 
