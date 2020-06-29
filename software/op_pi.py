@@ -3,7 +3,7 @@ from pythonosc import udp_client
 from multiprocessing import Process, Queue
 from screen_manager import ScreenManager
 from input_manager import InputManager, ACTION_BUTTON, ACTION_KEYBOARD, ACTION_VOLUME
-
+from threading import Timer
 class Effect:
     def __init__(self, track):
         self.enabled = False
@@ -73,8 +73,8 @@ class Synth:
             note_state[input] = False'''
         self.message("Note on: {}".format(note_number))
         self.client.send_message(self.synth_address+'/noteOn',note_number)
-        sleep(0.5)
-        self.client.send_message(self.synth_address+'/noteOff',note_number)
+        Timer(0.5, lambda : self.client.send_message(self.synth_address+'/noteOff',note_number)).start()
+
             
     def message(self, s):
         print("LOG | SYNTH {}: ".format(self.synthn)+s)
