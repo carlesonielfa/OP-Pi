@@ -4,20 +4,22 @@ import RPi.GPIO as GPIO
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 import wiringpi
+from threading import Thread
 #Actions
 ACTION_VOLUME = 0
-ACTION_KEYBOARD = 1
-ACTION_BUTTON = 2
-ACTION_ENCODER = 3
+ACTION_KEYBOARD_PRESS = 1
+ACTION_KEYBOARD_RELEASE = 2
+ACTION_BUTTON = 3
+ACTION_ENCODER = 4
 
 class InputManager:
 
-    def __init__(self):
+    def __init__(self, debug = False):
+        self.debug = debug
         self.init_keys()
         self.init_pot()
         #Poll 100 times a second
-        self.poll_frequency = 100
-
+        self.poll_frequency = 100   
     def init_keys(self):
         self.pin_base = 65
         pins_used = [0,2,3,1,5,4]
@@ -46,7 +48,7 @@ class InputManager:
         SPI_DEVICE = 1
         self.mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
         self.previous_pot_value = 0
-    def input_loop(self, queue):
+    def input_loop(self, queue = False):
         while(True):
             self.check_keys(queue)
             self.check_potentiometer(queue)
@@ -56,18 +58,23 @@ class InputManager:
             wiringpi.digitalWrite(col, 0)
             for row in self.rows:
                 if(not wiringpi.digitalRead(row)):
+                    self.button_pressed = True
                     r = self.pins_order[row-self.pin_base-8]
                     c = col-self.pin_base-7+4
-                    #print("Button pressed: {}".format(r+6*c))
                     button_n = r+6*c
-                    if(button_n <= 19 and button_n >= 6):
-                        queue.put((ACTION_KEYBOARD, button_n-6))
-                    else:
+                    if(self.debug):
+                        print("Button pressed: {}".format(button_n))
+                    if(button_n <= 19 and button_n >= 6 and queue):
+                        queue.put((ACTION_KEYBOARD_PRESS, button_n-6))
+                    elif(queue):
                         queue.put((ACTION_BUTTON, self.buttons_order[button_n]))
                     while(not wiringpi.digitalRead(row)):
                         pass
+                    if(self.debug):
+                        print("Button released: {}".format(button_n))
+                    if(button_n <= 19 and button_n >= 6 and queue):
+                        queue.put((ACTION_KEYBOARD_RELEASE, button_n-6))
             wiringpi.digitalWrite(col, 1)
-
     def check_potentiometer(self, queue):
         pot_value = self.mcp.read_adc(7)
         if(pot_value== 0 and self.previous_pot_value!=0):
@@ -75,5 +82,15 @@ class InputManager:
         elif(abs(pot_value-self.previous_pot_value)>5):
             self.previous_pot_value = pot_value
             pot_value = round(pot_value/1023*100) 
-            #JUST TO TEST
-            queue.put((ACTION_VOLUME, pot_value))
+            if(queue):
+                queue.put((ACTION_VOLUME, pot_value))
+            if(self.debug):
+                print("Pot changed: {}".format(pot_value))
+
+if __name__ == "__main__":
+    try:
+        print("INPUT TEST")
+        im = InputManager(debug = True)
+        im.input_loop()
+    except KeyboardInterrupt:
+        print("Application stopped")

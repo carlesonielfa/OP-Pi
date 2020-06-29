@@ -2,8 +2,7 @@ from time import sleep
 from pythonosc import udp_client
 from multiprocessing import Process, Queue
 from screen_manager import ScreenManager
-from input_manager import InputManager, ACTION_BUTTON, ACTION_KEYBOARD, ACTION_VOLUME
-from threading import Timer
+from input_manager import InputManager, ACTION_BUTTON, ACTION_KEYBOARD_PRESS, ACTION_VOLUME, ACTION_KEYBOARD_RELEASE
 class Effect:
     def __init__(self, track):
         self.enabled = False
@@ -58,23 +57,16 @@ class Synth:
         corrected_input = input/1024.0
         self.client.send_message(self.synth_address+'/ampChange', corrected_input)
 
-    def osc_note(self,input):
+    def osc_note_on(self,input):
         note_number = 60+input+12*self.octave
-        '''#Button wasn't pressed before then note on
-        if(not note_state[input]):
-            self.message("Note on: {}".format(input))
-            self.client.send_message(self.synth_address+'/noteOn',note_number)
-            note_state[input] = True
-            time.sleep(0.2)
-        #else note off
-        else:
-            self.message("Note off: {}".format(input))
-            self.client.send_message(self.synth_address+'/noteOff',note_number)
-            note_state[input] = False'''
         self.message("Note on: {}".format(note_number))
         self.client.send_message(self.synth_address+'/noteOn',note_number)
-        Timer(0.5, lambda : self.client.send_message(self.synth_address+'/noteOff',note_number)).start()
-
+        
+    def osc_note_off(self,input):
+        note_number = 60+input+12*self.octave
+        self.message("Note off: {}".format(note_number))
+        self.client.send_message(self.synth_address+'/noteOff',note_number)
+        
             
     def message(self, s):
         print("LOG | SYNTH {}: ".format(self.synthn)+s)
@@ -121,8 +113,10 @@ class OP_Pi:
             print("OP_Pi | Action recieved: {} {}".format(action[0],action[1]))
             if(action[0]==ACTION_VOLUME):
                 self.volume = action[1]
-            elif(action[0]==ACTION_KEYBOARD):
-                self.synths[self.active_synthn].osc_note(action[1])
+            elif(action[0]==ACTION_KEYBOARD_PRESS):
+                self.synths[self.active_synthn].osc_note_on(action[1])
+            elif(action[0]==ACTION_KEYBOARD_RELEASE):
+                self.synths[self.active_synthn].osc_note_off(action[1])
             elif(action[0]==ACTION_BUTTON):
                 if(action[1]==4):
                     self.state = 0
