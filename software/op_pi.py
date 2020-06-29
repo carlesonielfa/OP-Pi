@@ -1,47 +1,24 @@
-from time import sleep
-from pythonosc import udp_client
-from multiprocessing import Process, Queue
-from screen_manager import ScreenManager
-from input_manager import InputManager, ACTION_BUTTON, ACTION_KEYBOARD, ACTION_VOLUME
 
-class Effect:
-    def __init__(self, track):
-        self.enabled = False
-        self.parameters = []
-class Reverb(Effect):
-    def __init__(self, track):
-        super().__init__(track)
-        self.parameters = [['W',45],['D',5], ['S',99]]
-class Equalizer(Effect):
-    def __init__(self, track):
-        super().__init__(track)
-        self.parameters = [['L',99],['M',99], ['L',50]]
-class Distortion(Effect):
-    def __init__(self, track):
-        super().__init__(track)
-        self.parameters = [['L',99],['M',99], ['L',50]]
-class Track:
-    def __init__(self, name):
-        self.name = name
-        self.inputs = []
-        self.volume = 0.7
-        self.effects = [Reverb(self), Equalizer(self),Distortion(self)]
-        #Just to test display
-        self.effects[0].enabled=True
-        self.effects[2].enabled=True
-    def empty(self):
-        return len(self.inputs)==0
-    
+import time
+from pythonosc import udp_client
+
+import RPi.GPIO as GPIO
+import OLED_Driver as OLED
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_MCP3008
+import wiringpi
+
+from PIL  import Image, ImageDraw, ImageFont, ImageColor
+
 class Synth:
     def __init__(self, client, synthn):
         #Client for osc communication with supercollider
         self.client = client
         #current octave
-        self.octave = 0
+        self.octave = -1
         self.synthn = synthn
         self.synth_address = '/'+str(synthn)
         self.preset = 'organ'
-        #self.track = "NONE"
 
     def osc_preset(self,new_preset):
         self.message("Preset from {} to {}".format(self.preset, new_preset))
@@ -58,9 +35,9 @@ class Synth:
         corrected_input = input/1024.0
         self.client.send_message(self.synth_address+'/ampChange', corrected_input)
 
-    def osc_note(self,input):
-        note_number = 60+input+12*self.octave
-        '''#Button wasn't pressed before then note on
+    def osc_note(self,input, note_state):
+        note_number = input+12*self.octave
+        #Button wasn't pressed before then note on
         if(not note_state[input]):
             self.message("Note on: {}".format(input))
             self.client.send_message(self.synth_address+'/noteOn',note_number)
@@ -70,31 +47,33 @@ class Synth:
         else:
             self.message("Note off: {}".format(input))
             self.client.send_message(self.synth_address+'/noteOff',note_number)
-            note_state[input] = False'''
-        self.message("Note on: {}".format(note_number))
-        self.client.send_message(self.synth_address+'/noteOn',note_number)
-        sleep(0.5)
-        self.client.send_message(self.synth_address+'/noteOff',note_number)
+            note_state[input] = False
             
     def message(self, s):
         print("LOG | SYNTH {}: ".format(self.synthn)+s)
 
-class OP_Pi:  
-    #Main volume
-    volume = 0
-    #State of the device 0 - mixerview 1 - trackview
-    state = 1
-    last_action = ""
-    bpm = 128
+class InputManager:
+    #Manages inputs
 
-    def __init__(self):
-        self.start_input_thread()
-        self.sm = ScreenManager(self)
-        self.start_client()
-        track_letters = ('A','B','C','D','E','F','G','H','I')
-        self.tracks = [Track(letter) for letter in track_letters]
-        self.default_loop()
-    def default_loop(self):
+    def __init__(self,op_pi):
+        #Button pins for configuring interrupts
+        self.button_pins = []
+
+        self.gpio_setup()
+        self.mcp23017_setup()
+
+        #Actions for the buttons
+        self.button_actions = [lambda i=i:self.default_action(i) for i in range(self.n_buttons)]
+        self.button_actions[0] = [lambda : op_pi.play_note(60)]
+
+        #Store the dial values for notifying changes
+        self.n_dials = 4
+        self.dial_values = [self.mcp.read_adc(i) for i in range(self.n_dials)]
+        self.dial_actions = [lambda i=i: self.op_pi.dial_change(i,self.dial_values[i]) for i in range(self.n_dials)]
+
+        print("INPUT TEST MODE")
+        self.input_loop()
+    def input_loop(self):
         while True:
             input_recieved = self.check_queue()
             if(input_recieved):
@@ -108,8 +87,10 @@ class OP_Pi:
     def start_client(self):
         self.max_synths = 2
         self.active_synthn = 0
+
         #OSC client
         self.client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
+
         #Synths array
         self.synths = [Synth(self.client,i) for i in range(self.max_synths)]
     def check_queue(self):
@@ -134,3 +115,22 @@ class OP_Pi:
 
 OP_Pi()
 
+        #Input Manager
+        self.input_manager = InputManager(self)
+        #TODO: Start input loop in another thread
+
+        #Indicates if note is on or off
+        self.note_state = {i+60:False for i in range(self.input_manager.n_buttons)}     
+
+        self.main_loop()
+    def play_note(self, note_number):
+        self.active_synth().osc_note(i+note_number, self.note_state)
+    def active_synth(self):
+        return self.synths[self.active_synthn]
+    def dial_change(self,i,value):
+        pass
+    def main_loop(self):
+        pass
+        
+
+op_pi = OP_Pi()
