@@ -32,16 +32,18 @@ class Track:
         return len(self.inputs)==0
     
 class Synth:
+    maj_scale = [0,2,4,5,7,9,11]
+    min_scale = [0,2,3,5,7,8,10]
     def __init__(self, client, synthn):
         #Client for osc communication with supercollider
         self.client = client
         #current octave
-        self.octave = 0
+        self.octave = -1
         self.synthn = synthn
         self.synth_address = '/'+str(synthn)
         self.preset = 'organ'
         #self.track = "NONE"
-
+        self.root_note = 64
     def osc_preset(self,new_preset):
         self.message("Preset from {} to {}".format(self.preset, new_preset))
         self.preset = new_preset
@@ -51,19 +53,20 @@ class Synth:
         #From 0 - 1024 to -octave_range - octave_range
         corrected_input = ((input-512)/512.0)*octave_range
         self.client.send_message(self.synth_address+'/pitchBend',corrected_input)
-
+    def get_note(self,input):
+        return self.root_note + self.min_scale[input%7]+12*(input//7)+12*self.octave
     def osc_amp(self,input):
         #From 0-1024 to 0-1
         corrected_input = input/1024.0
         self.client.send_message(self.synth_address+'/ampChange', corrected_input)
 
     def osc_note_on(self,input):
-        note_number = 60+input+12*self.octave
+        note_number = self.get_note(input)
         self.message("Note on: {}".format(note_number))
         self.client.send_message(self.synth_address+'/noteOn',note_number)
         
     def osc_note_off(self,input):
-        note_number = 60+input+12*self.octave
+        note_number = self.get_note(input)
         self.message("Note off: {}".format(note_number))
         self.client.send_message(self.synth_address+'/noteOff',note_number)
         
