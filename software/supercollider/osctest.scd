@@ -25,7 +25,7 @@ SynthDef(\router, {
 }).add;
 
 //ORGAN
-/*SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
+SynthDef(\organ,{|out= 0 freq = 440 amp = 1 gate=1 lforate = 10 lfowidth= 0.0 cutoff= 100 rq=0.5 pan=0.0|
 
 	var vibrato, pulse, filter, env;
 
@@ -40,12 +40,12 @@ SynthDef(\router, {
 
 	Out.ar(out,Pan2.ar(filter*env*10*amp,pan));
 
-}).add;*/
+}).add;
 
 
 //Wait for synthdefs to be loaded and server to initialize
 Routine{
-	5.wait;
+	10.wait;
 	"Creating groups and OSCdefs".postln;
 	~g_synth = Group.new(s);
 	~g_fx = Group.after(~g_synth);

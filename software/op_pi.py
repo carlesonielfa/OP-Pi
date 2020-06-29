@@ -89,6 +89,7 @@ class OP_Pi:
     bpm = 128
 
     def __init__(self):
+        #General parameters
         self.start_input_thread()
         self.sm = ScreenManager(self)
         self.start_client()
@@ -99,7 +100,35 @@ class OP_Pi:
         while True:
             self.check_queue()
             self.sm.refresh_screen()
+    def start_input_thread(self):
+        self.input_queue = Queue()
+        im = InputManager()
+        input_thread = Process(target=im.input_loop, args=(self.input_queue,), daemon=True)
+        input_thread.start()
+    def start_client(self):
+        self.max_synths = 2
+        self.active_synthn = 0
 
+        #OSC client
+        self.client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
 
+        #Synths array
+        self.synths = [Synth(self.client,i) for i in range(self.max_synths)]
+    def check_queue(self):
+        while(not self.input_queue.empty()):
+            action = self.input_queue.get()
+            self.last_action = str(action[0]) + " | " + str(action[1])
+            print("OP_Pi | Action recieved: {} {}".format(action[0],action[1]))
+            if(action[0]==ACTION_VOLUME):
+                self.volume = action[1]
+            elif(action[0]==ACTION_KEYBOARD):
+                self.synths[self.active_synthn].osc_note(action[1])
+            elif(action[0]==ACTION_BUTTON):
+                if(action[1]==4):
+                    self.state = 0
+                elif(action[1]==5):
+                    self.state = 1
+            else:
+                print("OP_Pi ERROR unrecognized action")
 OP_Pi()
 
