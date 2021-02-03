@@ -1,5 +1,5 @@
 from time import sleep
-from pythonosc import udp_client
+#from pythonosc import udp_client
 from multiprocessing import Process, Queue
 from screen_manager import ScreenManager
 from input_manager import InputManager, ACTION_BUTTON, ACTION_KEYBOARD_PRESS, ACTION_VOLUME, ACTION_KEYBOARD_RELEASE
