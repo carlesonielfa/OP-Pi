@@ -1,0 +1,10 @@
+pip
+    pillow
+    pythonosc
+    RPi.GPIO
+    wiringpi
+other
+    libopenjp2-7
+    libtiff5
+    Adafruit_Python_GPIO
+    Adafruit_Python_MCP3008
