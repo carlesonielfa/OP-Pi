@@ -1,5 +1,7 @@
 #include "synth.h"
 #include "input_manager.h"
+#include "sound_utils.h"
+
 #include <soundio/soundio.h>
 
 #include <stdio.h>
@@ -265,7 +267,8 @@ int main(int argc, char **argv) {
                 break;
             case ACTION_TYPE::NOTEON:
                 //TODO: change to midi note number
-                s.setPitch(action.value);
+                printf("Frequency playing: %f\n",midi_to_freq(action.value));
+                s.setPitch(midi_to_freq(action.value));
                 break;
             default:
                 printf("Action not yet implemented\n");

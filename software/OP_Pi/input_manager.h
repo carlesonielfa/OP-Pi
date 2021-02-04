@@ -14,7 +14,7 @@ namespace OP_Pi
     };
     struct ACTION{
         ACTION_TYPE type = ACTION_TYPE::NONE;
-        int value = 0;
+        unsigned char value = 0;
     };
     class InputManager
     {

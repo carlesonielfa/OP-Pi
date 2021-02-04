@@ -12,11 +12,10 @@ ACTION InputManager::processInput(){
         } else if (c == 'z'){
             //TODO: change to midi note number
             action.type=ACTION_TYPE::NOTEON;
-            action.value=440;
+            action.value=60;
         } else if (c=='x'){
-            //TODO: change to midi note number
             action.type=ACTION_TYPE::NOTEON;
-            action.value=220;
+            action.value=69;
         }
     }
     return action; 
