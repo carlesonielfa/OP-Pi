@@ -1,1 +1,1 @@
-/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/sio_record.dir/example/sio_record.c.o  -o sio_record -Wl,-rpath,/home/pi/OP-Pi/software/OPPi/build/lib/libsoundio: libsoundio.so.2.0.0 -ljack -lpulse -lasound -lpthread 
+/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/sio_record.dir/example/sio_record.c.o  -o sio_record -Wl,-rpath,/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio: libsoundio.so.2.0.0 -ljack -lpulse -lasound -lpthread 

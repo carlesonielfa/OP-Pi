@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/OP-Pi/software/OPPi
+CMAKE_SOURCE_DIR = /home/pi/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OPPi/build
+CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OP_Pi/build
 
 # Utility rule file for coverage.
 
@@ -54,12 +54,12 @@ CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OPPi/build
 include lib/libsoundio/CMakeFiles/coverage.dir/progress.make
 
 lib/libsoundio/CMakeFiles/coverage: lib/libsoundio/unit_tests
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && lcov --directory . --zerocounters --rc lcov_branch_coverage=1
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && ./unit_tests
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && lcov --directory . --capture --output-file coverage.info --rc lcov_branch_coverage=1
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && lcov --remove coverage.info '/usr/*' --output-file coverage.info.cleaned --rc lcov_branch_coverage=1
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && genhtml -o coverage coverage.info.cleaned --rc lcov_branch_coverage=1
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && rm coverage.info coverage.info.cleaned
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && lcov --directory . --zerocounters --rc lcov_branch_coverage=1
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && ./unit_tests
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && lcov --directory . --capture --output-file coverage.info --rc lcov_branch_coverage=1
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && lcov --remove coverage.info '/usr/*' --output-file coverage.info.cleaned --rc lcov_branch_coverage=1
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && genhtml -o coverage coverage.info.cleaned --rc lcov_branch_coverage=1
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && rm coverage.info coverage.info.cleaned
 
 coverage: lib/libsoundio/CMakeFiles/coverage
 coverage: lib/libsoundio/CMakeFiles/coverage.dir/build.make
@@ -72,10 +72,10 @@ lib/libsoundio/CMakeFiles/coverage.dir/build: coverage
 .PHONY : lib/libsoundio/CMakeFiles/coverage.dir/build
 
 lib/libsoundio/CMakeFiles/coverage.dir/clean:
-	cd /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio && $(CMAKE_COMMAND) -P CMakeFiles/coverage.dir/cmake_clean.cmake
+	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -P CMakeFiles/coverage.dir/cmake_clean.cmake
 .PHONY : lib/libsoundio/CMakeFiles/coverage.dir/clean
 
 lib/libsoundio/CMakeFiles/coverage.dir/depend:
-	cd /home/pi/OP-Pi/software/OPPi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/OP-Pi/software/OPPi /home/pi/OP-Pi/software/OPPi/lib/libsoundio /home/pi/OP-Pi/software/OPPi/build /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio /home/pi/OP-Pi/software/OPPi/build/lib/libsoundio/CMakeFiles/coverage.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/OP-Pi/software/OP_Pi /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio /home/pi/OP-Pi/software/OP_Pi/build /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/coverage.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lib/libsoundio/CMakeFiles/coverage.dir/depend
 

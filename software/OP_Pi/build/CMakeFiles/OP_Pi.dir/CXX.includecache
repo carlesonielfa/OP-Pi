@@ -14,9 +14,9 @@ endian.h
 stdbool.h
 -
 
-/home/pi/OP-Pi/software/OPPi/main.cpp
+/home/pi/OP-Pi/software/OP_Pi/main.cpp
 synth.h
-/home/pi/OP-Pi/software/OPPi/synth.h
+/home/pi/OP-Pi/software/OP_Pi/synth.h
 soundio/soundio.h
 -
 stdio.h
@@ -30,15 +30,15 @@ stdint.h
 math.h
 -
 
-/home/pi/OP-Pi/software/OPPi/synth.cpp
+/home/pi/OP-Pi/software/OP_Pi/synth.cpp
 synth.h
-/home/pi/OP-Pi/software/OPPi/synth.h
+/home/pi/OP-Pi/software/OP_Pi/synth.h
 iostream
 -
 math.h
 -
 
-/home/pi/OP-Pi/software/OPPi/synth.h
+/home/pi/OP-Pi/software/OP_Pi/synth.h
 soundio/soundio.h
 -
 

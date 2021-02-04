@@ -1,0 +1,3 @@
+[submodule "software/OP_Pi/software/OP_Pi/lib/libsoundio"]
+	path = software/OP_Pi/software/OP_Pi/lib/libsoundio
+	url = https://github.com/andrewrk/libsoundio.git

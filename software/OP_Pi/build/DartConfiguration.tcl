@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/pi/OP-Pi/software/OPPi
-BuildDirectory: /home/pi/OP-Pi/software/OPPi/build
+SourceDirectory: /home/pi/OP-Pi/software/OP_Pi
+BuildDirectory: /home/pi/OP-Pi/software/OP_Pi/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -36,7 +36,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/pi/OP-Pi/software/OPPi"
+ConfigureCommand: "/usr/bin/cmake" "/home/pi/OP-Pi/software/OP_Pi"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
