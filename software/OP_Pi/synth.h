@@ -1,14 +1,13 @@
 #ifndef SYNTH_H // include guard
 #define SYNTH_H
 
-#include <soundio/soundio.h>
+#include "instrument.h"
 namespace OP_Pi
 {
-    class Synth
+    class Synth: public Instrument
     {
         public:
             double processSound(int frame, double seconds_offset, double sample_rate);
-            double pitch = 440.0;
     };
 }
 
