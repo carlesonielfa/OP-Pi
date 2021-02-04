@@ -1,1 +1,1 @@
-/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o  -o backend_disconnect_recover -Wl,-rpath,/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio libsoundio.so.2.0.0 -ljack -lpulse -lasound -lpthread 
+/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o  -o backend_disconnect_recover -Wl,-rpath,/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio libsoundio.so.2.0.0 -ljack -lasound -lpthread 

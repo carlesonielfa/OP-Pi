@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/OP-Pi/software/OP_Pi
+CMAKE_SOURCE_DIR = /home/carles/Documents/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OP_Pi/build
+CMAKE_BINARY_DIR = /home/carles/Documents/OP-Pi/software/OP_Pi/build
 
 # Utility rule file for NightlyCoverage.
 
@@ -71,6 +71,6 @@ CMakeFiles/NightlyCoverage.dir/clean:
 .PHONY : CMakeFiles/NightlyCoverage.dir/clean
 
 CMakeFiles/NightlyCoverage.dir/depend:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/OP-Pi/software/OP_Pi /home/pi/OP-Pi/software/OP_Pi /home/pi/OP-Pi/software/OP_Pi/build /home/pi/OP-Pi/software/OP_Pi/build /home/pi/OP-Pi/software/OP_Pi/build/CMakeFiles/NightlyCoverage.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/Documents/OP-Pi/software/OP_Pi /home/carles/Documents/OP-Pi/software/OP_Pi /home/carles/Documents/OP-Pi/software/OP_Pi/build /home/carles/Documents/OP-Pi/software/OP_Pi/build /home/carles/Documents/OP-Pi/software/OP_Pi/build/CMakeFiles/NightlyCoverage.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/NightlyCoverage.dir/depend
 

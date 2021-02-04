@@ -4,16 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/os.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/pulseaudio.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/util.c.o"
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/os.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/src/util.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

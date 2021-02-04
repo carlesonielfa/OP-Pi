@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c" "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.o"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -18,7 +18,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_shared.dir/DependInfo.cmake"
+  "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_shared.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

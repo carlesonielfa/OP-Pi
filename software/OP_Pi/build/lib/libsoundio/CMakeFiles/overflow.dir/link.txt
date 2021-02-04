@@ -1,1 +1,1 @@
-/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/overflow.dir/test/overflow.c.o  -o overflow -Wl,-rpath,/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio libsoundio.so.2.0.0 -ljack -lpulse -lasound -lpthread 
+/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/overflow.dir/test/overflow.c.o  -o overflow -Wl,-rpath,/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio libsoundio.so.2.0.0 -ljack -lasound -lpthread 

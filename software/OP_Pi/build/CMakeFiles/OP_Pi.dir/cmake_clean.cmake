@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/OP_Pi.dir/main.cpp.o"
   "CMakeFiles/OP_Pi.dir/synth.cpp.o"
+  "CMakeFiles/OP_Pi.dir/input_manager.cpp.o"
   "OP_Pi.pdb"
   "OP_Pi"
 )

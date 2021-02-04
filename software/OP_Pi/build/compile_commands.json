@@ -1,237 +1,222 @@
 [
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build",
-  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/main.cpp.o -c /home/pi/OP-Pi/software/OP_Pi/main.cpp",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/main.cpp"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build",
+  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/main.cpp.o -c /home/carles/Documents/OP-Pi/software/OP_Pi/main.cpp",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/main.cpp"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build",
-  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/synth.cpp.o -c /home/pi/OP-Pi/software/OP_Pi/synth.cpp",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/synth.cpp"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build",
+  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/synth.cpp.o -c /home/carles/Documents/OP-Pi/software/OP_Pi/synth.cpp",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/synth.cpp"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_microphone.dir/example/sio_microphone.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_microphone.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_microphone.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build",
+  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/input_manager.cpp.o -c /home/carles/Documents/OP-Pi/software/OP_Pi/input_manager.cpp",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/input_manager.cpp"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/soundio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_record.dir/example/sio_record.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/util.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_microphone.dir/example/sio_microphone.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_microphone.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_microphone.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/os.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/soundio.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/dummy.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/util.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/os.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/dummy.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/jack.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/pulseaudio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/alsa.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/jack.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/soundio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/alsa.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/util.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/soundio.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/os.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/util.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/dummy.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/os.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/dummy.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/jack.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/pulseaudio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/jack.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_static.dir/src/alsa.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8 -Dlibsoundio_shared_EXPORTS -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic -fPIC   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/libsoundio_shared.dir/src/alsa.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_sine.dir/example/sio_sine.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/test/unit_tests.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/unit_tests.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/unit_tests.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_record.dir/example/sio_record.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/soundio.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/test/latency.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/util.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/soundio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/os.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/util.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/dummy.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/os.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/channel_layout.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/dummy.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/ring_buffer.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/channel_layout.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/jack.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/ring_buffer.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/alsa.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/jack.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_sine.dir/example/sio_sine.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/pulseaudio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/underflow.dir/test/underflow.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/underflow.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/underflow.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/alsa.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/test/latency.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/underflow.dir/test/underflow.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/underflow.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/underflow.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/soundio.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/overflow.dir/test/overflow.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/overflow.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/overflow.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/util.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/test/unit_tests.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/unit_tests.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/unit_tests.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/os.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/soundio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/dummy.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/util.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/channel_layout.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/os.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/ring_buffer.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/dummy.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/jack.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/channel_layout.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -o CMakeFiles/latency.dir/src/alsa.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/ring_buffer.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_list_devices.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_list_devices.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/jack.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c"
 },
 {
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/pulseaudio.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.c"
-},
-{
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L -Wno-missing-braces -fprofile-arcs -ftest-coverage -o CMakeFiles/unit_tests.dir/src/alsa.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c"
-},
-{
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c"
-},
-{
-  "directory": "/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio",
-  "command": "/bin/gcc-8  -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.o   -c /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_list_devices.c",
-  "file": "/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_list_devices.c"
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
+  "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/overflow.dir/test/overflow.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/overflow.c",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/overflow.c"
 }
 ]
