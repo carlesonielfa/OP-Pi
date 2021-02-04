@@ -2,7 +2,7 @@
 #define INPUTMANAGER_H
 
 #include "instrument.h"
-
+#include <X11/Xlib.h>
 namespace OP_Pi
 {
     enum ACTION_TYPE
@@ -19,8 +19,13 @@ namespace OP_Pi
     class InputManager
     {
         public:
+            InputManager();
             bool useKeyboard=true;
-            ACTION processInput();
+            ACTION ProcessInput();
+        private:
+            Display* display;
+            bool GetKeyState(KeySym keySym);
+            int nCurrentKey = -1;	
     };
 }
 

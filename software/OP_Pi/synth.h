@@ -4,10 +4,15 @@
 #include "instrument.h"
 namespace OP_Pi
 {
+    enum OSC_TYPE{
+        SINE, SQUARE, TRIANGLE, SAW, NOISE
+    };
+
     class Synth: public Instrument
     {
         public:
-            double processSound(int frame, double seconds_offset, double sample_rate);
+            double ProcessSound(int frame, double seconds_offset, double sample_rate);
+            OSC_TYPE osc_type = OSC_TYPE::SINE;
     };
 }
 

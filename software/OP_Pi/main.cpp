@@ -74,7 +74,7 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
 
         for (int frame = 0; frame < frame_count; frame += 1) {
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
-            double sample = s.processSound(frame, seconds_offset, sample_rate);
+            double sample = s.ProcessSound(frame, seconds_offset, sample_rate);
             for (int channel = 0; channel < layout->channel_count; channel += 1) {
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
@@ -239,12 +239,7 @@ int main(int argc, char **argv) {
     }
 
     fprintf(stderr, "Software latency: %f\n", outstream->software_latency);
-    fprintf(stderr,
-            "'p\\n' - pause\n"
-            "'u\\n' - unpause\n"
-            "'P\\n' - pause from within callback\n"
-            "'c\\n' - clear buffer\n"
-            "'q\\n' - quit\n");
+    fprintf(stderr, "'q\\n' - quit\n");
 
     if (outstream->layout_error)
         fprintf(stderr, "unable to set channel layout: %s\n", soundio_strerror(outstream->layout_error));
@@ -260,7 +255,7 @@ int main(int argc, char **argv) {
         soundio_flush_events(soundio);
 
         //Check input
-        ACTION action = input_manager.processInput();
+        ACTION action = input_manager.ProcessInput();
         switch(action.type){
             case ACTION_TYPE::QUIT:
                 quit=true;
@@ -268,10 +263,10 @@ int main(int argc, char **argv) {
             case ACTION_TYPE::NOTEON:
                 //TODO: change to midi note number
                 printf("Frequency playing: %f\n",midi_to_freq(action.value));
-                s.setPitch(midi_to_freq(action.value));
+                s.SetPitch(midi_to_freq(action.value));
                 break;
             default:
-                printf("Action not yet implemented\n");
+                //printf("Action not yet implemented\n");
                 break;
         }
     }

@@ -6,14 +6,14 @@ namespace OP_Pi
     class Instrument
     {
         public:
-            virtual double processSound(int frame, double seconds_offset, double sample_rate) = 0;
-            void setPitch(double new_pitch){
+            virtual double ProcessSound(int frame, double seconds_offset, double sample_rate) = 0;
+            void SetPitch(double new_pitch){
                 pitch = new_pitch;
             };
-            double getPitch(){
+            double GetPitch(){
                 return pitch;
             };
-            void setGain(double new_gain){
+            void SetGain(double new_gain){
                 gain = new_gain;
                 if(gain>1){
                     fprintf(stderr, "Tried to assign gain bigger than 1");
@@ -25,7 +25,7 @@ namespace OP_Pi
                 }
                                       
             };
-            float getGain(){
+            float GetGain(){
                 return gain;
             };
             

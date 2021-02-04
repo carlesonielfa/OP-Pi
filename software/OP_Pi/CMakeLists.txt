@@ -19,4 +19,5 @@ add_compile_definitions(SOUNDIO_STATIC_LIBRARY)
 target_link_libraries(OP_Pi
     libsoundio_static
     ${LIBSOUNDIO_LIBS}
+    X11
 )
