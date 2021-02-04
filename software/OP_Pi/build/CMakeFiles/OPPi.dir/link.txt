@@ -1,0 +1,1 @@
+/bin/g++-8  -g  -rdynamic CMakeFiles/OPPi.dir/main.cpp.o  -o OPPi lib/libsoundio/libsoundio.a -ljack -lpulse -lasound -lpthread 

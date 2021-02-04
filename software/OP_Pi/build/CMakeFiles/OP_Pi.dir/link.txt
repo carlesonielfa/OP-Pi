@@ -1,0 +1,1 @@
+/bin/g++-8  -g  -rdynamic CMakeFiles/OP_Pi.dir/main.cpp.o CMakeFiles/OP_Pi.dir/synth.cpp.o  -o OP_Pi lib/libsoundio/libsoundio.a -ljack -lpulse -lasound -lpthread 

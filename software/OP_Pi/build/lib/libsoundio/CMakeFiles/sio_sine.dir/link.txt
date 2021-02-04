@@ -1,0 +1,1 @@
+/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/sio_sine.dir/example/sio_sine.c.o  -o sio_sine -Wl,-rpath,/home/pi/OP-Pi/software/OPPi/build/lib/libsoundio: libsoundio.so.2.0.0 -lm -ljack -lpulse -lasound -lpthread 
