@@ -52,7 +52,7 @@ static void (*write_sample)(char *ptr, double sample);
 
 Synth s;
 
-static double seconds_offset = 0.0;
+static long double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
     double sample_rate = outstream->sample_rate;
     struct SoundIoChannelArea *areas;
@@ -71,18 +71,19 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             break;
 
         const struct SoundIoChannelLayout *layout = &outstream->layout;
-
+        
         for (int frame = 0; frame < frame_count; frame += 1) {
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
-            double sample = s.ProcessSound(frame, seconds_offset, sample_rate);
+            double time = seconds_offset + frame * 1.0/sample_rate;
+            double sample = s.ProcessSound(time);
             for (int channel = 0; channel < layout->channel_count; channel += 1) {
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
             }
         }
-
-        seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
-
+    
+        //seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
+        seconds_offset = seconds_offset + 1.0/sample_rate * frame_count;
         if ((err = soundio_outstream_end_write(outstream))) {
             if (err == SoundIoErrorUnderflow)
                 return;
@@ -253,20 +254,28 @@ int main(int argc, char **argv) {
     bool quit=false;
     while(!quit) {
         soundio_flush_events(soundio);
-
         //Check input
         ACTION action = input_manager.ProcessInput();
         switch(action.type){
             case ACTION_TYPE::QUIT:
+                printf("QUIT\n");
                 quit=true;
                 break;
             case ACTION_TYPE::NOTEON:
                 //TODO: change to midi note number
-                printf("Frequency playing: %f\n",midi_to_freq(action.value));
                 s.SetPitch(midi_to_freq(action.value));
+                s.NoteOn(seconds_offset);
+                printf("NOTEON: %d\n",action.value);
+                break;
+            case ACTION_TYPE::NOTEOFF:
+                s.SetPitch(0);
+                s.NoteOff(seconds_offset);
+                printf("NOTEOFF: %d\n",action.value);
+                break;
+            case ACTION_TYPE::NONE:
                 break;
             default:
-                //printf("Action not yet implemented\n");
+                printf("Action not yet implemented\n", action.type);
                 break;
         }
     }

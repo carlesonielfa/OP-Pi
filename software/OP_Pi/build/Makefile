@@ -762,6 +762,33 @@ input_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/input_manager.cpp.s
 .PHONY : input_manager.cpp.s
 
+instrument.o: instrument.cpp.o
+
+.PHONY : instrument.o
+
+# target to build an object file
+instrument.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/instrument.cpp.o
+.PHONY : instrument.cpp.o
+
+instrument.i: instrument.cpp.i
+
+.PHONY : instrument.i
+
+# target to preprocess a source file
+instrument.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/instrument.cpp.i
+.PHONY : instrument.cpp.i
+
+instrument.s: instrument.cpp.s
+
+.PHONY : instrument.s
+
+# target to generate assembly for a file
+instrument.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/instrument.cpp.s
+.PHONY : instrument.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -876,6 +903,9 @@ help:
 	@echo "... input_manager.o"
 	@echo "... input_manager.i"
 	@echo "... input_manager.s"
+	@echo "... instrument.o"
+	@echo "... instrument.i"
+	@echo "... instrument.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

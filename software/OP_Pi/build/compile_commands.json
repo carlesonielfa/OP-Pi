@@ -15,6 +15,11 @@
   "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/input_manager.cpp"
 },
 {
+  "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build",
+  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/instrument.cpp.o -c /home/carles/Documents/OP-Pi/software/OP_Pi/instrument.cpp",
+  "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/instrument.cpp"
+},
+{
   "directory": "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio",
   "command": "/bin/gcc-8  -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_record.dir/example/sio_record.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c",
   "file": "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c"

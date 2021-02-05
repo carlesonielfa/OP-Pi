@@ -1,1 +1,1 @@
-/bin/g++-8  -g  -rdynamic CMakeFiles/OP_Pi.dir/main.cpp.o CMakeFiles/OP_Pi.dir/synth.cpp.o CMakeFiles/OP_Pi.dir/input_manager.cpp.o  -o OP_Pi lib/libsoundio/libsoundio.a -ljack -lasound -lpthread -lX11 
+/bin/g++-8  -g  -rdynamic CMakeFiles/OP_Pi.dir/main.cpp.o CMakeFiles/OP_Pi.dir/synth.cpp.o CMakeFiles/OP_Pi.dir/input_manager.cpp.o CMakeFiles/OP_Pi.dir/instrument.cpp.o  -o OP_Pi lib/libsoundio/libsoundio.a -ljack -lasound -lpthread -lX11 

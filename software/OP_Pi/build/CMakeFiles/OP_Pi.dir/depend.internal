@@ -5,6 +5,9 @@ CMakeFiles/OP_Pi.dir/input_manager.cpp.o
  /home/carles/Documents/OP-Pi/software/OP_Pi/input_manager.cpp
  /home/carles/Documents/OP-Pi/software/OP_Pi/input_manager.h
  /home/carles/Documents/OP-Pi/software/OP_Pi/instrument.h
+CMakeFiles/OP_Pi.dir/instrument.cpp.o
+ /home/carles/Documents/OP-Pi/software/OP_Pi/instrument.cpp
+ /home/carles/Documents/OP-Pi/software/OP_Pi/instrument.h
 CMakeFiles/OP_Pi.dir/main.cpp.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
