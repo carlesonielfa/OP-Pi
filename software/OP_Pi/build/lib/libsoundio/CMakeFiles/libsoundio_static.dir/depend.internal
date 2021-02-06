@@ -4,118 +4,118 @@
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
  lib/libsoundio/config.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
  lib/libsoundio/config.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
  lib/libsoundio/config.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
  lib/libsoundio/config.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
  lib/libsoundio/config.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.o
  ../lib/libsoundio/soundio/endian.h
  ../lib/libsoundio/soundio/soundio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/atomics.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/coreaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/list.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/pulseaudio.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_internal.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio_private.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/wasapi.h
  lib/libsoundio/config.h
 lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.o
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c
- /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c
+ /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h

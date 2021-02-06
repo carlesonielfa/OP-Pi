@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/carles/Documents/OP-Pi/software/OP_Pi
+CMAKE_SOURCE_DIR = /home/carles/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/carles/Documents/OP-Pi/software/OP_Pi/build
+CMAKE_BINARY_DIR = /home/carles/OP-Pi/software/OP_Pi/build
 
 # Include any dependencies generated for this target.
 include lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/depend.make
@@ -59,16 +59,16 @@ include lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/flags.make
 
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o: lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/flags.make
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o: ../lib/libsoundio/test/backend_disconnect_recover.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carles/Documents/OP-Pi/software/OP_Pi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o"
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio && /bin/gcc-8 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o   -c /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o"
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && /bin/gcc-8 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o   -c /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c
 
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.i"
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio && /bin/gcc-8 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c > CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && /bin/gcc-8 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c > CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.i
 
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.s"
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio && /bin/gcc-8 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c -o CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && /bin/gcc-8 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c -o CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.s
 
 # Object files for target backend_disconnect_recover
 backend_disconnect_recover_OBJECTS = \
@@ -83,8 +83,8 @@ lib/libsoundio/backend_disconnect_recover: lib/libsoundio/libsoundio.so.2.0.0
 lib/libsoundio/backend_disconnect_recover: /usr/lib/x86_64-linux-gnu/libjack.so
 lib/libsoundio/backend_disconnect_recover: /usr/lib/x86_64-linux-gnu/libasound.so
 lib/libsoundio/backend_disconnect_recover: lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/carles/Documents/OP-Pi/software/OP_Pi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable backend_disconnect_recover"
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend_disconnect_recover.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable backend_disconnect_recover"
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend_disconnect_recover.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build: lib/libsoundio/backend_disconnect_recover
@@ -92,10 +92,10 @@ lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build: lib/libsoundio/b
 .PHONY : lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build
 
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/clean:
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -P CMakeFiles/backend_disconnect_recover.dir/cmake_clean.cmake
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -P CMakeFiles/backend_disconnect_recover.dir/cmake_clean.cmake
 .PHONY : lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/clean
 
 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/depend:
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/Documents/OP-Pi/software/OP_Pi /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio /home/carles/Documents/OP-Pi/software/OP_Pi/build /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio /home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/OP-Pi/software/OP_Pi /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio /home/carles/OP-Pi/software/OP_Pi/build /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/depend
 

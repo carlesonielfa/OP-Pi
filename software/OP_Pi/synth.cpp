@@ -1,45 +1,50 @@
 #include "synth.h"
-#include <math.h>
 using namespace OP_Pi;
 
-static const double PI = 3.14159265358979323846264338328;
-Synth::Synth(){
-	SetPitch(0);
-}
-double Synth::ProcessSound(double time){
-    double output = 0.0;
-    double w = GetPitch() * 2.0 * PI;
-	
-	switch (osc_type)
+double Osc(const double time, const double freq, const OSC_TYPE type = OSC_TYPE::SINE,
+		const double LFOHertz = 0.0, const double LFOAmplitude = 0.0)
+{
+
+	double dFreq = w(freq) * time + LFOAmplitude * freq * (sin(w(LFOHertz) * time));
+	switch (type)
 	{
 		case OSC_TYPE::SINE: // Sine wave bewteen -1 and +1
-			output=sin(w * time);
-			break;
+			return sin(dFreq);
+
 		case OSC_TYPE::SQUARE: // Square wave between -1 and +1
-			output=sin(w * time) > 0 ? 1.0 : -1.0;
-			break;
+			return sin(dFreq) > 0 ? 1.0 : -1.0;
+
 		case OSC_TYPE::TRIANGLE: // Triangle wave between -1 and +1
-			output=asin(sin(w * time)) * (2.0 / PI);
-			break;
-		case OSC_TYPE::SAW: // Saw wave
-		{
-			/*
-			double dOutput = 0.0;
+			return asin(sin(dFreq)) * (2.0 / PI);
+		case OSC_TYPE::SAW:
+			return (2.0 / PI) * (freq * PI * fmod(time, 1.0 / freq) - (PI / 2.0));
 
-			for (double n = 1.0; n < 40.0; n++)
-				dOutput += (sin(n * w * time)) / n;
+		case OSC_TYPE::NOISE:
+			return 2.0 * ((double)rand() / (double)RAND_MAX) - 1.0;
 
-			return dOutput * (2.0 / PI);
-			*/
-
-			output=(2.0 / PI) * (GetPitch() * PI * fmod(time, 1.0 / GetPitch()) - (PI / 2.0));
-			break;
-		}
-		case OSC_TYPE::NOISE: // Pseudorandom noise
-			output= 2.0 * ((double)rand() / (double)RAND_MAX) - 1.0;
-			break;
+		default:
+			return 0.0;
 	}
-	//Apply envelope and time
-	output*=GetAmplitudeEnvelope(time)*GetGain();
+};
+
+Synth::Synth(){
+	env = EnvelopeADSR(0.2,1,0.8,1);
+}
+
+double Synth::GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished){
+
+    double output;
+
+	//Apply Envelope
+	output = env.Amplitude(seconds_offset,n.on,n.off);
+	if (output == 0 && n.off !=0){
+		noteFinished = true;
+	}
+	//Apply oscillator
+	output*= Osc(time, midi_to_freq(n.number), OSC_TYPE::SINE);
+	
+	//Apply gain
+	output*=GetGain();
+
     return output;
 }

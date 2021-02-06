@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.o"
-  "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c" "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.o"
+  "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c" "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

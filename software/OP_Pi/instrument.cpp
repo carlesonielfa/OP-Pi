@@ -1,65 +1,55 @@
 #include "instrument.h"
+
+
 using namespace OP_Pi;
-
-//Envelope
-void Instrument::NoteOn(double timeOn)
-{
-    triggerOnTime = timeOn;
-    noteOn = true;
-}
-// Call when key is released
-void Instrument::NoteOff(double timeOff)
-{
-    triggerOffTime = timeOff;
-    noteOn = false;
-}
-// Get the correct amplitude at the requested point in time
-double Instrument::GetAmplitudeEnvelope(double time)
-{
-    double amplitude = 0.0;
-    double lifeTime = time - triggerOnTime;
-
-    if (noteOn)
+using namespace std;
+// Call when key is pressed
+void Instrument::NoteOn(int noteNumber, double timeOn){
+    muxNotes.lock();
+    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber; });
+    
+    // Note not found in vector
+    if (noteFound == vecNotes.end())
     {
-        if (lifeTime <= attackTime)
-        {
-            // In attack Phase - approach max amplitude
-            amplitude = (lifeTime / attackTime) * startAmplitude;
-        }
+        //Create a new note
+        Note n;
+        n.number = noteNumber;
+        n.on = timeOn;
+        n.active = true;
 
-        if (lifeTime > attackTime && lifeTime <= (attackTime + decayTime))
-        {
-            // In decay phase - reduce to sustained amplitude
-            amplitude = ((lifeTime - attackTime) / decayTime) * (sustainAmplitude - startAmplitude) + startAmplitude;
-        }
-
-        if (lifeTime > (attackTime + decayTime))
-        {
-            // In sustain phase - dont change until note released
-            amplitude = sustainAmplitude;
-        }
+        // Add note to vector
+        vecNotes.emplace_back(n);
     }
+    // Note exists in vector
     else
     {
-        // Note has been released, so in release phase
-        amplitude = ((time - triggerOffTime) / releaseTime) * (0.0 - sustainAmplitude) + sustainAmplitude;
-    }
+        // Key has been pressed again during release phase
+        if (noteFound->off > noteFound->on)
+        {
+            
+            noteFound->on = timeOn;
+            noteFound->active = true;
+        }
+        // Key is still held, so do nothing
 
-    // Amplitude should not be negative
-    if (amplitude <= 0.0001){
-        amplitude = 0.0;
     }
-
-    return amplitude;
+    printf("Vector length %d\n", vecNotes.size());
+    muxNotes.unlock();
 }
 
+// Call when key is released
+void Instrument::NoteOff(int noteNumber, double timeOff){
+    muxNotes.lock();
+    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber;});
 
-void Instrument::SetPitch(double new_pitch){
-    pitch = new_pitch;
-};
-double Instrument::GetPitch(){
-    return pitch;
-};
+    if (noteFound != vecNotes.end())
+    {
+        // Key has been released, so switch off
+        if (noteFound->off < noteFound->on)
+            noteFound->off = timeOff;
+    }
+    muxNotes.unlock();
+}
 void Instrument::SetGain(double new_gain){
     gain = new_gain;
     if(gain>1){
@@ -75,4 +65,27 @@ void Instrument::SetGain(double new_gain){
 float Instrument::GetGain(){
     return gain;
 };
+double Instrument::PlayNotes(double time, double seconds_offset){
+    unique_lock<mutex> lm(muxNotes);
+    double output = 0.0;
+    // Iterate through all active notes, and mix together
+	for (auto &n : vecNotes)
+	{
+		bool noteFinished = false;
+		double noteSound = 0;
+
+		// Get sample for this note by using the correct instrument and envelope
+        //sound = n.channel->sound(dTime, n, noteFinished);
+		noteSound = GenerateNoteSound(time, seconds_offset, n, noteFinished);
+		// Mix into output
+		output += noteSound;
+        
+		if (noteFinished) // Flag note to be removed
+			n.active = false;
+        
+	}
+	safe_remove<vector<Note>>(vecNotes, [](Note const& item) { return item.active; });
+    //vecNotes.erase(remove_if(begin(vecNotes), end(vecNotes),[](Note& v){return !v.active;}));
+	return output;
+}
             

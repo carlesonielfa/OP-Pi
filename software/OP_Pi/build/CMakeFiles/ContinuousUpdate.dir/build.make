@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/carles/Documents/OP-Pi/software/OP_Pi
+CMAKE_SOURCE_DIR = /home/carles/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/carles/Documents/OP-Pi/software/OP_Pi/build
+CMAKE_BINARY_DIR = /home/carles/OP-Pi/software/OP_Pi/build
 
 # Utility rule file for ContinuousUpdate.
 
@@ -71,6 +71,6 @@ CMakeFiles/ContinuousUpdate.dir/clean:
 .PHONY : CMakeFiles/ContinuousUpdate.dir/clean
 
 CMakeFiles/ContinuousUpdate.dir/depend:
-	cd /home/carles/Documents/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/Documents/OP-Pi/software/OP_Pi /home/carles/Documents/OP-Pi/software/OP_Pi /home/carles/Documents/OP-Pi/software/OP_Pi/build /home/carles/Documents/OP-Pi/software/OP_Pi/build /home/carles/Documents/OP-Pi/software/OP_Pi/build/CMakeFiles/ContinuousUpdate.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/OP-Pi/software/OP_Pi /home/carles/OP-Pi/software/OP_Pi /home/carles/OP-Pi/software/OP_Pi/build /home/carles/OP-Pi/software/OP_Pi/build /home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/ContinuousUpdate.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ContinuousUpdate.dir/depend
 

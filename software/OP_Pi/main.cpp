@@ -75,7 +75,7 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
         for (int frame = 0; frame < frame_count; frame += 1) {
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
             double time = seconds_offset + frame * 1.0/sample_rate;
-            double sample = s.ProcessSound(time);
+            double sample = s.PlayNotes(time, seconds_offset);
             for (int channel = 0; channel < layout->channel_count; channel += 1) {
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
@@ -263,13 +263,13 @@ int main(int argc, char **argv) {
                 break;
             case ACTION_TYPE::NOTEON:
                 //TODO: change to midi note number
-                s.SetPitch(midi_to_freq(action.value));
-                s.NoteOn(seconds_offset);
+                s.NoteOn(action.value, seconds_offset);
+                //s.NoteOn(seconds_offset);
                 printf("NOTEON: %d\n",action.value);
                 break;
             case ACTION_TYPE::NOTEOFF:
-                s.SetPitch(0);
-                s.NoteOff(seconds_offset);
+                s.NoteOff(action.value, seconds_offset);
+                //s.NoteOff(seconds_offset);
                 printf("NOTEOFF: %d\n",action.value);
                 break;
             case ACTION_TYPE::NONE:

@@ -4,9 +4,11 @@
 CMakeFiles/OP_Pi.dir/input_manager.cpp.o: ../input_manager.cpp
 CMakeFiles/OP_Pi.dir/input_manager.cpp.o: ../input_manager.h
 CMakeFiles/OP_Pi.dir/input_manager.cpp.o: ../instrument.h
+CMakeFiles/OP_Pi.dir/input_manager.cpp.o: ../sound_utils.h
 
 CMakeFiles/OP_Pi.dir/instrument.cpp.o: ../instrument.cpp
 CMakeFiles/OP_Pi.dir/instrument.cpp.o: ../instrument.h
+CMakeFiles/OP_Pi.dir/instrument.cpp.o: ../sound_utils.h
 
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../lib/libsoundio/soundio/endian.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../lib/libsoundio/soundio/soundio.h
@@ -17,6 +19,7 @@ CMakeFiles/OP_Pi.dir/main.cpp.o: ../sound_utils.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../synth.h
 
 CMakeFiles/OP_Pi.dir/synth.cpp.o: ../instrument.h
+CMakeFiles/OP_Pi.dir/synth.cpp.o: ../sound_utils.h
 CMakeFiles/OP_Pi.dir/synth.cpp.o: ../synth.cpp
 CMakeFiles/OP_Pi.dir/synth.cpp.o: ../synth.h
 
