@@ -1,14 +1,31 @@
 #ifndef SYNTH_H // include guard
 #define SYNTH_H
 
-#include <soundio/soundio.h>
+#include "instrument.h"
+#include "sound_utils.h"
+#include <math.h>
 namespace OP_Pi
 {
-    class Synth
+    enum OSC_TYPE{
+        SINE, SQUARE, TRIANGLE, SAW, NOISE
+    };
+    struct SynthDef: public InstrumentDef
+	{
+		SynthDef(){
+            env = new EnvelopeADSR();
+        }
+		//double GenerateSound(const double time, Note n, bool &noteFinished){return 0};
+        
+	};
+    // Represents an object that synthesizes sound and outputs it
+    class Synth: public Instrument
     {
         public:
-            double processSound(int frame, double seconds_offset, double sample_rate);
-            double pitch = 440.0;
+            //SynthDef synth;
+            Synth();
+            EnvelopeADSR env;
+        protected:
+            double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) override;
     };
 }
 

@@ -6,39 +6,33 @@
 
 #IncludeRegexTransform: 
 
-../lib/libsoundio/soundio/endian.h
-
-../lib/libsoundio/soundio/soundio.h
-endian.h
-../lib/libsoundio/soundio/endian.h
-stdbool.h
--
-
-/home/pi/OP-Pi/software/OP_Pi/main.cpp
-synth.h
-/home/pi/OP-Pi/software/OP_Pi/synth.h
-soundio/soundio.h
--
+/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp
+input_manager.h
+/home/carles/OP-Pi/software/OP_Pi/input_manager.h
 stdio.h
 -
-stdlib.h
--
-string.h
--
-stdint.h
--
-math.h
+
+/home/carles/OP-Pi/software/OP_Pi/input_manager.h
+instrument.h
+/home/carles/OP-Pi/software/OP_Pi/instrument.h
+X11/Xlib.h
 -
 
-/home/pi/OP-Pi/software/OP_Pi/synth.cpp
-synth.h
-/home/pi/OP-Pi/software/OP_Pi/synth.h
-iostream
+/home/carles/OP-Pi/software/OP_Pi/instrument.h
+sound_utils.h
+/home/carles/OP-Pi/software/OP_Pi/sound_utils.h
+stdio.h
 -
-math.h
+string
+-
+mutex
+-
+algorithm
+-
+vector
 -
 
-/home/pi/OP-Pi/software/OP_Pi/synth.h
-soundio/soundio.h
+/home/carles/OP-Pi/software/OP_Pi/sound_utils.h
+math.h
 -
 

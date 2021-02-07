@@ -1,14 +1,28 @@
 #include "synth.h"
-
+#include "input_manager.h"
+#include "screen_manager.h"
 #include <soundio/soundio.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include <math.h>
+#include <thread>
 
 using namespace OP_Pi;
+
+static int usage(char *exe) {
+    fprintf(stderr, "Usage: %s [options]\n"
+            "Options:\n"
+            "  [--backend dummy|alsa|pulseaudio|jack|coreaudio|wasapi]\n"
+            "  [--device id]\n"
+            "  [--raw]\n"
+            "  [--name stream_name]\n"
+            "  [--latency seconds]\n"
+            "  [--sample-rate hz]\n"
+            , exe);
+    return 1;
+}
 
 static void write_sample_s16ne(char *ptr, double sample) {
     int16_t *buf = (int16_t *)ptr;
@@ -37,7 +51,7 @@ static void (*write_sample)(char *ptr, double sample);
 
 Synth s;
 
-static double seconds_offset = 0.0;
+static long double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
     double sample_rate = outstream->sample_rate;
     struct SoundIoChannelArea *areas;
@@ -56,18 +70,19 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             break;
 
         const struct SoundIoChannelLayout *layout = &outstream->layout;
-
+        
         for (int frame = 0; frame < frame_count; frame += 1) {
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
-            double sample = s.processSound(frame, seconds_offset, sample_rate);
+            double time = seconds_offset + frame * 1.0/sample_rate;
+            double sample = s.PlayNotes(time, seconds_offset);
             for (int channel = 0; channel < layout->channel_count; channel += 1) {
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
             }
         }
-
-        seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
-
+    
+        //seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
+        seconds_offset = seconds_offset + 1.0/sample_rate * frame_count;
         if ((err = soundio_outstream_end_write(outstream))) {
             if (err == SoundIoErrorUnderflow)
                 return;
@@ -87,14 +102,56 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
 }
 
 int main(int argc, char **argv) {
+        char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
-    char *device_id = "hw:0,0";
-    bool raw = true;
+    char *device_id = NULL;
+    bool raw = false;
     char *stream_name = NULL;
     double latency = 0.0;
     int sample_rate = 0;
+    for (int i = 1; i < argc; i += 1) {
+        char *arg = argv[i];
+        if (arg[0] == '-' && arg[1] == '-') {
+            if (strcmp(arg, "--raw") == 0) {
+                raw = true;
+            } else {
+                i += 1;
+                if (i >= argc) {
+                    return usage(exe);
+                } else if (strcmp(arg, "--backend") == 0) {
+                    if (strcmp(argv[i], "dummy") == 0) {
+                        backend = SoundIoBackendDummy;
+                    } else if (strcmp(argv[i], "alsa") == 0) {
+                        backend = SoundIoBackendAlsa;
+                    } else if (strcmp(argv[i], "pulseaudio") == 0) {
+                        backend = SoundIoBackendPulseAudio;
+                    } else if (strcmp(argv[i], "jack") == 0) {
+                        backend = SoundIoBackendJack;
+                    } else if (strcmp(argv[i], "coreaudio") == 0) {
+                        backend = SoundIoBackendCoreAudio;
+                    } else if (strcmp(argv[i], "wasapi") == 0) {
+                        backend = SoundIoBackendWasapi;
+                    } else {
+                        fprintf(stderr, "Invalid backend: %s\n", argv[i]);
+                        return 1;
+                    }
+                } else if (strcmp(arg, "--device") == 0) {
+                    device_id = argv[i];
+                } else if (strcmp(arg, "--name") == 0) {
+                    stream_name = argv[i];
+                } else if (strcmp(arg, "--latency") == 0) {
+                    latency = atof(argv[i]);
+                } else if (strcmp(arg, "--sample-rate") == 0) {
+                    sample_rate = atoi(argv[i]);
+                } else {
+                    return usage(exe);
+                }
+            }
+        } else {
+            return usage(exe);
+        }
+    }
 
-    //Create soundio object
     struct SoundIo *soundio = soundio_create();
     if (!soundio) {
         fprintf(stderr, "out of memory\n");
@@ -113,18 +170,22 @@ int main(int argc, char **argv) {
 
     soundio_flush_events(soundio);
 
-    //Select sound device
     int selected_device_index = -1;
-    int device_count = soundio_output_device_count(soundio);
-    for (int i = 0; i < device_count; i += 1) {
-        struct SoundIoDevice *device = soundio_get_output_device(soundio, i);
-        bool select_this_one = strcmp(device->id, device_id) == 0 && device->is_raw == raw;
-        soundio_device_unref(device);
-        if (select_this_one) {
-            selected_device_index = i;
-            break;
+    if (device_id) {
+        int device_count = soundio_output_device_count(soundio);
+        for (int i = 0; i < device_count; i += 1) {
+            struct SoundIoDevice *device = soundio_get_output_device(soundio, i);
+            bool select_this_one = strcmp(device->id, device_id) == 0 && device->is_raw == raw;
+            soundio_device_unref(device);
+            if (select_this_one) {
+                selected_device_index = i;
+                break;
+            }
         }
+    } else {
+        selected_device_index = soundio_default_output_device_index(soundio);
     }
+
     if (selected_device_index < 0) {
         fprintf(stderr, "Output device not found\n");
         return 1;
@@ -142,6 +203,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Cannot probe device: %s\n", soundio_strerror(device->probe_error));
         return 1;
     }
+
     struct SoundIoOutStream *outstream = soundio_outstream_create(device);
     if (!outstream) {
         fprintf(stderr, "out of memory\n");
@@ -177,6 +239,8 @@ int main(int argc, char **argv) {
     }
 
     fprintf(stderr, "Software latency: %f\n", outstream->software_latency);
+    fprintf(stderr, "'q\\n' - quit\n");
+
     if (outstream->layout_error)
         fprintf(stderr, "unable to set channel layout: %s\n", soundio_strerror(outstream->layout_error));
 
@@ -184,21 +248,38 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
+    ScreenManagerX11 screenManagerX11;
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
 
-    for (;;) {
+    bool quit=false;
+    while(!quit) {
         soundio_flush_events(soundio);
-        int c = getc(stdin);
-        if (c == 'a') {
-            s.pitch=220.0;
-        } else if (c == 's') {
-            s.pitch=440.0;
-        } else if (c == 'q') {
-            break;
-        } else if (c == '\r' || c == '\n') {
-            // ignore
-        } else {
-            fprintf(stderr, "Unrecognized command: %c\n", c);
+        //Check input
+        ACTION action = inputManagerKeyboard.ProcessInput();
+        switch(action.type){
+            case ACTION_TYPE::QUIT:
+                printf("QUIT\n");
+                quit=true;
+                break;
+            case ACTION_TYPE::NOTEON:
+                //TODO: change to midi note number
+                s.NoteOn(action.value, seconds_offset);
+                //s.NoteOn(seconds_offset);
+                printf("NOTEON: %d\n",action.value);
+                break;
+            case ACTION_TYPE::NOTEOFF:
+                s.NoteOff(action.value, seconds_offset);
+                //s.NoteOff(seconds_offset);
+                printf("NOTEOFF: %d\n",action.value);
+                break;
+            case ACTION_TYPE::NONE:
+                break;
+            default:
+                printf("Action not yet implemented\n", action.type);
+                break;
         }
+        //Redraw scren
+        screenManagerX11.Draw();
     }
 
     soundio_outstream_destroy(outstream);

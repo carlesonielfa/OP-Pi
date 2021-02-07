@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/unit_tests.dir/src/channel_layout.c.o"
   "CMakeFiles/unit_tests.dir/src/ring_buffer.c.o"
   "CMakeFiles/unit_tests.dir/src/jack.c.o"
-  "CMakeFiles/unit_tests.dir/src/pulseaudio.c.o"
   "CMakeFiles/unit_tests.dir/src/alsa.c.o"
   "unit_tests.pdb"
   "unit_tests"

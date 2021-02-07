@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/OP-Pi/software/OP_Pi
+# Install script for directory: /home/carles/OP-Pi/software/OP_Pi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/cmake_install.cmake")
+  include("/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/pi/OP-Pi/software/OP_Pi/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/carles/OP-Pi/software/OP_Pi/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,1 +1,1 @@
-/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/underflow.dir/test/underflow.c.o  -o underflow -Wl,-rpath,/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio libsoundio.so.2.0.0 -lm -ljack -lpulse -lasound -lpthread 
+/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/underflow.dir/test/underflow.c.o  -o underflow -Wl,-rpath,/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio libsoundio.so.2.0.0 -lm -ljack -lasound -lpthread 

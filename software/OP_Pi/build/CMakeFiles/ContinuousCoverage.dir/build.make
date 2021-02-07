@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/OP-Pi/software/OP_Pi
+CMAKE_SOURCE_DIR = /home/carles/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OP_Pi/build
+CMAKE_BINARY_DIR = /home/carles/OP-Pi/software/OP_Pi/build
 
 # Utility rule file for ContinuousCoverage.
 
@@ -71,6 +71,6 @@ CMakeFiles/ContinuousCoverage.dir/clean:
 .PHONY : CMakeFiles/ContinuousCoverage.dir/clean
 
 CMakeFiles/ContinuousCoverage.dir/depend:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/OP-Pi/software/OP_Pi /home/pi/OP-Pi/software/OP_Pi /home/pi/OP-Pi/software/OP_Pi/build /home/pi/OP-Pi/software/OP_Pi/build /home/pi/OP-Pi/software/OP_Pi/build/CMakeFiles/ContinuousCoverage.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/OP-Pi/software/OP_Pi /home/carles/OP-Pi/software/OP_Pi /home/carles/OP-Pi/software/OP_Pi/build /home/carles/OP-Pi/software/OP_Pi/build /home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/ContinuousCoverage.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ContinuousCoverage.dir/depend
 

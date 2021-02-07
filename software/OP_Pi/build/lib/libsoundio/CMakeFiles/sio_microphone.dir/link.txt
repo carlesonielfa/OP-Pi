@@ -1,1 +1,1 @@
-/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/sio_microphone.dir/example/sio_microphone.c.o  -o sio_microphone -Wl,-rpath,/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio: libsoundio.so.2.0.0 -ljack -lpulse -lasound -lpthread 
+/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/sio_microphone.dir/example/sio_microphone.c.o  -o sio_microphone -Wl,-rpath,/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio: libsoundio.so.2.0.0 -ljack -lasound -lpthread 

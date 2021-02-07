@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/OP-Pi/software/OP_Pi
+CMAKE_SOURCE_DIR = /home/carles/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OP_Pi/build
+CMAKE_BINARY_DIR = /home/carles/OP-Pi/software/OP_Pi/build
 
 # Utility rule file for doc.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OP_Pi/build
 include lib/libsoundio/CMakeFiles/doc.dir/progress.make
 
 lib/libsoundio/CMakeFiles/doc:
-	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && doxygen /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/doxygen.conf
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && doxygen /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/doxygen.conf
 
 doc: lib/libsoundio/CMakeFiles/doc
 doc: lib/libsoundio/CMakeFiles/doc.dir/build.make
@@ -67,10 +67,10 @@ lib/libsoundio/CMakeFiles/doc.dir/build: doc
 .PHONY : lib/libsoundio/CMakeFiles/doc.dir/build
 
 lib/libsoundio/CMakeFiles/doc.dir/clean:
-	cd /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -P CMakeFiles/doc.dir/cmake_clean.cmake
+	cd /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio && $(CMAKE_COMMAND) -P CMakeFiles/doc.dir/cmake_clean.cmake
 .PHONY : lib/libsoundio/CMakeFiles/doc.dir/clean
 
 lib/libsoundio/CMakeFiles/doc.dir/depend:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/OP-Pi/software/OP_Pi /home/pi/OP-Pi/software/OP_Pi/lib/libsoundio /home/pi/OP-Pi/software/OP_Pi/build /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/doc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/carles/OP-Pi/software/OP_Pi /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio /home/carles/OP-Pi/software/OP_Pi/build /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/doc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lib/libsoundio/CMakeFiles/doc.dir/depend
 

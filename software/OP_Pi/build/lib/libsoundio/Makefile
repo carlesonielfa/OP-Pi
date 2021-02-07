@@ -48,25 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/OP-Pi/software/OP_Pi
+CMAKE_SOURCE_DIR = /home/carles/OP-Pi/software/OP_Pi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/OP-Pi/software/OP_Pi/build
+CMAKE_BINARY_DIR = /home/carles/OP-Pi/software/OP_Pi/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -92,16 +80,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -124,28 +102,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/pi/OP-Pi/software/OP_Pi/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/pi/OP-Pi/software/OP_Pi/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pi/OP-Pi/software/OP_Pi/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -157,16 +113,60 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/carles/OP-Pi/software/OP_Pi/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/carles/OP-Pi/software/OP_Pi/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/carles/OP-Pi/software/OP_Pi/build && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/OP-Pi/software/OP_Pi/build/CMakeFiles /home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/progress.marks
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/OP-Pi/software/OP_Pi/build/CMakeFiles 0
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles /home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/CMakeFiles/progress.marks
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/clean
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,97 +176,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/preinstall
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/preinstall
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-lib/libsoundio/CMakeFiles/sio_microphone.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_microphone.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/sio_microphone.dir/rule
-
-# Convenience name for target.
-sio_microphone: lib/libsoundio/CMakeFiles/sio_microphone.dir/rule
-
-.PHONY : sio_microphone
-
-# fast build rule for target.
-sio_microphone/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/build
-.PHONY : sio_microphone/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule
-
-# Convenience name for target.
-libsoundio_shared: lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule
-
-.PHONY : libsoundio_shared
-
-# fast build rule for target.
-libsoundio_shared/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build
-.PHONY : libsoundio_shared/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule
-
-# Convenience name for target.
-libsoundio_static: lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule
-
-.PHONY : libsoundio_static
-
-# fast build rule for target.
-libsoundio_static/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/build
-.PHONY : libsoundio_static/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/sio_sine.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_sine.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/sio_sine.dir/rule
-
-# Convenience name for target.
-sio_sine: lib/libsoundio/CMakeFiles/sio_sine.dir/rule
-
-.PHONY : sio_sine
-
-# fast build rule for target.
-sio_sine/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/build
-.PHONY : sio_sine/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/doc.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/doc.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/doc.dir/rule
-
-# Convenience name for target.
-doc: lib/libsoundio/CMakeFiles/doc.dir/rule
-
-.PHONY : doc
-
-# fast build rule for target.
-doc/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/doc.dir/build.make lib/libsoundio/CMakeFiles/doc.dir/build
-.PHONY : doc/fast
-
-# Convenience name for target.
 lib/libsoundio/CMakeFiles/sio_record.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_record.dir/rule
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_record.dir/rule
 .PHONY : lib/libsoundio/CMakeFiles/sio_record.dir/rule
 
 # Convenience name for target.
@@ -276,87 +201,27 @@ sio_record: lib/libsoundio/CMakeFiles/sio_record.dir/rule
 
 # fast build rule for target.
 sio_record/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/build
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/build
 .PHONY : sio_record/fast
 
 # Convenience name for target.
-lib/libsoundio/CMakeFiles/latency.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/latency.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/latency.dir/rule
+lib/libsoundio/CMakeFiles/sio_microphone.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_microphone.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/sio_microphone.dir/rule
 
 # Convenience name for target.
-latency: lib/libsoundio/CMakeFiles/latency.dir/rule
+sio_microphone: lib/libsoundio/CMakeFiles/sio_microphone.dir/rule
 
-.PHONY : latency
+.PHONY : sio_microphone
 
 # fast build rule for target.
-latency/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/build
-.PHONY : latency/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/underflow.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/underflow.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/underflow.dir/rule
-
-# Convenience name for target.
-underflow: lib/libsoundio/CMakeFiles/underflow.dir/rule
-
-.PHONY : underflow
-
-# fast build rule for target.
-underflow/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/build
-.PHONY : underflow/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/overflow.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/overflow.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/overflow.dir/rule
-
-# Convenience name for target.
-overflow: lib/libsoundio/CMakeFiles/overflow.dir/rule
-
-.PHONY : overflow
-
-# fast build rule for target.
-overflow/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/build
-.PHONY : overflow/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/unit_tests.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/unit_tests.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/unit_tests.dir/rule
-
-# Convenience name for target.
-unit_tests: lib/libsoundio/CMakeFiles/unit_tests.dir/rule
-
-.PHONY : unit_tests
-
-# fast build rule for target.
-unit_tests/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/build
-.PHONY : unit_tests/fast
-
-# Convenience name for target.
-lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule
-.PHONY : lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule
-
-# Convenience name for target.
-backend_disconnect_recover: lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule
-
-.PHONY : backend_disconnect_recover
-
-# fast build rule for target.
-backend_disconnect_recover/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build
-.PHONY : backend_disconnect_recover/fast
+sio_microphone/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/build
+.PHONY : sio_microphone/fast
 
 # Convenience name for target.
 lib/libsoundio/CMakeFiles/coverage.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/coverage.dir/rule
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/coverage.dir/rule
 .PHONY : lib/libsoundio/CMakeFiles/coverage.dir/rule
 
 # Convenience name for target.
@@ -366,12 +231,117 @@ coverage: lib/libsoundio/CMakeFiles/coverage.dir/rule
 
 # fast build rule for target.
 coverage/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/coverage.dir/build.make lib/libsoundio/CMakeFiles/coverage.dir/build
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/coverage.dir/build.make lib/libsoundio/CMakeFiles/coverage.dir/build
 .PHONY : coverage/fast
 
 # Convenience name for target.
+lib/libsoundio/CMakeFiles/doc.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/doc.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/doc.dir/rule
+
+# Convenience name for target.
+doc: lib/libsoundio/CMakeFiles/doc.dir/rule
+
+.PHONY : doc
+
+# fast build rule for target.
+doc/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/doc.dir/build.make lib/libsoundio/CMakeFiles/doc.dir/build
+.PHONY : doc/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule
+
+# Convenience name for target.
+libsoundio_static: lib/libsoundio/CMakeFiles/libsoundio_static.dir/rule
+
+.PHONY : libsoundio_static
+
+# fast build rule for target.
+libsoundio_static/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/build
+.PHONY : libsoundio_static/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule
+
+# Convenience name for target.
+libsoundio_shared: lib/libsoundio/CMakeFiles/libsoundio_shared.dir/rule
+
+.PHONY : libsoundio_shared
+
+# fast build rule for target.
+libsoundio_shared/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build
+.PHONY : libsoundio_shared/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/unit_tests.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/unit_tests.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/unit_tests.dir/rule
+
+# Convenience name for target.
+unit_tests: lib/libsoundio/CMakeFiles/unit_tests.dir/rule
+
+.PHONY : unit_tests
+
+# fast build rule for target.
+unit_tests/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/build
+.PHONY : unit_tests/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/sio_sine.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_sine.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/sio_sine.dir/rule
+
+# Convenience name for target.
+sio_sine: lib/libsoundio/CMakeFiles/sio_sine.dir/rule
+
+.PHONY : sio_sine
+
+# fast build rule for target.
+sio_sine/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/build
+.PHONY : sio_sine/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/underflow.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/underflow.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/underflow.dir/rule
+
+# Convenience name for target.
+underflow: lib/libsoundio/CMakeFiles/underflow.dir/rule
+
+.PHONY : underflow
+
+# fast build rule for target.
+underflow/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/build
+.PHONY : underflow/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/latency.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/latency.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/latency.dir/rule
+
+# Convenience name for target.
+latency: lib/libsoundio/CMakeFiles/latency.dir/rule
+
+.PHONY : latency
+
+# fast build rule for target.
+latency/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/build
+.PHONY : latency/fast
+
+# Convenience name for target.
 lib/libsoundio/CMakeFiles/sio_list_devices.dir/rule:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_list_devices.dir/rule
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/sio_list_devices.dir/rule
 .PHONY : lib/libsoundio/CMakeFiles/sio_list_devices.dir/rule
 
 # Convenience name for target.
@@ -381,8 +351,38 @@ sio_list_devices: lib/libsoundio/CMakeFiles/sio_list_devices.dir/rule
 
 # fast build rule for target.
 sio_list_devices/fast:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/build
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/build
 .PHONY : sio_list_devices/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule
+
+# Convenience name for target.
+backend_disconnect_recover: lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/rule
+
+.PHONY : backend_disconnect_recover
+
+# fast build rule for target.
+backend_disconnect_recover/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build
+.PHONY : backend_disconnect_recover/fast
+
+# Convenience name for target.
+lib/libsoundio/CMakeFiles/overflow.dir/rule:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f CMakeFiles/Makefile2 lib/libsoundio/CMakeFiles/overflow.dir/rule
+.PHONY : lib/libsoundio/CMakeFiles/overflow.dir/rule
+
+# Convenience name for target.
+overflow: lib/libsoundio/CMakeFiles/overflow.dir/rule
+
+.PHONY : overflow
+
+# fast build rule for target.
+overflow/fast:
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/build
+.PHONY : overflow/fast
 
 example/sio_list_devices.o: example/sio_list_devices.c.o
 
@@ -390,7 +390,7 @@ example/sio_list_devices.o: example/sio_list_devices.c.o
 
 # target to build an object file
 example/sio_list_devices.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.o
 .PHONY : example/sio_list_devices.c.o
 
 example/sio_list_devices.i: example/sio_list_devices.c.i
@@ -399,7 +399,7 @@ example/sio_list_devices.i: example/sio_list_devices.c.i
 
 # target to preprocess a source file
 example/sio_list_devices.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.i
 .PHONY : example/sio_list_devices.c.i
 
 example/sio_list_devices.s: example/sio_list_devices.c.s
@@ -408,7 +408,7 @@ example/sio_list_devices.s: example/sio_list_devices.c.s
 
 # target to generate assembly for a file
 example/sio_list_devices.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.s
 .PHONY : example/sio_list_devices.c.s
 
 example/sio_microphone.o: example/sio_microphone.c.o
@@ -417,7 +417,7 @@ example/sio_microphone.o: example/sio_microphone.c.o
 
 # target to build an object file
 example/sio_microphone.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/example/sio_microphone.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/example/sio_microphone.c.o
 .PHONY : example/sio_microphone.c.o
 
 example/sio_microphone.i: example/sio_microphone.c.i
@@ -426,7 +426,7 @@ example/sio_microphone.i: example/sio_microphone.c.i
 
 # target to preprocess a source file
 example/sio_microphone.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/example/sio_microphone.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/example/sio_microphone.c.i
 .PHONY : example/sio_microphone.c.i
 
 example/sio_microphone.s: example/sio_microphone.c.s
@@ -435,7 +435,7 @@ example/sio_microphone.s: example/sio_microphone.c.s
 
 # target to generate assembly for a file
 example/sio_microphone.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/example/sio_microphone.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_microphone.dir/build.make lib/libsoundio/CMakeFiles/sio_microphone.dir/example/sio_microphone.c.s
 .PHONY : example/sio_microphone.c.s
 
 example/sio_record.o: example/sio_record.c.o
@@ -444,7 +444,7 @@ example/sio_record.o: example/sio_record.c.o
 
 # target to build an object file
 example/sio_record.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/example/sio_record.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/example/sio_record.c.o
 .PHONY : example/sio_record.c.o
 
 example/sio_record.i: example/sio_record.c.i
@@ -453,7 +453,7 @@ example/sio_record.i: example/sio_record.c.i
 
 # target to preprocess a source file
 example/sio_record.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/example/sio_record.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/example/sio_record.c.i
 .PHONY : example/sio_record.c.i
 
 example/sio_record.s: example/sio_record.c.s
@@ -462,7 +462,7 @@ example/sio_record.s: example/sio_record.c.s
 
 # target to generate assembly for a file
 example/sio_record.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/example/sio_record.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_record.dir/build.make lib/libsoundio/CMakeFiles/sio_record.dir/example/sio_record.c.s
 .PHONY : example/sio_record.c.s
 
 example/sio_sine.o: example/sio_sine.c.o
@@ -471,7 +471,7 @@ example/sio_sine.o: example/sio_sine.c.o
 
 # target to build an object file
 example/sio_sine.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.o
 .PHONY : example/sio_sine.c.o
 
 example/sio_sine.i: example/sio_sine.c.i
@@ -480,7 +480,7 @@ example/sio_sine.i: example/sio_sine.c.i
 
 # target to preprocess a source file
 example/sio_sine.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.i
 .PHONY : example/sio_sine.c.i
 
 example/sio_sine.s: example/sio_sine.c.s
@@ -489,7 +489,7 @@ example/sio_sine.s: example/sio_sine.c.s
 
 # target to generate assembly for a file
 example/sio_sine.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/sio_sine.dir/build.make lib/libsoundio/CMakeFiles/sio_sine.dir/example/sio_sine.c.s
 .PHONY : example/sio_sine.c.s
 
 src/alsa.o: src/alsa.c.o
@@ -498,10 +498,10 @@ src/alsa.o: src/alsa.c.o
 
 # target to build an object file
 src/alsa.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/alsa.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/alsa.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/alsa.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/alsa.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.o
 .PHONY : src/alsa.c.o
 
 src/alsa.i: src/alsa.c.i
@@ -510,10 +510,10 @@ src/alsa.i: src/alsa.c.i
 
 # target to preprocess a source file
 src/alsa.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/alsa.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/alsa.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/alsa.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/alsa.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.i
 .PHONY : src/alsa.c.i
 
 src/alsa.s: src/alsa.c.s
@@ -522,10 +522,10 @@ src/alsa.s: src/alsa.c.s
 
 # target to generate assembly for a file
 src/alsa.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/alsa.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/alsa.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/alsa.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/alsa.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/alsa.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/alsa.c.s
 .PHONY : src/alsa.c.s
 
 src/channel_layout.o: src/channel_layout.c.o
@@ -534,10 +534,10 @@ src/channel_layout.o: src/channel_layout.c.o
 
 # target to build an object file
 src/channel_layout.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/channel_layout.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/channel_layout.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.o
 .PHONY : src/channel_layout.c.o
 
 src/channel_layout.i: src/channel_layout.c.i
@@ -546,10 +546,10 @@ src/channel_layout.i: src/channel_layout.c.i
 
 # target to preprocess a source file
 src/channel_layout.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/channel_layout.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/channel_layout.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.i
 .PHONY : src/channel_layout.c.i
 
 src/channel_layout.s: src/channel_layout.c.s
@@ -558,10 +558,10 @@ src/channel_layout.s: src/channel_layout.c.s
 
 # target to generate assembly for a file
 src/channel_layout.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/channel_layout.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/channel_layout.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/channel_layout.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/channel_layout.c.s
 .PHONY : src/channel_layout.c.s
 
 src/dummy.o: src/dummy.c.o
@@ -570,10 +570,10 @@ src/dummy.o: src/dummy.c.o
 
 # target to build an object file
 src/dummy.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/dummy.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/dummy.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/dummy.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/dummy.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.o
 .PHONY : src/dummy.c.o
 
 src/dummy.i: src/dummy.c.i
@@ -582,10 +582,10 @@ src/dummy.i: src/dummy.c.i
 
 # target to preprocess a source file
 src/dummy.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/dummy.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/dummy.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/dummy.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/dummy.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.i
 .PHONY : src/dummy.c.i
 
 src/dummy.s: src/dummy.c.s
@@ -594,10 +594,10 @@ src/dummy.s: src/dummy.c.s
 
 # target to generate assembly for a file
 src/dummy.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/dummy.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/dummy.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/dummy.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/dummy.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/dummy.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/dummy.c.s
 .PHONY : src/dummy.c.s
 
 src/jack.o: src/jack.c.o
@@ -606,10 +606,10 @@ src/jack.o: src/jack.c.o
 
 # target to build an object file
 src/jack.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/jack.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/jack.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/jack.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/jack.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.o
 .PHONY : src/jack.c.o
 
 src/jack.i: src/jack.c.i
@@ -618,10 +618,10 @@ src/jack.i: src/jack.c.i
 
 # target to preprocess a source file
 src/jack.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/jack.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/jack.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/jack.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/jack.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.i
 .PHONY : src/jack.c.i
 
 src/jack.s: src/jack.c.s
@@ -630,10 +630,10 @@ src/jack.s: src/jack.c.s
 
 # target to generate assembly for a file
 src/jack.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/jack.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/jack.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/jack.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/jack.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/jack.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/jack.c.s
 .PHONY : src/jack.c.s
 
 src/os.o: src/os.c.o
@@ -642,10 +642,10 @@ src/os.o: src/os.c.o
 
 # target to build an object file
 src/os.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/os.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/os.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/os.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/os.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/os.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/os.c.o
 .PHONY : src/os.c.o
 
 src/os.i: src/os.c.i
@@ -654,10 +654,10 @@ src/os.i: src/os.c.i
 
 # target to preprocess a source file
 src/os.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/os.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/os.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/os.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/os.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/os.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/os.c.i
 .PHONY : src/os.c.i
 
 src/os.s: src/os.c.s
@@ -666,47 +666,11 @@ src/os.s: src/os.c.s
 
 # target to generate assembly for a file
 src/os.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/os.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/os.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/os.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/os.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/os.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/os.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/os.c.s
 .PHONY : src/os.c.s
-
-src/pulseaudio.o: src/pulseaudio.c.o
-
-.PHONY : src/pulseaudio.o
-
-# target to build an object file
-src/pulseaudio.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/pulseaudio.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/pulseaudio.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/pulseaudio.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/pulseaudio.c.o
-.PHONY : src/pulseaudio.c.o
-
-src/pulseaudio.i: src/pulseaudio.c.i
-
-.PHONY : src/pulseaudio.i
-
-# target to preprocess a source file
-src/pulseaudio.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/pulseaudio.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/pulseaudio.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/pulseaudio.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/pulseaudio.c.i
-.PHONY : src/pulseaudio.c.i
-
-src/pulseaudio.s: src/pulseaudio.c.s
-
-.PHONY : src/pulseaudio.s
-
-# target to generate assembly for a file
-src/pulseaudio.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/pulseaudio.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/pulseaudio.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/pulseaudio.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/pulseaudio.c.s
-.PHONY : src/pulseaudio.c.s
 
 src/ring_buffer.o: src/ring_buffer.c.o
 
@@ -714,10 +678,10 @@ src/ring_buffer.o: src/ring_buffer.c.o
 
 # target to build an object file
 src/ring_buffer.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/ring_buffer.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/ring_buffer.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.o
 .PHONY : src/ring_buffer.c.o
 
 src/ring_buffer.i: src/ring_buffer.c.i
@@ -726,10 +690,10 @@ src/ring_buffer.i: src/ring_buffer.c.i
 
 # target to preprocess a source file
 src/ring_buffer.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/ring_buffer.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/ring_buffer.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.i
 .PHONY : src/ring_buffer.c.i
 
 src/ring_buffer.s: src/ring_buffer.c.s
@@ -738,10 +702,10 @@ src/ring_buffer.s: src/ring_buffer.c.s
 
 # target to generate assembly for a file
 src/ring_buffer.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/ring_buffer.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/ring_buffer.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/ring_buffer.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/ring_buffer.c.s
 .PHONY : src/ring_buffer.c.s
 
 src/soundio.o: src/soundio.c.o
@@ -750,10 +714,10 @@ src/soundio.o: src/soundio.c.o
 
 # target to build an object file
 src/soundio.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/soundio.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/soundio.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/soundio.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/soundio.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.o
 .PHONY : src/soundio.c.o
 
 src/soundio.i: src/soundio.c.i
@@ -762,10 +726,10 @@ src/soundio.i: src/soundio.c.i
 
 # target to preprocess a source file
 src/soundio.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/soundio.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/soundio.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/soundio.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/soundio.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.i
 .PHONY : src/soundio.c.i
 
 src/soundio.s: src/soundio.c.s
@@ -774,10 +738,10 @@ src/soundio.s: src/soundio.c.s
 
 # target to generate assembly for a file
 src/soundio.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/soundio.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/soundio.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/soundio.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/soundio.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/soundio.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/soundio.c.s
 .PHONY : src/soundio.c.s
 
 src/util.o: src/util.c.o
@@ -786,10 +750,10 @@ src/util.o: src/util.c.o
 
 # target to build an object file
 src/util.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/util.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/util.c.o
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/util.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/util.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/util.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/util.c.o
 .PHONY : src/util.c.o
 
 src/util.i: src/util.c.i
@@ -798,10 +762,10 @@ src/util.i: src/util.c.i
 
 # target to preprocess a source file
 src/util.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/util.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/util.c.i
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/util.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/util.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/util.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/util.c.i
 .PHONY : src/util.c.i
 
 src/util.s: src/util.c.s
@@ -810,10 +774,10 @@ src/util.s: src/util.c.s
 
 # target to generate assembly for a file
 src/util.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/util.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/util.c.s
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/util.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_static.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_static.dir/src/util.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/libsoundio_shared.dir/build.make lib/libsoundio/CMakeFiles/libsoundio_shared.dir/src/util.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/src/util.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/src/util.c.s
 .PHONY : src/util.c.s
 
 test/backend_disconnect_recover.o: test/backend_disconnect_recover.c.o
@@ -822,7 +786,7 @@ test/backend_disconnect_recover.o: test/backend_disconnect_recover.c.o
 
 # target to build an object file
 test/backend_disconnect_recover.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.o
 .PHONY : test/backend_disconnect_recover.c.o
 
 test/backend_disconnect_recover.i: test/backend_disconnect_recover.c.i
@@ -831,7 +795,7 @@ test/backend_disconnect_recover.i: test/backend_disconnect_recover.c.i
 
 # target to preprocess a source file
 test/backend_disconnect_recover.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.i
 .PHONY : test/backend_disconnect_recover.c.i
 
 test/backend_disconnect_recover.s: test/backend_disconnect_recover.c.s
@@ -840,7 +804,7 @@ test/backend_disconnect_recover.s: test/backend_disconnect_recover.c.s
 
 # target to generate assembly for a file
 test/backend_disconnect_recover.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/build.make lib/libsoundio/CMakeFiles/backend_disconnect_recover.dir/test/backend_disconnect_recover.c.s
 .PHONY : test/backend_disconnect_recover.c.s
 
 test/latency.o: test/latency.c.o
@@ -849,7 +813,7 @@ test/latency.o: test/latency.c.o
 
 # target to build an object file
 test/latency.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.o
 .PHONY : test/latency.c.o
 
 test/latency.i: test/latency.c.i
@@ -858,7 +822,7 @@ test/latency.i: test/latency.c.i
 
 # target to preprocess a source file
 test/latency.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.i
 .PHONY : test/latency.c.i
 
 test/latency.s: test/latency.c.s
@@ -867,7 +831,7 @@ test/latency.s: test/latency.c.s
 
 # target to generate assembly for a file
 test/latency.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/latency.dir/build.make lib/libsoundio/CMakeFiles/latency.dir/test/latency.c.s
 .PHONY : test/latency.c.s
 
 test/overflow.o: test/overflow.c.o
@@ -876,7 +840,7 @@ test/overflow.o: test/overflow.c.o
 
 # target to build an object file
 test/overflow.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/test/overflow.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/test/overflow.c.o
 .PHONY : test/overflow.c.o
 
 test/overflow.i: test/overflow.c.i
@@ -885,7 +849,7 @@ test/overflow.i: test/overflow.c.i
 
 # target to preprocess a source file
 test/overflow.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/test/overflow.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/test/overflow.c.i
 .PHONY : test/overflow.c.i
 
 test/overflow.s: test/overflow.c.s
@@ -894,7 +858,7 @@ test/overflow.s: test/overflow.c.s
 
 # target to generate assembly for a file
 test/overflow.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/test/overflow.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/test/overflow.c.s
 .PHONY : test/overflow.c.s
 
 test/underflow.o: test/underflow.c.o
@@ -903,7 +867,7 @@ test/underflow.o: test/underflow.c.o
 
 # target to build an object file
 test/underflow.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/test/underflow.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/test/underflow.c.o
 .PHONY : test/underflow.c.o
 
 test/underflow.i: test/underflow.c.i
@@ -912,7 +876,7 @@ test/underflow.i: test/underflow.c.i
 
 # target to preprocess a source file
 test/underflow.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/test/underflow.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/test/underflow.c.i
 .PHONY : test/underflow.c.i
 
 test/underflow.s: test/underflow.c.s
@@ -921,7 +885,7 @@ test/underflow.s: test/underflow.c.s
 
 # target to generate assembly for a file
 test/underflow.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/test/underflow.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/underflow.dir/build.make lib/libsoundio/CMakeFiles/underflow.dir/test/underflow.c.s
 .PHONY : test/underflow.c.s
 
 test/unit_tests.o: test/unit_tests.c.o
@@ -930,7 +894,7 @@ test/unit_tests.o: test/unit_tests.c.o
 
 # target to build an object file
 test/unit_tests.c.o:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/test/unit_tests.c.o
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/test/unit_tests.c.o
 .PHONY : test/unit_tests.c.o
 
 test/unit_tests.i: test/unit_tests.c.i
@@ -939,7 +903,7 @@ test/unit_tests.i: test/unit_tests.c.i
 
 # target to preprocess a source file
 test/unit_tests.c.i:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/test/unit_tests.c.i
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/test/unit_tests.c.i
 .PHONY : test/unit_tests.c.i
 
 test/unit_tests.s: test/unit_tests.c.s
@@ -948,7 +912,7 @@ test/unit_tests.s: test/unit_tests.c.s
 
 # target to generate assembly for a file
 test/unit_tests.c.s:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/test/unit_tests.c.s
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(MAKE) -f lib/libsoundio/CMakeFiles/unit_tests.dir/build.make lib/libsoundio/CMakeFiles/unit_tests.dir/test/unit_tests.c.s
 .PHONY : test/unit_tests.c.s
 
 # Help Target
@@ -957,28 +921,28 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... sio_microphone"
-	@echo "... libsoundio_shared"
-	@echo "... libsoundio_static"
-	@echo "... sio_sine"
-	@echo "... doc"
 	@echo "... sio_record"
-	@echo "... package"
-	@echo "... latency"
-	@echo "... underflow"
-	@echo "... overflow"
-	@echo "... unit_tests"
-	@echo "... backend_disconnect_recover"
+	@echo "... sio_microphone"
 	@echo "... coverage"
-	@echo "... package_source"
-	@echo "... sio_list_devices"
 	@echo "... test"
+	@echo "... doc"
+	@echo "... libsoundio_static"
+	@echo "... libsoundio_shared"
+	@echo "... unit_tests"
+	@echo "... install/strip"
+	@echo "... sio_sine"
+	@echo "... underflow"
+	@echo "... latency"
+	@echo "... package_source"
+	@echo "... package"
+	@echo "... sio_list_devices"
+	@echo "... backend_disconnect_recover"
+	@echo "... list_install_components"
+	@echo "... overflow"
 	@echo "... example/sio_list_devices.o"
 	@echo "... example/sio_list_devices.i"
 	@echo "... example/sio_list_devices.s"
@@ -1006,9 +970,6 @@ help:
 	@echo "... src/os.o"
 	@echo "... src/os.i"
 	@echo "... src/os.s"
-	@echo "... src/pulseaudio.o"
-	@echo "... src/pulseaudio.i"
-	@echo "... src/pulseaudio.s"
 	@echo "... src/ring_buffer.o"
 	@echo "... src/ring_buffer.i"
 	@echo "... src/ring_buffer.s"
@@ -1044,6 +1005,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pi/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/carles/OP-Pi/software/OP_Pi/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
