@@ -1,0 +1,25 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=pcb
+*Date=14:05:10
+*CreatedBy=Fritzing 0.9.5d.2020-02-07.CD-548-0-3d61c58
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;THT;51.6166;-48.4462;90;Bottom;ROTARY ENCODERS
+2;;dil16;32.5666;-22.8661;0;Bottom;ADC
+3;;THT;9.52649;-11.436;0;Bottom;POTENTIOMETER
+4;;THT;75.9267;-24.1552;180;Bottom;MAIN POWER
+5;;;45.4345;-60.4467;180;Bottom;Raspberry Pi 1
+6;;THT;51.6166;-7.44605;-90;Bottom;KEYS
+7;;THT;9.52659;-39.3761;0;Bottom;DISPLAY
+8;;;66.9948;-24.2276;-90;Bottom;TXT3
+9;;;19.6434;-11.4879;-90;Bottom;TXT1
+10;;;16.8672;-51.6989;-90;Bottom;TXT2
