@@ -1,12 +1,16 @@
 #include "screen_manager.h"
 
 #include <unistd.h>
+#include <cstdio>
+#include <string.h>
+
 using namespace OP_Pi;
 void ScreenManager::Draw() {
-    DrawRectangle(0,0,64,128, RED);
+    DrawText(screenWidth/2-18,18,WHITE, "128", FONT_SIZE::HUGE);
+    DrawText(screenWidth/2-8,8+16+1,WHITE, "BPM", FONT_SIZE::TINY);
+
 }
 ScreenManagerX11::ScreenManagerX11() {
-
     //Create window
     display = XOpenDisplay(0);
     int s = DefaultScreen(display);
@@ -25,6 +29,16 @@ ScreenManagerX11::ScreenManagerX11() {
         if (e.type == MapNotify)
             break;
     }
+
+    //Load fonts
+
+    char* font_names [] = {"lucidasanstypewriter-bold-8", "lucidasanstypewriter-10", "lucidasanstypewriter-12", "lucidasanstypewriter-14", "lucidasanstypewriter-18"};
+    unsigned char sizes [] = {8,10,12,14,18};
+
+    for(int i=0; i<5;i++){
+        fonts[i].font = XLoadQueryFont(display,font_names[i]);
+        fonts[i].size = sizes[i];
+    }
 }
 
 ScreenManagerX11::~ScreenManagerX11() {
@@ -40,8 +54,10 @@ void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigne
     XFillRectangle(display, window,gc, x1,y1,x2-x1,y2-y1);
 }
 
-void ScreenManagerX11::DrawText() {
-
+void ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size) {
+    XSetFont(display,gc, fonts[size].font->fid);
+    XSetForeground(display, gc, color);
+    XDrawString(display,window, gc, x,y,text, strlen(text));
 }
 void ScreenManagerX11::Draw() {
     ScreenManager::Draw();
@@ -56,6 +72,6 @@ void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned lon
 
 }
 
-void ScreenManagerOLED::DrawText() {
+void ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size) {
 
 }
