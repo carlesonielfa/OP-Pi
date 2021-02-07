@@ -19,13 +19,16 @@ namespace OP_Pi
     class InputManager
     {
         public:
-            InputManager();
-            bool useKeyboard=true;
-            ACTION ProcessInput();
-        private:
-            Display* display;
-            bool GetKeyState(KeySym keySym);
-            int nCurrentKey = -1;	
+            virtual ACTION ProcessInput() = 0;
+    };
+
+    class InputManagerKeyboard: public InputManager{
+    public:
+        ACTION ProcessInput() override;
+        InputManagerKeyboard(Display* display);
+    private:
+        XEvent event;
+        Display* display;
     };
 }
 

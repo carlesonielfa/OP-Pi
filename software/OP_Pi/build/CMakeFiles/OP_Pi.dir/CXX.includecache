@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp
+input_manager.h
+/home/carles/OP-Pi/software/OP_Pi/input_manager.h
+stdio.h
+-
+
+/home/carles/OP-Pi/software/OP_Pi/input_manager.h
+instrument.h
+/home/carles/OP-Pi/software/OP_Pi/instrument.h
+X11/Xlib.h
+-
+
 /home/carles/OP-Pi/software/OP_Pi/instrument.h
 sound_utils.h
 /home/carles/OP-Pi/software/OP_Pi/sound_utils.h
@@ -20,18 +32,6 @@ algorithm
 vector
 -
 
-/home/carles/OP-Pi/software/OP_Pi/sound_utils.h
-math.h
--
-
-/home/carles/OP-Pi/software/OP_Pi/synth.cpp
-synth.h
-/home/carles/OP-Pi/software/OP_Pi/synth.h
-
-/home/carles/OP-Pi/software/OP_Pi/synth.h
-instrument.h
-/home/carles/OP-Pi/software/OP_Pi/instrument.h
-sound_utils.h
 /home/carles/OP-Pi/software/OP_Pi/sound_utils.h
 math.h
 -

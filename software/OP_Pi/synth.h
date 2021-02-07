@@ -25,7 +25,7 @@ namespace OP_Pi
             Synth();
             EnvelopeADSR env;
         protected:
-            virtual double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished);
+            double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) override;
     };
 }
 

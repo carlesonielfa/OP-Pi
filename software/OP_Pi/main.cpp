@@ -1,14 +1,13 @@
 #include "synth.h"
 #include "input_manager.h"
-#include "sound_utils.h"
-
+#include "screen_manager.h"
 #include <soundio/soundio.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include <math.h>
+#include <thread>
 
 using namespace OP_Pi;
 
@@ -249,13 +248,14 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
+    ScreenManagerX11 screenManagerX11;
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
 
-    InputManager input_manager;    
     bool quit=false;
     while(!quit) {
         soundio_flush_events(soundio);
         //Check input
-        ACTION action = input_manager.ProcessInput();
+        ACTION action = inputManagerKeyboard.ProcessInput();
         switch(action.type){
             case ACTION_TYPE::QUIT:
                 printf("QUIT\n");
@@ -278,6 +278,8 @@ int main(int argc, char **argv) {
                 printf("Action not yet implemented\n", action.type);
                 break;
         }
+        //Redraw scren
+        screenManagerX11.Draw();
     }
 
     soundio_outstream_destroy(outstream);
