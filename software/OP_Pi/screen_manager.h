@@ -18,17 +18,17 @@ namespace OP_Pi{
         BIG, //14pt
         HUGE,  //16pt
     };
-    /*enum FONT_ALIGN{
+    enum FONT_ALIGN{
         LEFT,
         CENTER,
         RIGHT,
-    };*/
+    };
     class ScreenManager{
     public:
         virtual void Draw();
         virtual void DrawPixel(unsigned char x, unsigned char y, unsigned long color)=0;
         virtual void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color)=0;
-        virtual void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size)=0;
+        virtual void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT)=0;
         void DrawMixer();
 
     protected:
@@ -46,7 +46,7 @@ namespace OP_Pi{
         void Draw() override;
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
         void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color) override;
-        void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size) override;
+        void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align = FONT_ALIGN::LEFT) override;
         Display* display;
     private:
         Window window;
@@ -59,7 +59,7 @@ namespace OP_Pi{
         ScreenManagerOLED();
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
         void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color) override;
-        void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size) override;
+        void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT) override;
     };
 }
 #endif /* SCREENMANAGER_H */

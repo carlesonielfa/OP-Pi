@@ -6,8 +6,8 @@
 
 using namespace OP_Pi;
 void ScreenManager::Draw() {
-    DrawText(screenWidth/2-18,18,WHITE, "128", FONT_SIZE::HUGE);
-    DrawText(screenWidth/2-8,8+16+1,WHITE, "BPM", FONT_SIZE::TINY);
+    DrawText(0,0,WHITE, "128", FONT_SIZE::HUGE, FONT_ALIGN::CENTER);
+    DrawText(0,20,WHITE, "BPM", FONT_SIZE::TINY, FONT_ALIGN::CENTER);
 
 }
 ScreenManagerX11::ScreenManagerX11() {
@@ -54,7 +54,10 @@ void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigne
     XFillRectangle(display, window,gc, x1,y1,x2-x1,y2-y1);
 }
 
-void ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size) {
+void ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align) {
+    if(align==FONT_ALIGN::CENTER)
+        x = (screenWidth - x)/2 - fonts[size].size*strlen(text)/2;
+    y+=fonts[size].size;
     XSetFont(display,gc, fonts[size].font->fid);
     XSetForeground(display, gc, color);
     XDrawString(display,window, gc, x,y,text, strlen(text));
@@ -72,6 +75,6 @@ void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned lon
 
 }
 
-void ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size) {
+void ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align) {
 
 }
