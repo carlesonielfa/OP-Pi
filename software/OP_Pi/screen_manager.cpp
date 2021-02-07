@@ -56,7 +56,7 @@ void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigne
 
 void ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align) {
     if(align==FONT_ALIGN::CENTER)
-        x = (screenWidth - x)/2 - fonts[size].size*strlen(text)/2;
+        x = (screenWidth - x)/2 - XTextWidth(fonts[size], text, strlen(text)/2;
     y+=fonts[size].size;
     XSetFont(display,gc, fonts[size].font->fid);
     XSetForeground(display, gc, color);
