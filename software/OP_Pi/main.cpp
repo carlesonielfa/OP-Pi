@@ -101,7 +101,12 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
 }
 
 int main(int argc, char **argv) {
-        char *exe = argv[0];
+
+    daw.bpm = 100;
+    ScreenManagerX11 screenManagerX11(&daw);
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+
+    char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
     char *device_id = NULL;
     bool raw = false;
@@ -247,9 +252,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
-    daw.bpm = 100;
-    ScreenManagerX11 screenManagerX11(&daw);
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+
 
     bool quit=false;
     while(!quit) {

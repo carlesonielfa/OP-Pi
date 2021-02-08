@@ -8,6 +8,13 @@
 #include <vector>
 using namespace std;
 namespace OP_Pi{
+    enum DAW_VIEW{
+        MIXER,
+        TIMELINE,
+        PATTERN,
+        INSTRUMENT,
+        EFFECTS
+    };
     class Daw{
     public:
         Daw();
