@@ -1,5 +1,5 @@
 #include "instrument.h"
-
+#include <numeric>
 
 using namespace OP_Pi;
 using namespace std;
@@ -83,8 +83,13 @@ double Instrument::PlayNotes(double time, double seconds_offset){
         
 	}
 	safe_remove<vector<Note>>(vecNotes, [](Note const& item) { return item.active; });
-    //vecNotes.erase(remove_if(begin(vecNotes), end(vecNotes),[](Note& v){return !v.active;}));
-    lastOutput=abs(output);
-	return output;
+
+    //Calculate output level based on the mean of the recent 10 outputs
+    recentOutputs.push_back(abs(output));
+    if(recentOutputs.size()>10){
+        recentOutputs.erase(recentOutputs.begin());
+    }
+    lastOutput= *max_element(recentOutputs.begin(),recentOutputs.end());
+    return output;
 }
             

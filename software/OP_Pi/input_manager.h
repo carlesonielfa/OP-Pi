@@ -25,10 +25,11 @@ namespace OP_Pi
     class InputManagerKeyboard: public InputManager{
     public:
         ACTION ProcessInput() override;
-        InputManagerKeyboard(Display* display);
+        InputManagerKeyboard(Display* display, Window window);
     private:
         XEvent event;
         Display* display;
+        Window window;
     };
 }
 

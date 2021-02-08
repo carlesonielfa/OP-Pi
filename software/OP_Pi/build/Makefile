@@ -735,6 +735,33 @@ overflow/fast:
 	$(MAKE) -f lib/libsoundio/CMakeFiles/overflow.dir/build.make lib/libsoundio/CMakeFiles/overflow.dir/build
 .PHONY : overflow/fast
 
+daw.o: daw.cpp.o
+
+.PHONY : daw.o
+
+# target to build an object file
+daw.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.o
+.PHONY : daw.cpp.o
+
+daw.i: daw.cpp.i
+
+.PHONY : daw.i
+
+# target to preprocess a source file
+daw.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.i
+.PHONY : daw.cpp.i
+
+daw.s: daw.cpp.s
+
+.PHONY : daw.s
+
+# target to generate assembly for a file
+daw.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.s
+.PHONY : daw.cpp.s
+
 input_manager.o: input_manager.cpp.o
 
 .PHONY : input_manager.o
@@ -927,6 +954,9 @@ help:
 	@echo "... sio_list_devices"
 	@echo "... backend_disconnect_recover"
 	@echo "... overflow"
+	@echo "... daw.o"
+	@echo "... daw.i"
+	@echo "... daw.s"
 	@echo "... input_manager.o"
 	@echo "... input_manager.i"
 	@echo "... input_manager.s"

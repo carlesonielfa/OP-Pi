@@ -6,29 +6,29 @@ using namespace std;
 
 ACTION InputManagerKeyboard::ProcessInput() {
     ACTION action;
-    bool bKeyPressed = false;
-    XNextEvent(display, &event);
-
-    for (int k = 0; k < 16; k++)
-    {
-        int keyCode = XKeysymToKeycode(display, "ZSXCFVGBNJMK\xbcL\xbe\xbf"[k]);
-        if(event.xkey.keycode==keyCode){
-            action.value = 60+k;
-            if(event.type==KeyPress)
-                action.type = ACTION_TYPE::NOTEON;
-            else if(event.type==KeyRelease)
-                action.type = ACTION_TYPE::NOTEOFF;
-            break;
+    if(XPending(display)>0) {
+        XNextEvent(display, &event);
+        for (int k = 0; k < 16; k++) {
+            int keyCode = XKeysymToKeycode(display, "ZSXCFVGBNJMK\xbcL\xbe\xbf"[k]);
+            if (event.xkey.keycode == keyCode) {
+                action.value = 60 + k;
+                if (event.type == KeyPress)
+                    action.type = ACTION_TYPE::NOTEON;
+                else if (event.type == KeyRelease)
+                    action.type = ACTION_TYPE::NOTEOFF;
+                break;
+            }
         }
-    }
-    if(event.xkey.keycode==XKeysymToKeycode(display, 'q'))
-        action.type=ACTION_TYPE::QUIT;
 
+        if (event.xkey.keycode == XKeysymToKeycode(display, 'q'))
+            action.type = ACTION_TYPE::QUIT;
+    }
     return action;
 }
 
-InputManagerKeyboard::InputManagerKeyboard(Display* display) {
+InputManagerKeyboard::InputManagerKeyboard(Display* display, Window window) {
     this->display = display;
+    this->window = window;
     // Display a keyboard
     printf("|   |   |   |   |   | |   |   |   |   | |   | |   |   |   |\n");
     printf("|   | S |   |   | F | | G |   |   | J | | K | | L |   |   |\n");

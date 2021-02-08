@@ -39,7 +39,7 @@ ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
     int s = DefaultScreen(display);
     window = XCreateSimpleWindow(display, DefaultRootWindow(display), 0, 0, screenWidth, screenHeight, 0,
                                         BlackPixel(display, s), BlackPixel(display, s));
-    XSelectInput(display, window, KeyPressMask | KeyReleaseMask | StructureNotifyMask);
+    XSelectInput(display, window, KeyPressMask | KeyReleaseMask | StructureNotifyMask | ExposureMask);
     XMapWindow(display, window);
 
     //Create Graphics context for drawing
@@ -56,6 +56,7 @@ ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
     //Load fonts
 
     char* font_names [] = {"lucidasanstypewriter-bold-8", "lucidasanstypewriter-10", "lucidasanstypewriter-12", "lucidasanstypewriter-14", "lucidasanstypewriter-18"};
+
     unsigned char sizes [] = {8,10,12,14,18};
 
     for(int i=0; i<5;i++){
@@ -94,8 +95,13 @@ void ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long 
     XDrawString(display,window, gc, x,y,text, strlen(text));
 }
 void ScreenManagerX11::Draw() {
+    //XExposeEvent e;
+    //XSendEvent(display, window, 1, Expose, reinterpret_cast<XEvent *>(&e));
+    XClearWindow(display,window);
     ScreenManager::Draw();
-    XFlush(display);
+    //XFlush(display);
+    XSync(display, false);
+    //XNextEvent(display, &event);
 }
 
 void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){

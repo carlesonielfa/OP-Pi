@@ -56,8 +56,9 @@ namespace OP_Pi{
         void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill = true) override;
         void DrawText(unsigned char x, unsigned char y, unsigned long color,const char* text, FONT_SIZE size, FONT_ALIGN align = FONT_ALIGN::LEFT) override;
         Display* display;
-    private:
         Window window;
+    private:
+        XEvent event;
         GC gc;
         X11Font fonts[4];
     };

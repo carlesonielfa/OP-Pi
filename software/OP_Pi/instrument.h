@@ -147,7 +147,7 @@ namespace OP_Pi
             float triggerOffTime = 0.0;
             float triggerOnTime = 0.0;
         private:
-
+            std::vector<float> recentOutputs;
             std::vector<Note> vecNotes;
             std::mutex muxNotes;
 

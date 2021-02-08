@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-
+#include <unistd.h>
 using namespace OP_Pi;
 
 static int usage(char *exe) {
@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 
     daw.bpm = 100;
     ScreenManagerX11 screenManagerX11(&daw);
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display, screenManagerX11.window);
 
     char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
@@ -275,11 +275,15 @@ int main(int argc, char **argv) {
             case ACTION_TYPE::NONE:
                 break;
             default:
+
                 printf("Action not yet implemented\n", action.type);
                 break;
         }
+        //usleep(1000000/60);
         //Redraw scren
         screenManagerX11.Draw();
+
+
     }
 
     soundio_outstream_destroy(outstream);

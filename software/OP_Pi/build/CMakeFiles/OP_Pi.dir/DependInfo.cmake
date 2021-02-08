@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/carles/OP-Pi/software/OP_Pi/daw.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/daw.cpp.o"
   "/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/input_manager.cpp.o"
   "/home/carles/OP-Pi/software/OP_Pi/instrument.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/instrument.cpp.o"
   "/home/carles/OP-Pi/software/OP_Pi/main.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/main.cpp.o"
