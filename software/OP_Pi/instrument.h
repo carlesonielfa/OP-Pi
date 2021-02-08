@@ -139,7 +139,8 @@ namespace OP_Pi
             double PlayNotes(double time, double seconds_offset);
 
             void SetGain(double new_gain);
-            float GetGain();
+            float lastOutput = 0;
+            float gain=0.5;
         protected:
             virtual double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) = 0;
             bool noteOn = false;
@@ -149,7 +150,7 @@ namespace OP_Pi
 
             std::vector<Note> vecNotes;
             std::mutex muxNotes;
-            float gain=0.5;
+
 
     };
 }

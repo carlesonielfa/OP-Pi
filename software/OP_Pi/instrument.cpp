@@ -62,9 +62,7 @@ void Instrument::SetGain(double new_gain){
     }
                             
 };
-float Instrument::GetGain(){
-    return gain;
-};
+
 double Instrument::PlayNotes(double time, double seconds_offset){
     unique_lock<mutex> lm(muxNotes);
     double output = 0.0;
@@ -86,6 +84,7 @@ double Instrument::PlayNotes(double time, double seconds_offset){
 	}
 	safe_remove<vector<Note>>(vecNotes, [](Note const& item) { return item.active; });
     //vecNotes.erase(remove_if(begin(vecNotes), end(vecNotes),[](Note& v){return !v.active;}));
+    lastOutput=abs(output);
 	return output;
 }
             

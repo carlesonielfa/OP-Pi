@@ -15,8 +15,12 @@ CMakeFiles/OP_Pi.dir/main.cpp.o: ../lib/libsoundio/soundio/soundio.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../input_manager.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../instrument.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../main.cpp
+CMakeFiles/OP_Pi.dir/main.cpp.o: ../screen_manager.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../sound_utils.h
 CMakeFiles/OP_Pi.dir/main.cpp.o: ../synth.h
+
+CMakeFiles/OP_Pi.dir/screen_manager.cpp.o: ../screen_manager.cpp
+CMakeFiles/OP_Pi.dir/screen_manager.cpp.o: ../screen_manager.h
 
 CMakeFiles/OP_Pi.dir/synth.cpp.o: ../instrument.h
 CMakeFiles/OP_Pi.dir/synth.cpp.o: ../sound_utils.h

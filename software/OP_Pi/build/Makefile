@@ -816,6 +816,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+screen_manager.o: screen_manager.cpp.o
+
+.PHONY : screen_manager.o
+
+# target to build an object file
+screen_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.o
+.PHONY : screen_manager.cpp.o
+
+screen_manager.i: screen_manager.cpp.i
+
+.PHONY : screen_manager.i
+
+# target to preprocess a source file
+screen_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.i
+.PHONY : screen_manager.cpp.i
+
+screen_manager.s: screen_manager.cpp.s
+
+.PHONY : screen_manager.s
+
+# target to generate assembly for a file
+screen_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.s
+.PHONY : screen_manager.cpp.s
+
 synth.o: synth.cpp.o
 
 .PHONY : synth.o
@@ -909,6 +936,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... screen_manager.o"
+	@echo "... screen_manager.i"
+	@echo "... screen_manager.s"
 	@echo "... synth.o"
 	@echo "... synth.i"
 	@echo "... synth.s"

@@ -44,7 +44,6 @@ double Synth::GenerateNoteSound(double time, double seconds_offset, Note n, bool
 	output*= Osc(time, midi_to_freq(n.number), OSC_TYPE::SINE);
 	
 	//Apply gain
-	output*=GetGain();
-
+	output*=gain;
     return output;
 }

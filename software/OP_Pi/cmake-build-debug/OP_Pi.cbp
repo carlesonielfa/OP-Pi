@@ -802,6 +802,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.h">
+			<Option target="OP_Pi"/>
+		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>

@@ -9,7 +9,7 @@ include_directories(
 )
 enable_testing()
 
-add_executable(OP_Pi main.cpp synth.cpp input_manager.cpp instrument.cpp screen_manager.cpp)
+add_executable(OP_Pi main.cpp synth.cpp input_manager.cpp instrument.cpp screen_manager.cpp daw.h daw.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

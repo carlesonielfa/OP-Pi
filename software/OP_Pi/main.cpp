@@ -1,13 +1,12 @@
-#include "synth.h"
 #include "input_manager.h"
 #include "screen_manager.h"
+#include "daw.h"
 #include <soundio/soundio.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include <thread>
 
 using namespace OP_Pi;
 
@@ -49,7 +48,7 @@ static void write_sample_float64ne(char *ptr, double sample) {
 }
 static void (*write_sample)(char *ptr, double sample);
 
-Synth s;
+Daw daw;
 
 static long double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
@@ -74,7 +73,7 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
         for (int frame = 0; frame < frame_count; frame += 1) {
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
             double time = seconds_offset + frame * 1.0/sample_rate;
-            double sample = s.PlayNotes(time, seconds_offset);
+            double sample = daw.PlayActiveSynth(time, seconds_offset);
             for (int channel = 0; channel < layout->channel_count; channel += 1) {
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
@@ -248,7 +247,8 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
-    ScreenManagerX11 screenManagerX11;
+    daw.bpm = 100;
+    ScreenManagerX11 screenManagerX11(&daw);
     InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
 
     bool quit=false;
@@ -262,14 +262,11 @@ int main(int argc, char **argv) {
                 quit=true;
                 break;
             case ACTION_TYPE::NOTEON:
-                //TODO: change to midi note number
-                s.NoteOn(action.value, seconds_offset);
-                //s.NoteOn(seconds_offset);
+                daw.NoteOn(action.value, seconds_offset);
                 printf("NOTEON: %d\n",action.value);
                 break;
             case ACTION_TYPE::NOTEOFF:
-                s.NoteOff(action.value, seconds_offset);
-                //s.NoteOff(seconds_offset);
+                daw.NoteOff(action.value, seconds_offset);
                 printf("NOTEOFF: %d\n",action.value);
                 break;
             case ACTION_TYPE::NONE:

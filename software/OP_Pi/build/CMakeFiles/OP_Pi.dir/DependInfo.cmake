@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/input_manager.cpp.o"
   "/home/carles/OP-Pi/software/OP_Pi/instrument.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/instrument.cpp.o"
   "/home/carles/OP-Pi/software/OP_Pi/main.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/main.cpp.o"
+  "/home/carles/OP-Pi/software/OP_Pi/screen_manager.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/screen_manager.cpp.o"
   "/home/carles/OP-Pi/software/OP_Pi/synth.cpp" "/home/carles/OP-Pi/software/OP_Pi/build/CMakeFiles/OP_Pi.dir/synth.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

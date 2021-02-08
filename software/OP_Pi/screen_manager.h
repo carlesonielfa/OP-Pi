@@ -2,6 +2,8 @@
 #define SCREENMANAGER_H
 
 #include <X11/Xlib.h>
+#include "daw.h"
+
 namespace OP_Pi{
 
     //Color defines
@@ -25,15 +27,21 @@ namespace OP_Pi{
     };
     class ScreenManager{
     public:
+        ScreenManager();
+        ScreenManager(Daw* daw);
         virtual void Draw();
         virtual void DrawPixel(unsigned char x, unsigned char y, unsigned long color)=0;
-        virtual void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color)=0;
-        virtual void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT)=0;
-        void DrawMixer();
-
+        virtual void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill = true)=0;
+        virtual void DrawText(unsigned char x, unsigned char y, unsigned long color,const char* text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT)=0;
+        Daw* daw;
     protected:
         unsigned char screenHeight=128;
         unsigned char screenWidth=128;
+    private:
+        void DrawMixer(const int bpm,float** outputs, float** gains);
+        void DrawChannel(int x, int y,const char* name, const float output, const float gain);
+        unsigned char mixerGainWidth = 6;
+        char* channels [9] = {"A","B","C","D","E", "F","G","H","I"};
     };
     struct X11Font{
         XFontStruct* font;
@@ -41,12 +49,12 @@ namespace OP_Pi{
     };
     class ScreenManagerX11: public ScreenManager{
     public:
-        ScreenManagerX11();
+        ScreenManagerX11(Daw* daw);
         ~ScreenManagerX11();
         void Draw() override;
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
-        void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color) override;
-        void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align = FONT_ALIGN::LEFT) override;
+        void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill = true) override;
+        void DrawText(unsigned char x, unsigned char y, unsigned long color,const char* text, FONT_SIZE size, FONT_ALIGN align = FONT_ALIGN::LEFT) override;
         Display* display;
     private:
         Window window;
@@ -56,10 +64,10 @@ namespace OP_Pi{
 
     class ScreenManagerOLED: public ScreenManager{
     public:
-        ScreenManagerOLED();
+        ScreenManagerOLED(Daw* daw);
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
-        void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color) override;
-        void DrawText(unsigned char x, unsigned char y, unsigned long color, char* text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT) override;
+        void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill = true) override;
+        void DrawText(unsigned char x, unsigned char y, unsigned long color,const char* text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT) override;
     };
 }
 #endif /* SCREENMANAGER_H */
