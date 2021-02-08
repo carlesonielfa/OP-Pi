@@ -7,14 +7,16 @@ namespace OP_Pi
 {
     enum ACTION_TYPE
     {   
-        NONE = 0, 
-        QUIT = 1, 
-        NOTEON = 2,
-        NOTEOFF = 3,
+        NONE,
+        QUIT,
+        NOTEON,
+        NOTEOFF,
+        CHANGE_ACTIVE_INSTRUMENT,
+        INCREMENT_OCTAVE,
     };
     struct ACTION{
         ACTION_TYPE type = ACTION_TYPE::NONE;
-        unsigned char value = 0;
+        short value = 0;
     };
     class InputManager
     {
@@ -25,11 +27,10 @@ namespace OP_Pi
     class InputManagerKeyboard: public InputManager{
     public:
         ACTION ProcessInput() override;
-        InputManagerKeyboard(Display* display, Window window);
+        InputManagerKeyboard(Display *display);
     private:
         XEvent event;
         Display* display;
-        Window window;
     };
 }
 

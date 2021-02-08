@@ -5,9 +5,11 @@ using namespace OP_Pi;
 using namespace std;
 // Call when key is pressed
 void Instrument::NoteOn(int noteNumber, double timeOn){
+    noteNumber+=octave*12;
     muxNotes.lock();
     auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber; });
-    
+
+
     // Note not found in vector
     if (noteFound == vecNotes.end())
     {
@@ -28,17 +30,19 @@ void Instrument::NoteOn(int noteNumber, double timeOn){
         {
             
             noteFound->on = timeOn;
+            noteFound->off = 0;
             noteFound->active = true;
         }
         // Key is still held, so do nothing
 
     }
-    printf("Vector length %d\n", vecNotes.size());
+
     muxNotes.unlock();
 }
 
 // Call when key is released
 void Instrument::NoteOff(int noteNumber, double timeOff){
+    noteNumber+=octave*12;
     muxNotes.lock();
     auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber;});
 

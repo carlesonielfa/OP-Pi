@@ -5,8 +5,10 @@
 #include "synth.h"
 using namespace OP_Pi;
 Daw::Daw(){
-    Instrument* synth = new Synth();
-    instruments.push_back(synth);
+
+    instruments.push_back(new Synth(new SynthDefSine()));
+    instruments.push_back(new Synth(new SynthDefBell()));
+    instruments.push_back(new Synth(new SynthDefHarmonica()));
     outputs = new float*[instruments.size()];
     gains = new float*[instruments.size()];
     for(int i = 0; i<instruments.size(); i++){
@@ -35,3 +37,21 @@ void Daw::NoteOff(int noteNumber, double timeOff) {
 unsigned int Daw::GetNInstruments() {
     return instruments.size();
 }
+
+bool Daw::SetIndexActiveInstrument(int n) {
+    if(n<instruments.size()){
+        activeInstrument = n;
+        return true;
+    }
+    else
+        return false;
+}
+
+unsigned int Daw::GetIndexActiveInstrument() {
+    return activeInstrument;
+}
+
+void Daw::IncrementOctave(int increment) {
+    instruments[activeInstrument]->octave+=increment;
+}
+

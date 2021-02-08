@@ -20,13 +20,14 @@ void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
 
     for(int i=0; i<sizeof(channels)/sizeof(char*); i++){
         if(i<daw->GetNInstruments())
-            DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], *outputs[i], *gains[i]);
+            DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], *outputs[i], *gains[i], i==daw->GetIndexActiveInstrument());
         else
             DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], 0, 0);
     }
 }
-void ScreenManager::DrawChannel(const int x,const int y,const char* name,float output, float gain) {
-    DrawText(x,y+6,WHITE,name,FONT_SIZE::BIG);
+void ScreenManager::DrawChannel(const int x,const int y,const char* name,float output, float gain, bool active) {
+
+    DrawText(x,y+6,active ? WHITE : GRAY,name,FONT_SIZE::BIG);
     DrawRectangle(x+20, y, x+20+mixerGainWidth, y+24, GRAY);
     DrawRectangle(x+20, y+24*(1-output), x+20+mixerGainWidth, y+24, RED);
     DrawRectangle(x+18, y+24*(1-gain), x+22+mixerGainWidth, y+24*(1-gain)+1, GREEN);

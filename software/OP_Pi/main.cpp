@@ -74,6 +74,11 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
             double time = seconds_offset + frame * 1.0/sample_rate;
             double sample = daw.PlayActiveSynth(time, seconds_offset);
+            //Avoid clipping
+            if(sample<-1)
+                sample=-1;
+            else if(sample>1)
+                sample=1;
             for (int channel = 0; channel < layout->channel_count; channel += 1) {
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
@@ -104,7 +109,7 @@ int main(int argc, char **argv) {
 
     daw.bpm = 100;
     ScreenManagerX11 screenManagerX11(&daw);
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display, screenManagerX11.window);
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
 
     char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
@@ -266,13 +271,24 @@ int main(int argc, char **argv) {
                 break;
             case ACTION_TYPE::NOTEON:
                 daw.NoteOn(action.value, seconds_offset);
-                printf("NOTEON: %d\n",action.value);
+                printf("NOTE ON: %d\n",action.value);
                 break;
             case ACTION_TYPE::NOTEOFF:
                 daw.NoteOff(action.value, seconds_offset);
-                printf("NOTEOFF: %d\n",action.value);
+                printf("NOTE OFF: %d\n",action.value);
                 break;
             case ACTION_TYPE::NONE:
+                break;
+            case ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT:
+                if(!daw.SetIndexActiveInstrument(action.value)){
+                    fprintf(stderr, "Error when selecting instrument: instrument %d not initialized\n", action.value);
+                }else{
+                    printf("NEW ACTIVE INSTRUMENT: %d\n",action.value);
+                }
+                break;
+            case ACTION_TYPE::INCREMENT_OCTAVE:
+                daw.IncrementOctave(action.value);
+                printf("OCTAVE INCREMENTED: %i\n", action.value);
                 break;
             default:
 

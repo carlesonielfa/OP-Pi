@@ -19,16 +19,31 @@ ACTION InputManagerKeyboard::ProcessInput() {
                 break;
             }
         }
-
+        for (int k = 0; k < 9; k++) {
+            int keyCode = XKeysymToKeycode(display, "123456789"[k]);
+            if (event.xkey.keycode == keyCode && event.type == KeyPress) {
+                action.type=ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT;
+                action.value=k;
+            }
+        }
+        //If left shift pressed increment octave
+        if (event.xkey.keycode == 50 && event.type == KeyPress) {
+            action.type=ACTION_TYPE::INCREMENT_OCTAVE;
+            action.value=1;
+        }
+        //If left control pressed decrement octave
+        if (event.xkey.keycode == 37 && event.type == KeyPress) {
+            action.type=ACTION_TYPE::INCREMENT_OCTAVE;
+            action.value=-1;
+        }
         if (event.xkey.keycode == XKeysymToKeycode(display, 'q'))
             action.type = ACTION_TYPE::QUIT;
     }
     return action;
 }
 
-InputManagerKeyboard::InputManagerKeyboard(Display* display, Window window) {
+InputManagerKeyboard::InputManagerKeyboard(Display *display) {
     this->display = display;
-    this->window = window;
     // Display a keyboard
     printf("|   |   |   |   |   | |   |   |   |   | |   | |   |   |   |\n");
     printf("|   | S |   |   | F | | G |   |   | J | | K | | L |   |   |\n");
@@ -36,4 +51,5 @@ InputManagerKeyboard::InputManagerKeyboard(Display* display, Window window) {
     printf("|     |     |     |     |     |     |     |     |     |     |\n");
     printf("|  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |\n");
     printf("|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|\n");
+    XAutoRepeatOff(display);
 }

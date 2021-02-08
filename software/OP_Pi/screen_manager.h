@@ -10,7 +10,7 @@ namespace OP_Pi{
     #define WHITE   0xFFFFFF
     #define RED     0xFF0000
     #define GREEN   0x00FF00
-    #define GRAY    0xBEBEBE
+    #define GRAY    0xA9A9A9
     #define CYAN    0x00FFFF
 
     enum FONT_SIZE{
@@ -39,7 +39,7 @@ namespace OP_Pi{
         unsigned char screenWidth=128;
     private:
         void DrawMixer(const int bpm,float** outputs, float** gains);
-        void DrawChannel(int x, int y,const char* name, const float output, const float gain);
+        void DrawChannel(int x, int y,const char* name, const float output, const float gain, bool active = false);
         unsigned char mixerGainWidth = 6;
         char* channels [9] = {"A","B","C","D","E", "F","G","H","I"};
     };

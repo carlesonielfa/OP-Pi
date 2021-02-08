@@ -24,8 +24,6 @@ namespace OP_Pi
 			off = 0.0;
 			active = false;
 		}
-
-		//bool operator==(const note& n1, const note& n2) { return n1.id == n2.id; }
 	};
 
     //For removing notes that are no longer playing
@@ -115,9 +113,8 @@ namespace OP_Pi
     struct InstrumentDef
 	{
 		Envelope* env;
-		double maxLifeTime;
 		std::wstring name;
-		virtual double GenerateSound(const double dTime, Note n, bool &bNoteFinished) = 0;
+		virtual double GenerateSound(const double time, double seconds_offset, Note n, bool &noteFinished) = 0;
         ~InstrumentDef(){
             delete env;
         }
@@ -141,11 +138,10 @@ namespace OP_Pi
             void SetGain(double new_gain);
             float lastOutput = 0;
             float gain=0.5;
+            char octave=0;
         protected:
             virtual double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) = 0;
-            bool noteOn = false;
-            float triggerOffTime = 0.0;
-            float triggerOnTime = 0.0;
+            InstrumentDef* instrumentDef;
         private:
             std::vector<float> recentOutputs;
             std::vector<Note> vecNotes;

@@ -26,7 +26,9 @@ namespace OP_Pi{
         // Call when key is released
         void NoteOff(int noteNumber,double timeOff);
         unsigned int GetNInstruments();
-
+        bool SetIndexActiveInstrument(int n);
+        unsigned int GetIndexActiveInstrument();
+        void IncrementOctave(int increment);
         unsigned short bpm;
         float** gains;
         float** outputs;
