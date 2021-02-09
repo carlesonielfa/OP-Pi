@@ -14,6 +14,18 @@ endian.h
 stdbool.h
 -
 
+/home/carles/OP-Pi/software/OP_Pi/daw.cpp
+daw.h
+/home/carles/OP-Pi/software/OP_Pi/daw.h
+synth.h
+/home/carles/OP-Pi/software/OP_Pi/synth.h
+
+/home/carles/OP-Pi/software/OP_Pi/daw.h
+instrument.h
+/home/carles/OP-Pi/software/OP_Pi/instrument.h
+vector
+-
+
 /home/carles/OP-Pi/software/OP_Pi/input_manager.cpp
 input_manager.h
 /home/carles/OP-Pi/software/OP_Pi/input_manager.h
@@ -24,6 +36,12 @@ stdio.h
 instrument.h
 /home/carles/OP-Pi/software/OP_Pi/instrument.h
 X11/Xlib.h
+-
+
+/home/carles/OP-Pi/software/OP_Pi/instrument.cpp
+instrument.h
+/home/carles/OP-Pi/software/OP_Pi/instrument.h
+numeric
 -
 
 /home/carles/OP-Pi/software/OP_Pi/instrument.h
@@ -41,12 +59,12 @@ vector
 -
 
 /home/carles/OP-Pi/software/OP_Pi/main.cpp
-synth.h
-/home/carles/OP-Pi/software/OP_Pi/synth.h
 input_manager.h
 /home/carles/OP-Pi/software/OP_Pi/input_manager.h
 screen_manager.h
 /home/carles/OP-Pi/software/OP_Pi/screen_manager.h
+daw.h
+/home/carles/OP-Pi/software/OP_Pi/daw.h
 soundio/soundio.h
 -
 stdio.h
@@ -57,7 +75,7 @@ string.h
 -
 stdint.h
 -
-thread
+unistd.h
 -
 
 /home/carles/OP-Pi/software/OP_Pi/screen_manager.cpp
@@ -67,12 +85,22 @@ unistd.h
 -
 cstdio
 -
+string
+-
 string.h
 -
 
 /home/carles/OP-Pi/software/OP_Pi/screen_manager.h
 X11/Xlib.h
 -
+daw.h
+/home/carles/OP-Pi/software/OP_Pi/daw.h
+
+/home/carles/OP-Pi/software/OP_Pi/sequencer.cpp
+sequencer.h
+/home/carles/OP-Pi/software/OP_Pi/sequencer.h
+
+/home/carles/OP-Pi/software/OP_Pi/sequencer.h
 
 /home/carles/OP-Pi/software/OP_Pi/sound_utils.h
 math.h

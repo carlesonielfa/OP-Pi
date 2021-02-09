@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/OP_Pi.dir/instrument.cpp.o"
   "CMakeFiles/OP_Pi.dir/screen_manager.cpp.o"
   "CMakeFiles/OP_Pi.dir/daw.cpp.o"
+  "CMakeFiles/OP_Pi.dir/sequencer.cpp.o"
   "OP_Pi.pdb"
   "OP_Pi"
 )

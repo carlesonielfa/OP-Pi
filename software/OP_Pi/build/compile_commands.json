@@ -30,6 +30,11 @@
   "file": "/home/carles/OP-Pi/software/OP_Pi/daw.cpp"
 },
 {
+  "directory": "/home/carles/OP-Pi/software/OP_Pi/build",
+  "command": "/bin/g++-8  -DSOUNDIO_STATIC_LIBRARY -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio  -g   -o CMakeFiles/OP_Pi.dir/sequencer.cpp.o -c /home/carles/OP-Pi/software/OP_Pi/sequencer.cpp",
+  "file": "/home/carles/OP-Pi/software/OP_Pi/sequencer.cpp"
+},
+{
   "directory": "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio",
   "command": "/bin/gcc-8  -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src  -g -Werror -pedantic   -std=c99 -Wall -o CMakeFiles/sio_record.dir/example/sio_record.c.o   -c /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c",
   "file": "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c"

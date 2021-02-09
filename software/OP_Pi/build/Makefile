@@ -870,6 +870,33 @@ screen_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.s
 .PHONY : screen_manager.cpp.s
 
+sequencer.o: sequencer.cpp.o
+
+.PHONY : sequencer.o
+
+# target to build an object file
+sequencer.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.o
+.PHONY : sequencer.cpp.o
+
+sequencer.i: sequencer.cpp.i
+
+.PHONY : sequencer.i
+
+# target to preprocess a source file
+sequencer.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.i
+.PHONY : sequencer.cpp.i
+
+sequencer.s: sequencer.cpp.s
+
+.PHONY : sequencer.s
+
+# target to generate assembly for a file
+sequencer.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.s
+.PHONY : sequencer.cpp.s
+
 synth.o: synth.cpp.o
 
 .PHONY : synth.o
@@ -969,6 +996,9 @@ help:
 	@echo "... screen_manager.o"
 	@echo "... screen_manager.i"
 	@echo "... screen_manager.s"
+	@echo "... sequencer.o"
+	@echo "... sequencer.i"
+	@echo "... sequencer.s"
 	@echo "... synth.o"
 	@echo "... synth.i"
 	@echo "... synth.s"

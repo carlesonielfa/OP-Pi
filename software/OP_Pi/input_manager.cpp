@@ -53,3 +53,6 @@ InputManagerKeyboard::InputManagerKeyboard(Display *display) {
     printf("|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|\n");
     XAutoRepeatOff(display);
 }
+InputManagerKeyboard::~InputManagerKeyboard() {
+    XAutoRepeatOn(display);
+}

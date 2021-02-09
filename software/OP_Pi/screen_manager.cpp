@@ -9,8 +9,15 @@ ScreenManager::ScreenManager(Daw *daw) {
     this->daw = daw;
 }
 void ScreenManager::Draw() {
-    double gains [] = {0.5,0,0,0,0,0,0,0};
-    DrawMixer(daw->bpm,daw->outputs, daw->gains);
+    switch (daw->activeView) {
+        case DAW_VIEW::MIXER:
+            DrawMixer(daw->bpm,daw->outputs, daw->gains);
+            break;
+        case DAW_VIEW::PATTERN:
+            DrawPattern(0,daw->GetIndexActiveInstrument());
+            break;
+    }
+
 }
 void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
 
@@ -25,14 +32,41 @@ void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
             DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], 0, 0);
     }
 }
-void ScreenManager::DrawChannel(const int x,const int y,const char* name,float output, float gain, bool active) {
+void ScreenManager::DrawChannel(unsigned char x, unsigned char y, const char* name, const float output, const float gain, bool active) {
 
     DrawText(x,y+6,active ? WHITE : GRAY,name,FONT_SIZE::BIG);
     DrawRectangle(x+20, y, x+20+mixerGainWidth, y+24, GRAY);
     DrawRectangle(x+20, y+24*(1-output), x+20+mixerGainWidth, y+24, RED);
-    DrawRectangle(x+18, y+24*(1-gain), x+22+mixerGainWidth, y+24*(1-gain)+1, GREEN);
+    DrawRectangle(x+18, y+24*(1-gain), x+22+mixerGainWidth, y+24*(1-gain)+1, MAGENTA);
 
 }
+
+void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activeInstrument) {
+    unsigned short w1 =DrawText(10,10, CYAN,"INSTRMNT ",FONT_SIZE::MEDIUM);
+
+    w1 = DrawText(screenWidth-24,17, CYAN, channels[activeInstrument],FONT_SIZE::BIG);
+    DrawRectangle(screenWidth-30, 9, screenWidth-18+w1, 28+10, WHITE, false);
+    unsigned short w0 = DrawText(10,28, WHITE,"PATTERN ",FONT_SIZE::SMALL);
+    DrawText(10+w0-1,28, MAGENTA, std::to_string(patternNumber).c_str(),FONT_SIZE::SMALL);
+    //DrawRectangle(8, 7,10+w0+w1,10+14, MAGENTA, false);
+
+    for(int i=0; i<7;i++){
+        DrawNote((screenHeight-patternNoteHeight)*7+i*patternNoteHeight);
+    }
+    unsigned short notesStart = (screenHeight-patternNoteHeight)*7;
+    unsigned short xbarstart = 12;
+    //Draw Bar lines 2 bars per pattern
+    DrawLine((xbarstart+screenWidth)/2,notesStart-2, (xbarstart+screenWidth)/2, screenHeight-1, GRAY);
+    //Draw Cursor
+    unsigned short xcursor = xbarstart+daw->cursor*(screenWidth-xbarstart);
+    DrawLine(xcursor,notesStart,xcursor, screenHeight-1,YELLOW);
+
+}
+void ScreenManager::DrawNote(unsigned char y){
+    DrawRectangle(0,y+1,12, y + patternNoteHeight-1,WHITE);
+    DrawLine(0,y,screenWidth-1,y,GRAY);
+}
+
 ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
     //this->daw = daw;
     //Create window
@@ -56,9 +90,10 @@ ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
 
     //Load fonts
 
-    char* font_names [] = {"lucidasanstypewriter-bold-8", "lucidasanstypewriter-10", "lucidasanstypewriter-12", "lucidasanstypewriter-14", "lucidasanstypewriter-18"};
+    char* font_names [] = {"lucidasanstypewriter-bold-8", "lucidasanstypewriter-10", "lucidasanstypewriter-12", "lucidasanstypewriter-14", "lucidasanstypewriter-24"};
+    //char* font_names [] = {"-urw-nimbus mono l-regular-o-normal--0-0-0-0-p-0-iso8859-15", "-urw-nimbus mono l-regular-o-normal--0-0-0-0-p-0-iso8859-15", "lucidasanstypewriter-12", "lucidasanstypewriter-14", "lucidasanstypewriter-24"};
 
-    unsigned char sizes [] = {8,10,12,14,18};
+    unsigned char sizes [] = {8,10,12,14,24};
 
     for(int i=0; i<5;i++){
         fonts[i].font = XLoadQueryFont(display,font_names[i]);
@@ -87,13 +122,17 @@ void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigne
         XDrawRectangle(display, window,gc, x1,y1,x2-x1,y2-y1);
 }
 
-void ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color,const char* text, FONT_SIZE size, FONT_ALIGN align) {
-    if(align==FONT_ALIGN::CENTER)
-        x = (screenWidth - x)/2 - XTextWidth(fonts[size].font, text, strlen(text))/2;
-    y+=fonts[size].size;
+unsigned short ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
+    unsigned short textWidth = XTextWidth(fonts[size].font, text, strlen(text));
+    if(align==FONT_ALIGN::CENTER) {
+        x = (screenWidth - x) / 2 - textWidth / 2;
+    }
+    y += fonts[size].size;
+
     XSetFont(display,gc, fonts[size].font->fid);
     XSetForeground(display, gc, color);
     XDrawString(display,window, gc, x,y,text, strlen(text));
+    return  textWidth;
 }
 void ScreenManagerX11::Draw() {
     //XExposeEvent e;
@@ -105,6 +144,12 @@ void ScreenManagerX11::Draw() {
     //XNextEvent(display, &event);
 }
 
+void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
+                                unsigned long color) {
+    XSetForeground(display, gc, color);
+    XDrawLine(display,window,gc,x1,y1,x2,y2);
+}
+
 void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
 
 }
@@ -113,6 +158,12 @@ void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned lon
 
 }
 
-void ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color,const char* text, FONT_SIZE size, FONT_ALIGN align) {
+unsigned short
+ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
+
+}
+
+void ScreenManagerOLED::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
+                                 unsigned long color) {
 
 }

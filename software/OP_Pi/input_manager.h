@@ -28,6 +28,7 @@ namespace OP_Pi
     public:
         ACTION ProcessInput() override;
         InputManagerKeyboard(Display *display);
+        ~InputManagerKeyboard();
     private:
         XEvent event;
         Display* display;

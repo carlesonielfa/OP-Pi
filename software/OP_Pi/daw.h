@@ -32,9 +32,12 @@ namespace OP_Pi{
         unsigned short bpm;
         float** gains;
         float** outputs;
+        DAW_VIEW activeView = DAW_VIEW::PATTERN;
+        float cursor;
     private:
         vector<Instrument*> instruments;
         unsigned char activeInstrument;
+        unsigned char activePattern;
 
 
 
