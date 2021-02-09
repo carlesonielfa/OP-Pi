@@ -11,8 +11,9 @@ namespace OP_Pi
         QUIT,
         NOTEON,
         NOTEOFF,
-        CHANGE_ACTIVE_INSTRUMENT,
+        CHANGE_ACTIVE_INSTRUMENT,//TODO: Change for colored encoders
         INCREMENT_OCTAVE,
+        CHANGE_VIEW,
     };
     struct ACTION{
         ACTION_TYPE type = ACTION_TYPE::NONE;

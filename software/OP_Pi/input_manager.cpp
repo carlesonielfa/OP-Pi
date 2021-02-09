@@ -38,6 +38,11 @@ ACTION InputManagerKeyboard::ProcessInput() {
         }
         if (event.xkey.keycode == XKeysymToKeycode(display, 'q'))
             action.type = ACTION_TYPE::QUIT;
+        if (event.xkey.keycode == XKeysymToKeycode(display, 'u') && event.type == KeyPress){
+            action.type = ACTION_TYPE::CHANGE_VIEW;
+            action.value = -1;
+        }
+
     }
     return action;
 }

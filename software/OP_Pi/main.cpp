@@ -9,7 +9,17 @@
 #include <stdint.h>
 #include <unistd.h>
 using namespace OP_Pi;
-
+/*
+ * TODO:Task list
+ * - SEQUENCER
+ * - RECORD
+ * - QUANTIZE
+ * - RENDER
+ * - TIMELINE ADD PATTERNS
+ * - MODIFY INSTRUMENTS
+ * - SAMPLE LOADING AND PLAYING
+ * - EFFECTS
+ */
 static int usage(char *exe) {
     fprintf(stderr, "Usage: %s [options]\n"
             "Options:\n"
@@ -290,8 +300,15 @@ int main(int argc, char **argv) {
                 daw.IncrementOctave(action.value);
                 printf("OCTAVE INCREMENTED: %i\n", action.value);
                 break;
-            default:
+            case ACTION_TYPE::CHANGE_VIEW:
+                if(action.value ==-1)
 
+                    daw.activeView = static_cast<DAW_VIEW>((daw.activeView + 1)%DAW_VIEW::ENUM_SIZE_INDICATOR);
+                else
+                    daw.activeView = static_cast<DAW_VIEW>(action.value);
+                printf("ACTIVE VIEW CHANGED TO: %i\n", daw.activeView);
+                break;
+            default:
                 printf("Action not yet implemented\n", action.type);
                 break;
         }

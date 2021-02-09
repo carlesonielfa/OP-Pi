@@ -13,6 +13,7 @@ namespace OP_Pi{
     #define GREEN       0x00FF00
     #define GRAY        0xA9A9A9
     #define DARKGRAY    0x696969
+    #define DARKERGRAY  0x424242
     #define CYAN        0x00FFFF
     #define YELLOW      0xFFFF00
 
@@ -48,7 +49,7 @@ namespace OP_Pi{
         void DrawChannel(unsigned char x, unsigned char y, const char* name, const float output, const float gain, bool active = false);
         void DrawPattern(unsigned char patternNumber, unsigned char activeInstrument);
         void DrawNote(unsigned char y);
-        const unsigned char patternNoteHeight=12;
+        const unsigned char patternNoteHeight=11;
         const unsigned char mixerGainWidth = 6;
         char* channels [9] = {"A","B","C","D","E", "F","G","H","I"};
     };

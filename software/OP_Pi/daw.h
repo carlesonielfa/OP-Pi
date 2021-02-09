@@ -13,7 +13,8 @@ namespace OP_Pi{
         TIMELINE,
         PATTERN,
         INSTRUMENT,
-        EFFECTS
+        EFFECTS,
+        ENUM_SIZE_INDICATOR, //Always last
     };
     class Daw{
     public:
