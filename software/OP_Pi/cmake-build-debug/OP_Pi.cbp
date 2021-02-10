@@ -808,6 +808,18 @@
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.h">
 			<Option target="OP_Pi"/>
 		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/effect.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/effect.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/eq.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/eq.h">
+			<Option target="OP_Pi"/>
+		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>

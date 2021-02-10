@@ -7,6 +7,8 @@
 #include <mutex>
 #include <algorithm>
 #include <vector>
+#include "effect.h"
+#include "eq.h"
 namespace OP_Pi
 {
     struct Note
@@ -127,6 +129,7 @@ namespace OP_Pi
     {
         public:
             Instrument(int sampleRate);
+            ~Instrument();
             // Call when key is pressed
             void NoteOn(int noteNumber,double timeOn);
 
@@ -144,10 +147,13 @@ namespace OP_Pi
             int sampleRate;
         protected:
             virtual void GenerateNoteSound(double time, float *outputs, int nSamples, Note n, bool &noteFinished) = 0;
+            void ApplyEffects(float *outputs, int nSamples);
             InstrumentDef* instrumentDef;
+            std::vector<Effect*> effects;
         private:
             std::vector<Note> vecNotes;
             std::mutex muxNotes;
+
 
 
     };

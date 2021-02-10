@@ -134,6 +134,11 @@ int main(int argc, char **argv) {
     char *stream_name = NULL;
     double latency = 0.0;
     int sample_rate = 48000;
+    daw = new Daw(sample_rate);
+    daw->bpm = 100;
+    ScreenManagerX11 screenManagerX11(daw);
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];
         if (arg[0] == '-' && arg[1] == '-') {
@@ -273,10 +278,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
-    daw = new Daw(sample_rate);
-    daw->bpm = 100;
-    ScreenManagerX11 screenManagerX11(daw);
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+
 
     bool quit=false;
     while(!quit) {

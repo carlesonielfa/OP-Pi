@@ -5,13 +5,15 @@ namespace OP_Pi
 {
     class Effect 
     {
-        public:
-            virtual double applyEffect(double source)=0;
-            float wet=1.0;
-    };
-    class EQ: public Effect{
 
+    public:
+        Effect(int sampleRate);
+        virtual void ApplyEffect(float *outputs, int nSamples) =0;
+        float wet=1.0;
+    protected:
+        int sampleRate;
     };
+
     class Reverb:public Effect{
 
     };

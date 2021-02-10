@@ -91,4 +91,14 @@ Envelope *Instrument::GetEnvelope() {
 Instrument::Instrument(int sampleRate) {
     this->sampleRate = sampleRate;
 }
+
+void Instrument::ApplyEffects(float *outputs, int nSamples) {
+    for(Effect* e:effects){
+        e->ApplyEffect(outputs,nSamples);
+    }
+}
+
+Instrument::~Instrument() {
+    effects.clear();
+}
             
