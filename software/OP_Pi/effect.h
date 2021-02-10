@@ -6,8 +6,20 @@ namespace OP_Pi
     class Effect 
     {
         public:
-            double applyEffect(double source);
+            virtual double applyEffect(double source)=0;
             float wet=1.0;
+    };
+    class EQ: public Effect{
+
+    };
+    class Reverb:public Effect{
+
+    };
+    class Delay: public Effect{
+
+    };
+    class Distortion: public Effect{
+
     };
 }
 

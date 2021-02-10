@@ -4,11 +4,11 @@
 #include "daw.h"
 #include "synth.h"
 using namespace OP_Pi;
-Daw::Daw(){
-
-    instruments.push_back(new Synth(new SynthDefSine()));
-    instruments.push_back(new Synth(new SynthDefBell()));
-    instruments.push_back(new Synth(new SynthDefHarmonica()));
+Daw::Daw(double sampleRate) {
+    this->sampleRate = sampleRate;
+    instruments.push_back(new Synth(sampleRate,new SynthDefSine()));
+    instruments.push_back(new Synth(sampleRate,new SynthDefBell()));
+    instruments.push_back(new Synth(sampleRate,new SynthDefHarmonica()));
     outputs = new float*[instruments.size()];
     gains = new float*[instruments.size()];
     for(int i = 0; i<instruments.size(); i++){
@@ -22,8 +22,8 @@ Daw::~Daw() {
         delete i;
     }
 }
-double Daw::PlayActiveSynth(double time, double seconds_offset) {
-    return instruments[activeInstrument]->PlayNotes(time,seconds_offset);
+void Daw::PlayActiveSynth(double time, float *outputs, int nSamples) {
+    instruments[activeInstrument]->PlayNotes(time, outputs, nSamples);
 }
 
 void Daw::NoteOn(int noteNumber, double timeOn) {

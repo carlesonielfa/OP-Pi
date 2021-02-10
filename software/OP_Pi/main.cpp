@@ -58,11 +58,11 @@ static void write_sample_float64ne(char *ptr, double sample) {
 }
 static void (*write_sample)(char *ptr, double sample);
 
-Daw daw;
+Daw* daw;
 
-static long double seconds_offset = 0.0;
+static double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
-    double sample_rate = outstream->sample_rate;
+    int sample_rate = outstream->sample_rate;
     struct SoundIoChannelArea *areas;
     int err;
 
@@ -79,11 +79,11 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             break;
 
         const struct SoundIoChannelLayout *layout = &outstream->layout;
-        
+        /*
         for (int frame = 0; frame < frame_count; frame += 1) {
             //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
             double time = seconds_offset + frame * 1.0/sample_rate;
-            double sample = daw.PlayActiveSynth(time, seconds_offset);
+            double sample = daw.PlayActiveSynth(time, seconds_offset, 0);
             //Avoid clipping
             if(sample<-1)
                 sample=-1;
@@ -93,8 +93,19 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
                 write_sample(areas[channel].ptr, sample);
                 areas[channel].ptr += areas[channel].step;
             }
+        }*/
+        float *outputs = new float[frame_count];
+        if(daw!= nullptr)
+            daw->PlayActiveSynth(seconds_offset, outputs, frame_count);
+        for (int channel = 0; channel < layout->channel_count; channel += 1) {
+            for(int i=0;i<frame_count;i++) {
+                write_sample(areas[channel].ptr, outputs[i]);
+                areas[channel].ptr += areas[channel].step;
+            }
+
         }
-    
+        //delete outputs;
+
         //seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
         seconds_offset = seconds_offset + 1.0/sample_rate * frame_count;
         if ((err = soundio_outstream_end_write(outstream))) {
@@ -116,18 +127,13 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
 }
 
 int main(int argc, char **argv) {
-
-    daw.bpm = 100;
-    ScreenManagerX11 screenManagerX11(&daw);
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
-
     char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
     char *device_id = NULL;
     bool raw = false;
     char *stream_name = NULL;
     double latency = 0.0;
-    int sample_rate = 0;
+    int sample_rate = 48000;
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];
         if (arg[0] == '-' && arg[1] == '-') {
@@ -267,7 +273,10 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
-
+    daw = new Daw(sample_rate);
+    daw->bpm = 100;
+    ScreenManagerX11 screenManagerX11(daw);
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
 
     bool quit=false;
     while(!quit) {
@@ -280,33 +289,33 @@ int main(int argc, char **argv) {
                 quit=true;
                 break;
             case ACTION_TYPE::NOTEON:
-                daw.NoteOn(action.value, seconds_offset);
+                daw->NoteOn(action.value, seconds_offset);
                 printf("NOTE ON: %d\n",action.value);
                 break;
             case ACTION_TYPE::NOTEOFF:
-                daw.NoteOff(action.value, seconds_offset);
+                daw->NoteOff(action.value, seconds_offset);
                 printf("NOTE OFF: %d\n",action.value);
                 break;
             case ACTION_TYPE::NONE:
                 break;
             case ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT:
-                if(!daw.SetIndexActiveInstrument(action.value)){
+                if(!daw->SetIndexActiveInstrument(action.value)){
                     fprintf(stderr, "Error when selecting instrument: instrument %d not initialized\n", action.value);
                 }else{
                     printf("NEW ACTIVE INSTRUMENT: %d\n",action.value);
                 }
                 break;
             case ACTION_TYPE::INCREMENT_OCTAVE:
-                daw.IncrementOctave(action.value);
+                daw->IncrementOctave(action.value);
                 printf("OCTAVE INCREMENTED: %i\n", action.value);
                 break;
             case ACTION_TYPE::CHANGE_VIEW:
                 if(action.value ==-1)
 
-                    daw.activeView = static_cast<DAW_VIEW>((daw.activeView + 1)%DAW_VIEW::ENUM_SIZE_INDICATOR);
+                    daw->activeView = static_cast<DAW_VIEW>((daw->activeView + 1)%DAW_VIEW::ENUM_SIZE_INDICATOR);
                 else
-                    daw.activeView = static_cast<DAW_VIEW>(action.value);
-                printf("ACTIVE VIEW CHANGED TO: %i\n", daw.activeView);
+                    daw->activeView = static_cast<DAW_VIEW>(action.value);
+                printf("ACTIVE VIEW CHANGED TO: %i\n", daw->activeView);
                 break;
             default:
                 printf("Action not yet implemented\n", action.type);
@@ -322,5 +331,6 @@ int main(int argc, char **argv) {
     soundio_outstream_destroy(outstream);
     soundio_device_unref(device);
     soundio_destroy(soundio);
+    delete daw;
     return 0;
 }

@@ -40,9 +40,9 @@ namespace OP_Pi
             env = new EnvelopeADSR(0.2,1,0.8,1);
             name = "SINE";
         }
-        double GenerateSound(const double time,double seconds_offset, Note n, bool &noteFinished) override{
-            double output = env->Amplitude(seconds_offset,n.on,n.off);
+        float GenerateSound(double time,Note n, bool &noteFinished) override{
             //Apply Envelope
+            float output = GetEnvelopeAmplitude(time,n);
 
             if (output == 0 && n.off !=0){
                 noteFinished = true;
@@ -57,17 +57,17 @@ namespace OP_Pi
             env = new EnvelopeADSR(0.01,1,0,1);
             name = "BELL";
         }
-        double GenerateSound(const double time,double seconds_offset, Note n, bool &noteFinished) override{
-            double output = env->Amplitude(seconds_offset,n.on,n.off);
+        float GenerateSound(double time, Note n, bool &noteFinished) override{
             //Apply Envelope
-
-            if (output == 0 && n.off !=0){
+            float output = GetEnvelopeAmplitude(time,n);
+            //If volume is zero and note has been released stop sound
+            if (output == 0 && n.off !=0)
                 noteFinished = true;
-            }
             //Apply oscillator
             output*= Osc(time, midi_to_freq(n.number), OSC_TYPE::SINE)
-                    +0.5*Osc(time, midi_to_freq(n.number+24))
-                    +0.25*Osc(time, midi_to_freq(n.number+36));
+                     +0.5*Osc(time, midi_to_freq(n.number+24))
+                     +0.25*Osc(time, midi_to_freq(n.number+36));
+
             return output*0.5;
         }
     };
@@ -76,8 +76,8 @@ namespace OP_Pi
             env = new EnvelopeADSR(0.1,1,0.95,0.1);
             name = "HARMONICA";
         }
-        double GenerateSound(const double time,double seconds_offset, Note n, bool &noteFinished) override{
-            double output = env->Amplitude(seconds_offset,n.on,n.off);
+        float GenerateSound(double time, Note n, bool &noteFinished) override{
+            double output = GetEnvelopeAmplitude(time,n);
             //Apply Envelope
 
             if (output == 0 && n.off !=0){
@@ -95,12 +95,12 @@ namespace OP_Pi
     class Synth: public Instrument
     {
     public:
-        //SynthDef synth;
-        Synth(InstrumentDef* instrumentDef);
+        Synth(double sampleRate, InstrumentDef *instrumentDef);
+
         ~Synth();
         //EnvelopeADSR env;
     private:
-        double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) override;
+        void GenerateNoteSound(double time, float *outputs, int nSamples, Note n, bool &noteFinished) override;
     };
 }
 

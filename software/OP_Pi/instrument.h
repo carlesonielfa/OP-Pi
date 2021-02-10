@@ -112,17 +112,21 @@ namespace OP_Pi
 	{
 		Envelope* env;
 		char* name="PRESET";
-		virtual double GenerateSound(const double time, double seconds_offset, Note n, bool &noteFinished) = 0;
+		virtual float GenerateSound(double time, Note n, bool &noteFinished) = 0;
         ~InstrumentDef(){
             delete env;
         }
+        float GetEnvelopeAmplitude(double time, Note n){
+            return  env->Amplitude(time,n.on,n.off);
+        }
+
 	};
     // Abstract class that represents an oject that plays sounds
     // It contains an ADSR envelope and basic sound output methods
     class Instrument
     {
         public:
-
+            Instrument(int sampleRate);
             // Call when key is pressed
             void NoteOn(int noteNumber,double timeOn);
 
@@ -131,17 +135,17 @@ namespace OP_Pi
 
             //virtual double ProcessSound(int frame, double seconds_offset, double sample_rate) = 0;
             
-            double PlayNotes(double time, double seconds_offset);
+            void PlayNotes(double time, float *outputs, int nSamples);
             char* GetPresetName();
             Envelope* GetEnvelope();
             float lastOutput = 0;
             float gain=0.5;
             char octave=0;
+            int sampleRate;
         protected:
-            virtual double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) = 0;
+            virtual void GenerateNoteSound(double time, float *outputs, int nSamples, Note n, bool &noteFinished) = 0;
             InstrumentDef* instrumentDef;
         private:
-            std::vector<float> recentOutputs;
             std::vector<Note> vecNotes;
             std::mutex muxNotes;
 

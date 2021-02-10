@@ -18,10 +18,10 @@ namespace OP_Pi{
     };
     class Daw{
     public:
-        Daw();
+        Daw(double sampleRate);
         ~Daw();
         //Plays the notes of the active synth
-        double PlayActiveSynth(double time, double seconds_offset);
+        void PlayActiveSynth(double time, float *outputs, int nSamples);
         // Call when key is pressed
         void NoteOn(int noteNumber,double timeOn);
         // Call when key is released
@@ -33,11 +33,14 @@ namespace OP_Pi{
         char * GetActiveInstrumentPresetName();
         Envelope* GetInstrumentEnvelope();
         void IncrementOctave(int increment);
+
+        double sampleRate;
         unsigned short bpm;
         float** gains;
         float** outputs;
         DAW_VIEW activeView = DAW_VIEW::INSTRUMENT;
         float cursor;
+
     private:
         vector<Instrument*> instruments;
         unsigned char activeInstrument;
