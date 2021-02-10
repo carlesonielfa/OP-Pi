@@ -9,14 +9,12 @@
 #include <vector>
 namespace OP_Pi
 {
-    struct InstrumentDef;
     struct Note
 	{
 		int number;		// Midi note number
 		double on;	// Time note was activated
 		double off;	// Time note was deactivated
 		bool active;
-
 		Note()
 		{
 			number = 0;
@@ -113,7 +111,7 @@ namespace OP_Pi
     struct InstrumentDef
 	{
 		Envelope* env;
-		std::wstring name;
+		char* name="PRESET";
 		virtual double GenerateSound(const double time, double seconds_offset, Note n, bool &noteFinished) = 0;
         ~InstrumentDef(){
             delete env;
@@ -134,8 +132,8 @@ namespace OP_Pi
             //virtual double ProcessSound(int frame, double seconds_offset, double sample_rate) = 0;
             
             double PlayNotes(double time, double seconds_offset);
-
-            void SetGain(double new_gain);
+            char* GetPresetName();
+            Envelope* GetEnvelope();
             float lastOutput = 0;
             float gain=0.5;
             char octave=0;

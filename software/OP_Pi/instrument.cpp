@@ -54,18 +54,6 @@ void Instrument::NoteOff(int noteNumber, double timeOff){
     }
     muxNotes.unlock();
 }
-void Instrument::SetGain(double new_gain){
-    gain = new_gain;
-    if(gain>1){
-        fprintf(stderr, "Tried to assign gain bigger than 1");
-        gain = 1;
-    }
-    else if(gain<0){
-        fprintf(stderr, "Tried to assign gain smaller than 0");
-        gain = 0;  
-    }
-                            
-};
 
 double Instrument::PlayNotes(double time, double seconds_offset){
     unique_lock<mutex> lm(muxNotes);
@@ -95,5 +83,13 @@ double Instrument::PlayNotes(double time, double seconds_offset){
     }
     lastOutput= *max_element(recentOutputs.begin(),recentOutputs.end());
     return output;
+}
+
+char *Instrument::GetPresetName() {
+    return instrumentDef->name;
+}
+
+Envelope *Instrument::GetEnvelope() {
+    return instrumentDef->env;
 }
             

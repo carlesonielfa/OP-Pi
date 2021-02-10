@@ -29,11 +29,14 @@ namespace OP_Pi{
         unsigned int GetNInstruments();
         bool SetIndexActiveInstrument(int n);
         unsigned int GetIndexActiveInstrument();
+        char GetOctaveCurrentInstrument();
+        char * GetActiveInstrumentPresetName();
+        Envelope* GetInstrumentEnvelope();
         void IncrementOctave(int increment);
         unsigned short bpm;
         float** gains;
         float** outputs;
-        DAW_VIEW activeView = DAW_VIEW::PATTERN;
+        DAW_VIEW activeView = DAW_VIEW::INSTRUMENT;
         float cursor;
     private:
         vector<Instrument*> instruments;

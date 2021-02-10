@@ -16,6 +16,20 @@ void ScreenManager::Draw() {
         case DAW_VIEW::PATTERN:
             DrawPattern(0,daw->GetIndexActiveInstrument());
             break;
+        case DAW_VIEW::INSTRUMENT: {
+            EnvelopeADSR *env = (EnvelopeADSR *) daw->GetInstrumentEnvelope();
+            DrawInstrument(daw->GetIndexActiveInstrument(),
+                           daw->GetOctaveCurrentInstrument(),
+                           env->attackTime, env->decayTime, env->sustainAmplitude, env->releaseTime,
+                           daw->GetActiveInstrumentPresetName());
+            break;
+        }
+        default:
+            //View not implemented
+            DrawText(0,screenHeight/2-28,WHITE,"VIEW", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+            DrawText(0,screenHeight/2-14,WHITE,"NOT", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+            DrawText(0,screenHeight/2,WHITE,"IMPLEMENTED", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+            break;
     }
 
 }
@@ -44,10 +58,10 @@ void ScreenManager::DrawChannel(unsigned char x, unsigned char y, const char* na
 void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activeInstrument) {
     //Draw Header
     unsigned short w1;
-    DrawText(10,10, CYAN,"INSTRUMENT ",FONT_SIZE::SMALL);
-    w1 = DrawText(screenWidth-24,17, CYAN, channels[activeInstrument],FONT_SIZE::BIG);
-    DrawRectangle(screenWidth-30, 9, screenWidth-18+w1, 28+10, WHITE, false);
-    unsigned short w0 = DrawText(10,28, WHITE,"PATTERN ",FONT_SIZE::SMALL);
+    DrawText(10,10, WHITE,"INSTRUMENT ",FONT_SIZE::SMALL);
+    w1 = DrawText(screenWidth-24,17, WHITE, channels[activeInstrument],FONT_SIZE::BIG);
+    DrawRectangle(screenWidth-30, 9, screenWidth-18+w1, 28+10, DARKGRAY, false);
+    unsigned short w0 = DrawText(10,28, MAGENTA,"PATTERN ",FONT_SIZE::SMALL);
     DrawText(10+w0-1,28, MAGENTA, std::to_string(patternNumber).c_str(),FONT_SIZE::SMALL);
 
 
@@ -72,6 +86,66 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
 void ScreenManager::DrawNote(unsigned char y){
     DrawRectangle(0,y+1,12, y + patternNoteHeight-1,WHITE);
     DrawLine(12,y,screenWidth-1,y,DARKGRAY);
+}
+
+void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveOffset, float attack, float decay,
+                                   float sustain, float release, char *presetName) {
+
+    //Draw letter active instrument
+    DrawText(10,16, WHITE,"INSTRUMENT ",FONT_SIZE::SMALL);
+    unsigned short w1 = DrawText(screenWidth-24,17, WHITE, channels[activeInstrument],FONT_SIZE::BIG);
+    DrawRectangle(screenWidth-30, 9, screenWidth-18+w1, 28+10, DARKGRAY, false);
+
+    //Draw octave and sign
+    string octaveOffsetString = std::to_string(octaveOffset);
+    w1 = DrawText(10,30, GRAY, "OCTAVE", FONT_SIZE::TINY);
+    if(octaveOffset==0)
+        octaveOffsetString = " "+octaveOffsetString;
+    if(octaveOffset>0)
+        octaveOffsetString = "+"+octaveOffsetString;
+    DrawText(10+w1+8,30, GRAY, octaveOffsetString.c_str(), FONT_SIZE::TINY);
+
+    //Draw Preset name
+    DrawText(0,50, WHITE, presetName, FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+
+    //Draw Envelope
+    float totalTime = attack+decay+release;
+    float sustainTime = totalTime*0.3;
+    totalTime= totalTime+sustainTime;
+
+    unsigned short frameXStart = 11;
+    unsigned short frameXEnd = screenWidth-11;
+    unsigned short frameYStart = 67;
+    unsigned short frameYEnd = screenHeight-11;
+    unsigned short frameWidth = frameXEnd-frameXStart;
+    unsigned short frameHeight = frameYEnd-frameYStart;
+    DrawRectangle(frameXStart-1,frameYStart-1, frameXEnd+1, frameYEnd+1, GRAY, false);
+    //Attack
+    DrawLine(frameXStart,
+             frameXEnd,
+             frameXStart+frameWidth*attack/totalTime,
+             frameYStart,
+             YELLOW);
+    //Decay
+    DrawLine(frameXStart+frameWidth*attack/totalTime,
+             frameYStart,
+             frameXStart+frameWidth*((attack+decay)/totalTime),
+             frameYStart+frameHeight*(1-sustain),
+             CYAN);
+    //Sustain
+    DrawLine(frameXStart+frameWidth*(attack+decay)/totalTime,
+             frameYStart+frameHeight*(1-sustain),
+             frameXStart+frameWidth*((attack+decay+sustainTime)/totalTime),
+             frameYStart+frameHeight*(1-sustain),
+             MAGENTA);
+    //Release
+    DrawLine(frameXStart+frameWidth*(attack+decay+sustainTime)/totalTime,
+             frameYStart+frameHeight*(1-sustain),
+             frameXStart+frameWidth*1,//(attack+decay+sustainTime+decay)/totalTime,
+             frameYEnd,
+             RED);
+
+
 }
 
 ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
@@ -107,7 +181,6 @@ ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
         fonts[i].size = sizes[i];
     }
 }
-
 ScreenManagerX11::~ScreenManagerX11() {
     for(int i=0;i<5;i++){
         XUnloadFont(display, fonts[i].font->fid);
@@ -119,7 +192,6 @@ void ScreenManagerX11::DrawPixel(unsigned char x, unsigned char y, unsigned long
     XSetForeground(display, gc, color);
     XDrawPoint(display, window, gc, x,y);
 }
-
 void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill) {
 
     XSetForeground(display, gc, color);
@@ -128,7 +200,6 @@ void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigne
     else
         XDrawRectangle(display, window,gc, x1,y1,x2-x1,y2-y1);
 }
-
 unsigned short ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
     unsigned short textWidth = XTextWidth(fonts[size].font, text, strlen(text));
     if(align==FONT_ALIGN::CENTER) {
@@ -150,27 +221,24 @@ void ScreenManagerX11::Draw() {
     XSync(display, false);
     //XNextEvent(display, &event);
 }
-
 void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
                                 unsigned long color) {
     XSetForeground(display, gc, color);
     XDrawLine(display,window,gc,x1,y1,x2,y2);
 }
 
+
 void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
 
 }
-
 void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned long color) {
 
 }
-
-unsigned short
-ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
+unsigned short ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
 
 }
-
 void ScreenManagerOLED::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
                                  unsigned long color) {
 
 }
+

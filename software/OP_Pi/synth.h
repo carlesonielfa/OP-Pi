@@ -38,6 +38,7 @@ namespace OP_Pi
     struct SynthDefSine: public InstrumentDef{
         SynthDefSine(){
             env = new EnvelopeADSR(0.2,1,0.8,1);
+            name = "SINE";
         }
         double GenerateSound(const double time,double seconds_offset, Note n, bool &noteFinished) override{
             double output = env->Amplitude(seconds_offset,n.on,n.off);
@@ -54,6 +55,7 @@ namespace OP_Pi
     struct SynthDefBell: public InstrumentDef{
         SynthDefBell(){
             env = new EnvelopeADSR(0.01,1,0,1);
+            name = "BELL";
         }
         double GenerateSound(const double time,double seconds_offset, Note n, bool &noteFinished) override{
             double output = env->Amplitude(seconds_offset,n.on,n.off);
@@ -72,6 +74,7 @@ namespace OP_Pi
     struct SynthDefHarmonica: public InstrumentDef{
         SynthDefHarmonica(){
             env = new EnvelopeADSR(0.1,1,0.95,0.1);
+            name = "HARMONICA";
         }
         double GenerateSound(const double time,double seconds_offset, Note n, bool &noteFinished) override{
             double output = env->Amplitude(seconds_offset,n.on,n.off);

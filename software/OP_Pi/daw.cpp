@@ -55,3 +55,15 @@ void Daw::IncrementOctave(int increment) {
     instruments[activeInstrument]->octave+=increment;
 }
 
+char Daw::GetOctaveCurrentInstrument() {
+    return instruments[activeInstrument]->octave;
+}
+
+Envelope *Daw::GetInstrumentEnvelope() {
+    return instruments[activeInstrument]->GetEnvelope();
+}
+
+char * Daw::GetActiveInstrumentPresetName() {
+    return instruments[activeInstrument]->GetPresetName();
+}
+

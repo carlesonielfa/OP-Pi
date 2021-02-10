@@ -45,12 +45,18 @@ namespace OP_Pi{
         unsigned char screenHeight=128;
         unsigned char screenWidth=128;
     private:
+        //MIXER VIEW
         void DrawMixer(const int bpm,float** outputs, float** gains);
         void DrawChannel(unsigned char x, unsigned char y, const char* name, const float output, const float gain, bool active = false);
+        const unsigned char mixerGainWidth = 6;
+        //PATTERN VIEW
         void DrawPattern(unsigned char patternNumber, unsigned char activeInstrument);
         void DrawNote(unsigned char y);
         const unsigned char patternNoteHeight=11;
-        const unsigned char mixerGainWidth = 6;
+        //INSTRUMENT VIEW
+        void DrawInstrument(unsigned char activeInstrument, short octaveOffset, float attack, float decay,
+                            float sustain, float release, char *presetName="PRESET");
+
         char* channels [9] = {"A","B","C","D","E", "F","G","H","I"};
     };
     struct X11Font{
