@@ -9,14 +9,11 @@ namespace OP_Pi
     public:
         Effect(int sampleRate);
         virtual void ApplyEffect(float *outputs, int nSamples) =0;
-        float wet=1.0;
+        float wet=0.5;
     protected:
         int sampleRate;
     };
 
-    class Reverb:public Effect{
-
-    };
     class Delay: public Effect{
 
     };

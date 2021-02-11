@@ -5,6 +5,7 @@
 #ifndef OP_PI_EQ_H
 #define OP_PI_EQ_H
 namespace OP_Pi{
+    //TODO Fix EQ not working atm
     class EQ: public Effect{
     public:
         EQ(int sampleRate);
