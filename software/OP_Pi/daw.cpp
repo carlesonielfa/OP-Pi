@@ -17,7 +17,8 @@ Daw::Daw(double sampleRate) {
     }
     activeInstrument = 0;
     patterns.push_back(new Pattern);
-    patterns[0]->AddNote(instruments[0],60,0,60.0/160);
+    patterns[0]->AddNote(instruments[0],60,2*60.0/100,2);
+    //patterns[0]->AddNote(instruments[0],63,1,2);
 }
 Daw::~Daw() {
     for(Instrument* i: instruments){
@@ -36,8 +37,14 @@ void Daw::GenerateAudio(double time, float *outputs, int nSamples) {
     PlayActiveSynth(time, outputs, nSamples);
 
     //Play active pattern
-    if(activeView==DAW_VIEW::PATTERN)
+    if(activeView==DAW_VIEW::PATTERN) {
         PlayPattern(time, outputs, nSamples);
+
+        //Cursor shows play progress in current beat
+        cursor = fmod(time,4*60.0/bpm);
+        cursor/=4*60.0/bpm;
+    }
+
 }
 
 

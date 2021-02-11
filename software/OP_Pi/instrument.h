@@ -18,7 +18,7 @@ namespace OP_Pi
 		double off;	// Time note was deactivated
 		bool active;
 		Note(int number, double on, double off): number(number), on(on), off(off){
-		    active= false;
+		    active= true;
 		}
 		Note()
 		{

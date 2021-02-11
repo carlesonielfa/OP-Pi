@@ -11,14 +11,6 @@ void Pattern::PlayPattern(double time, float *output, double nSamples, int bpm, 
     for(Hit h:hits){
         bool noteFinished = false;
         h.instrument->GenerateNoteSounds(time,output,nSamples,h.note,noteFinished);
-        /*
-        for(int i=0; i<nSamples; i++){
-            time = fmod(time+1.0*i/sampleRate, 4*60.0/bpm);  //Modulo with bar time for pattern looping
-            output[i]+=h.instrument->GenerateNoteSound(time, h.note, noteFinished);
-
-
-        }*/
-
     }
 }
 
