@@ -91,16 +91,16 @@ namespace OP_Pi
             return output*0.2;
         }
     };
-    // Represents an object that synthesizes sound and outputs it
+    // Represents an object that synthesizes sound and instrumentOutputs it
     class Synth: public Instrument
     {
     public:
         Synth(double sampleRate, InstrumentDef *instrumentDef);
 
+        float GenerateNoteSound(double time, Note n, bool &noteFinished) override;
+
         ~Synth();
         //EnvelopeADSR env;
-    private:
-        void GenerateNoteSound(double time, float *outputs, int nSamples, Note n, bool &noteFinished) override;
     };
 }
 

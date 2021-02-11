@@ -11,7 +11,7 @@ ScreenManager::ScreenManager(Daw *daw) {
 void ScreenManager::Draw() {
     switch (daw->activeView) {
         case DAW_VIEW::MIXER:
-            DrawMixer(daw->bpm,daw->outputs, daw->gains);
+            DrawMixer(daw->bpm, daw->instrumentOutputs, daw->instrumentGains);
             break;
         case DAW_VIEW::PATTERN:
             DrawPattern(0,daw->GetIndexActiveInstrument());

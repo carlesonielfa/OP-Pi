@@ -54,7 +54,13 @@ void Instrument::NoteOff(int noteNumber, double timeOff){
     }
     muxNotes.unlock();
 }
+void Instrument::GenerateNoteSounds(double time, float *outputs, int nSamples, Note n, bool &noteFinished) {
+    for(int i=0; i<nSamples; i++){
+        outputs[i] += GenerateNoteSound(time+1.0*i/sampleRate,n,noteFinished);
+    }
+    ApplyEffects(outputs,nSamples);
 
+}
 void Instrument::PlayNotes(double time, float *outputs, int nSamples) {
     unique_lock<mutex> lm(muxNotes);
     // Iterate through all active notes, and mix together
@@ -65,7 +71,7 @@ void Instrument::PlayNotes(double time, float *outputs, int nSamples) {
 
 		// Get sample for this note by using the correct instrument and envelope
         //sound = n.channel->sound(dTime, n, noteFinished);
-        GenerateNoteSound(time, outputs, nSamples, n, noteFinished);
+        GenerateNoteSounds(time, outputs, nSamples, n, noteFinished);
         
 		if (noteFinished) // Flag note to be removed
 			n.active = false;
@@ -73,7 +79,7 @@ void Instrument::PlayNotes(double time, float *outputs, int nSamples) {
 	}
 	safe_remove<vector<Note>>(vecNotes, [](Note const& item) { return item.active; });
 
-    //Calculate output level mean of the recent 10 outputs
+    //Calculate output level mean of the recent 10 instrumentOutputs
     lastOutput=0;
     for(int i=0; i<nSamples;i++){
         lastOutput+=abs(outputs[i])/nSamples;

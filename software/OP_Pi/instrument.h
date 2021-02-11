@@ -17,6 +17,9 @@ namespace OP_Pi
 		double on;	// Time note was activated
 		double off;	// Time note was deactivated
 		bool active;
+		Note(int number, double on, double off): number(number), on(on), off(off){
+		    active= false;
+		}
 		Note()
 		{
 			number = 0;
@@ -73,7 +76,6 @@ namespace OP_Pi
             {
                 double amp = 0.0;
                 double releaseAmplitude = 0.0;
-
                 if (timeOn > timeOff) // Note is on
                 {
                     double lifeTime = time - timeOn;
@@ -139,6 +141,8 @@ namespace OP_Pi
             //virtual double ProcessSound(int frame, double seconds_offset, double sample_rate) = 0;
             
             void PlayNotes(double time, float *outputs, int nSamples);
+            virtual float GenerateNoteSound(double time, Note n, bool &noteFinished)=0;
+            void GenerateNoteSounds(double time, float *outputs, int nSamples, Note n, bool &noteFinished);
             char* GetPresetName();
             Envelope* GetEnvelope();
             float lastOutput = 0;
@@ -146,7 +150,6 @@ namespace OP_Pi
             char octave=0;
             int sampleRate;
         protected:
-            virtual void GenerateNoteSound(double time, float *outputs, int nSamples, Note n, bool &noteFinished) = 0;
             void ApplyEffects(float *outputs, int nSamples);
             InstrumentDef* instrumentDef;
             std::vector<Effect*> effects;

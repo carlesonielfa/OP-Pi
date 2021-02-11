@@ -96,7 +96,7 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
         }*/
         float *outputs = new float[frame_count];
         if(daw!= nullptr)
-            daw->PlayActiveSynth(seconds_offset, outputs, frame_count);
+            daw->GenerateAudio(seconds_offset, outputs, frame_count);
         for (int channel = 0; channel < layout->channel_count; channel += 1) {
             for(int i=0;i<frame_count;i++) {
                 write_sample(areas[channel].ptr, outputs[i]);
@@ -104,7 +104,7 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             }
 
         }
-        //delete outputs;
+        //delete instrumentOutputs;
 
         //seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
         seconds_offset = seconds_offset + 1.0/sample_rate * frame_count;

@@ -3,3 +3,27 @@
 //
 
 #include "timeline.h"
+using namespace OP_Pi;
+
+void Pattern::PlayPattern(double time, float *output, double nSamples, int bpm, int sampleRate) {
+    //TODO: Fix sound cutting in loop
+    time = fmod(time, 4*60.0/bpm);
+    for(Hit h:hits){
+        bool noteFinished = false;
+        h.instrument->GenerateNoteSounds(time,output,nSamples,h.note,noteFinished);
+        /*
+        for(int i=0; i<nSamples; i++){
+            time = fmod(time+1.0*i/sampleRate, 4*60.0/bpm);  //Modulo with bar time for pattern looping
+            output[i]+=h.instrument->GenerateNoteSound(time, h.note, noteFinished);
+
+
+        }*/
+
+    }
+}
+
+void Pattern::AddNote(Instrument *instrument, int noteNumber, float noteStart, float noteEnd) {
+    Hit h {instrument, Note{noteNumber,noteStart,noteEnd}};
+    hits.push_back(h);
+
+}

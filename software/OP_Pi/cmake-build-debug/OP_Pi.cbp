@@ -946,6 +946,12 @@
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/main.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/reverb.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/reverb.h">
+			<Option target="OP_Pi"/>
+		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/screen_manager.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>
