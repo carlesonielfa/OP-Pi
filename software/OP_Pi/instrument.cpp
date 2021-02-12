@@ -4,7 +4,7 @@
 using namespace OP_Pi;
 using namespace std;
 // Call when key is pressed
-void Instrument::NoteOn(int noteIndex, double timeOn, unsigned short *rootNote, SCALE *scale) {
+void Instrument::NoteOn(int noteIndex, double timeOn) {
     noteIndex+= octave * 7;
     muxNotes.lock();
     auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteIndex](Note const& item) { return item.index == noteIndex; });
@@ -95,7 +95,7 @@ Envelope *Instrument::GetEnvelope() {
 }
 
 Instrument::Instrument(int sampleRate, unsigned short *rootNote, SCALE *scale)
-                        :sampleRate(sampleRate), rootNote(rootNote), scale(scale) {
+                        : sampleRate(sampleRate), rootNote(rootNote), scale(scale){
 }
 
 void Instrument::ApplyEffects(float *outputs, int nSamples) {

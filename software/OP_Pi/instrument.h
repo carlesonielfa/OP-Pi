@@ -140,7 +140,7 @@ namespace OP_Pi
             Instrument(int sampleRate, unsigned short *rootNote, SCALE *scale);
             ~Instrument();
             // Call when key is pressed
-            void NoteOn(int noteIndex, double timeOn, unsigned short *rootNote, SCALE *scale);
+            void NoteOn(int noteIndex, double timeOn);
 
             // Call when key is released
             void NoteOff(int noteIndex, double timeOff);

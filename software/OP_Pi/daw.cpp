@@ -6,9 +6,9 @@
 using namespace OP_Pi;
 Daw::Daw(double sampleRate) {
     this->sampleRate = sampleRate;
-    instruments.push_back(new Synth(sampleRate, new SynthDefSine(), nullptr, nullptr));
-    instruments.push_back(new Synth(sampleRate, new SynthDefBell(), nullptr, nullptr));
-    instruments.push_back(new Synth(sampleRate, new SynthDefHarmonica(), nullptr, nullptr));
+    instruments.push_back(new Synth(sampleRate, new SynthDefSine(), &rootNote, &scale));
+    instruments.push_back(new Synth(sampleRate, new SynthDefBell(), &rootNote, &scale));
+    instruments.push_back(new Synth(sampleRate, new SynthDefHarmonica(), &rootNote, &scale));
     instrumentOutputs = new float*[instruments.size()];
     instrumentGains = new float*[instruments.size()];
     for(int i = 0; i<instruments.size(); i++){
@@ -18,10 +18,10 @@ Daw::Daw(double sampleRate) {
     activeInstrument = 0;
     patterns.push_back(new Pattern);
     //patterns[0]->AddNote(instruments[0],60,1,1.5);
-    patterns[0]->AddNote(instruments[2], 63, 0, (60.0 / 100), nullptr, nullptr);
-    patterns[0]->AddNote(instruments[2], 60, 60.0 / 100, 2 * (60.0 / 100), nullptr, nullptr);
-    patterns[0]->AddNote(instruments[2], 71, 2 * (60.0 / 100), 3 * (60.0 / 100), nullptr, nullptr);
-    patterns[0]->AddNote(instruments[2], 67, 3 * (60.0 / 100), 4 * (60.0 / 100), nullptr, nullptr);
+    patterns[0]->AddNote(instruments[2], 6, 0, (60.0 / 100), &rootNote, &scale);
+    patterns[0]->AddNote(instruments[2], 2, 60.0 / 100, 2 * (60.0 / 100), &rootNote, &scale);
+    patterns[0]->AddNote(instruments[2], 0, 2 * (60.0 / 100), 3 * (60.0 / 100), &rootNote, &scale);
+    patterns[0]->AddNote(instruments[2], 4, 3 * (60.0 / 100), 4 * (60.0 / 100), &rootNote, &scale);
 }
 Daw::~Daw() {
     for(Instrument* i: instruments){
@@ -51,7 +51,7 @@ void Daw::GenerateAudio(double time, float *outputs, int nSamples) {
 
 
 void Daw::NoteOn(int noteIndex, double timeOn) {
-    return instruments[activeInstrument]->NoteOn(noteIndex, timeOn, &rootNote, &scale);
+    return instruments[activeInstrument]->NoteOn(noteIndex, timeOn);
 }
 
 void Daw::NoteOff(int noteIndex, double timeOff) {
