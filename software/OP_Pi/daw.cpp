@@ -17,11 +17,11 @@ Daw::Daw(double sampleRate) {
     }
     activeInstrument = 0;
     patterns.push_back(new Pattern);
-    //patterns[0]->AddNote(instruments[0],60,1,1.5);
-    patterns[0]->AddNote(instruments[2], 6, 0, (60.0 / 100), &rootNote, &scale);
+
+    //patterns[0]->AddNote(instruments[2], 6, 0, (60.0 / 100), &rootNote, &scale);
     patterns[0]->AddNote(instruments[2], 2, 60.0 / 100, 2 * (60.0 / 100), &rootNote, &scale);
     patterns[0]->AddNote(instruments[2], 0, 2 * (60.0 / 100), 3 * (60.0 / 100), &rootNote, &scale);
-    patterns[0]->AddNote(instruments[2], 4, 3 * (60.0 / 100), 4 * (60.0 / 100), &rootNote, &scale);
+    //patterns[0]->AddNote(instruments[2], 4, 3 * (60.0 / 100), 4 * (60.0 / 100)-0.01, &rootNote, &scale);
 }
 Daw::~Daw() {
     for(Instrument* i: instruments){
@@ -40,11 +40,11 @@ void Daw::GenerateAudio(double time, float *outputs, int nSamples) {
     PlayActiveSynth(time, outputs, nSamples);
 
     //Play active pattern
-    if(activeView==DAW_VIEW::PATTERN) {
+    if(activeView==DAW_VIEW::PATTERN && play) {
         PlayPattern(fmod(time,4*60.0/bpm), outputs, nSamples);
 
         //Cursor shows play progress in current beat
-        cursor = TimeToBarPosition(time);
+        cursor = TimeToBarPosition(time-latency);
     }
 
 }
@@ -93,7 +93,7 @@ char * Daw::getActiveInstrumentPresetName() {
 
 double Daw::TimeToBarPosition(double time) {
     time = fmod(time,4*60.0/bpm);
-    return time/=4*60.0/bpm;;
+    return time/=4*60.0/bpm;
 }
 
 double Daw::BarPositionToTime(double position) {

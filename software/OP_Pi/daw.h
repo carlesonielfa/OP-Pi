@@ -51,6 +51,8 @@ namespace OP_Pi{
         float cursor;
         SCALE scale=SCALE::MAJOR;
         unsigned short rootNote = 64;
+        double latency = 0;
+        bool play=false;
     private:
         vector<Instrument*> instruments;
         vector<Pattern*> patterns;

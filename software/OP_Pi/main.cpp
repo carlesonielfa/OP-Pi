@@ -265,7 +265,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-
+    daw->latency = outstream->software_latency;
     bool quit=false;
     while(!quit) {
         soundio_flush_events(soundio);
@@ -304,6 +304,9 @@ int main(int argc, char **argv) {
                 else
                     daw->activeView = static_cast<DAW_VIEW>(action.value);
                 printf("ACTIVE VIEW CHANGED TO: %i\n", daw->activeView);
+                break;
+            case ACTION_TYPE::PLAY:
+                daw->play = !daw->play;
                 break;
             default:
                 printf("Action not yet implemented\n", action.type);

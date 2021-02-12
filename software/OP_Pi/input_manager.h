@@ -14,6 +14,7 @@ namespace OP_Pi
         CHANGE_ACTIVE_INSTRUMENT,//TODO: Change for colored encoders
         INCREMENT_OCTAVE,
         CHANGE_VIEW,
+        PLAY,
     };
     struct ACTION{
         ACTION_TYPE type = ACTION_TYPE::NONE;

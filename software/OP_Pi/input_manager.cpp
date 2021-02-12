@@ -42,7 +42,10 @@ ACTION InputManagerKeyboard::ProcessInput() {
             action.type = ACTION_TYPE::CHANGE_VIEW;
             action.value = -1;
         }
-
+        //If spacebar pressed toogle play
+        if (event.xkey.keycode == 65 && event.type == KeyPress){
+            action.type = ACTION_TYPE::PLAY;
+        }
     }
     return action;
 }
