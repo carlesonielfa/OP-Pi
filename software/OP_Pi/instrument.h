@@ -9,23 +9,30 @@
 #include <vector>
 #include "effect.h"
 #include "eq.h"
+#include "sound_utils.h"
 namespace OP_Pi
 {
     struct Note
 	{
-		int number;		// Midi note number
+		int index;		// Midi note number
 		double on;	// Time note was activated
 		double off;	// Time note was deactivated
 		bool active;
-		Note(int number, double on, double off): number(number), on(on), off(off){
+		unsigned short* rootNote;
+		SCALE* scale;
+		Note(int index, double on, double off, unsigned short* rootNote, SCALE* scale)
+		: index(index), on(on), off(off), rootNote(rootNote), scale(scale){
 		    active= true;
 		}
-		Note()
+		Note(unsigned short* rootNote, SCALE* scale):rootNote(rootNote), scale(scale)
 		{
-			number = 0;
+            index = 0;
 			on = 0.0;
 			off = 0.0;
 			active = false;
+		}
+		int getNumber(){
+		    return getNoteInScale(*rootNote,*scale,index);
 		}
 	};
 
@@ -76,7 +83,7 @@ namespace OP_Pi
             {
                 double amp = 0.0;
                 double releaseAmplitude = 0.0;
-                if (timeOn > timeOff) // Note is on
+                if (timeOn > timeOff ||  (time >= timeOn && time < timeOff)) // Note is on
                 {
                     double lifeTime = time - timeOn;
 
@@ -120,7 +127,7 @@ namespace OP_Pi
         ~InstrumentDef(){
             delete env;
         }
-        float GetEnvelopeAmplitude(double time, Note n){
+        float getEnvelopeAmplitude(double time, Note n) const{
             return  env->Amplitude(time,n.on,n.off);
         }
 
@@ -130,13 +137,13 @@ namespace OP_Pi
     class Instrument
     {
         public:
-            Instrument(int sampleRate);
+            Instrument(int sampleRate, unsigned short *rootNote, SCALE *scale);
             ~Instrument();
             // Call when key is pressed
-            void NoteOn(int noteNumber,double timeOn);
+            void NoteOn(int noteIndex, double timeOn, unsigned short *rootNote, SCALE *scale);
 
             // Call when key is released
-            void NoteOff(int noteNumber,double timeOff);
+            void NoteOff(int noteIndex, double timeOff);
 
             //virtual double ProcessSound(int frame, double seconds_offset, double sample_rate) = 0;
             
@@ -148,6 +155,8 @@ namespace OP_Pi
             float lastOutput = 0;
             float gain=0.5;
             char octave=0;
+            unsigned short* rootNote;
+            SCALE *scale;
             int sampleRate;
         protected:
             void ApplyEffects(float *outputs, int nSamples);

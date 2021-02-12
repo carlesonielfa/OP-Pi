@@ -51,8 +51,8 @@ namespace OP_Pi{
         const unsigned char mixerGainWidth = 6;
         //PATTERN VIEW
         void DrawPattern(unsigned char patternNumber, unsigned char activeInstrument);
-        void DrawNote(unsigned char y);
-        const unsigned char patternNoteHeight=11;
+        void DrawNoteRow(unsigned char y);
+        const unsigned char patternRowHeight=11;
         //INSTRUMENT VIEW
         void DrawInstrument(unsigned char activeInstrument, short octaveOffset, float attack, float decay,
                             float sustain, float release, char *presetName="PRESET");

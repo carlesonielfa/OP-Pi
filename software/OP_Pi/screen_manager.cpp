@@ -14,14 +14,14 @@ void ScreenManager::Draw() {
             DrawMixer(daw->bpm, daw->instrumentOutputs, daw->instrumentGains);
             break;
         case DAW_VIEW::PATTERN:
-            DrawPattern(0,daw->GetIndexActiveInstrument());
+            DrawPattern(0, daw->getIndexActiveInstrument());
             break;
         case DAW_VIEW::INSTRUMENT: {
-            EnvelopeADSR *env = (EnvelopeADSR *) daw->GetInstrumentEnvelope();
-            DrawInstrument(daw->GetIndexActiveInstrument(),
-                           daw->GetOctaveCurrentInstrument(),
+            EnvelopeADSR *env = (EnvelopeADSR *) daw->getInstrumentEnvelope();
+            DrawInstrument(daw->getIndexActiveInstrument(),
+                           daw->getOctaveCurrentInstrument(),
                            env->attackTime, env->decayTime, env->sustainAmplitude, env->releaseTime,
-                           daw->GetActiveInstrumentPresetName());
+                           daw->getActiveInstrumentPresetName());
             break;
         }
         default:
@@ -40,8 +40,9 @@ void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
     DrawRectangle(screenWidth/2-17, 2, screenWidth/2+17, 30, CYAN, false);
 
     for(int i=0; i<sizeof(channels)/sizeof(char*); i++){
-        if(i<daw->GetNInstruments())
-            DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], *outputs[i], *gains[i], i==daw->GetIndexActiveInstrument());
+        if(i< daw->getNInstruments())
+            DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], *outputs[i], *gains[i], i==
+                                                                                      daw->getIndexActiveInstrument());
         else
             DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], 0, 0);
     }
@@ -65,7 +66,7 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
     DrawText(10+w0-1,28, MAGENTA, std::to_string(patternNumber).c_str(),FONT_SIZE::SMALL);
 
 
-    unsigned short notesStart = (screenHeight-patternNoteHeight)*7;
+    unsigned short notesStart = (screenHeight - patternRowHeight) * 7;
     unsigned short xBarStart = 12;
     //1 BAR per pattern, 4 beats per bar 4 step per beat, 4 divisons per step
     unsigned short xPosLine=0;
@@ -75,16 +76,25 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
         DrawLine(xPosLine, notesStart, xPosLine, screenHeight-1,i % 4 == 0 ? DARKGRAY : DARKERGRAY);
     }
 
+    //Draw note row
     for(int i=0; i<7;i++){
-        DrawNote((screenHeight-patternNoteHeight)*7+i*patternNoteHeight);
+        DrawNoteRow((screenHeight - patternRowHeight) * 7 + i * patternRowHeight);
     }
     //Draw Cursor
-    unsigned short xcursor = xBarStart + daw->cursor * (screenWidth - xBarStart);
-    DrawLine(xcursor,notesStart-4,xcursor, screenHeight-1,YELLOW);
+    unsigned short xCursor = xBarStart + daw->cursor * (screenWidth - xBarStart);
+    DrawLine(xCursor,notesStart-4,xCursor, screenHeight-1,YELLOW);
 
+    //Draw Pattern notes
+    for(Hit h: daw->getHitsInActivePattern()){
+        DrawRectangle(xBarStart + daw->TimeToBarPosition(h.note.on) * (screenWidth - xBarStart),
+                      (screenHeight - patternRowHeight) * 7 + 2,
+                      xBarStart + daw->TimeToBarPosition(h.note.off) * (screenWidth - xBarStart)-2,
+                      (screenHeight - patternRowHeight)* 7 + patternRowHeight - 1,
+                      CYAN);
+    }
 }
-void ScreenManager::DrawNote(unsigned char y){
-    DrawRectangle(0,y+1,12, y + patternNoteHeight-1,WHITE);
+void ScreenManager::DrawNoteRow(unsigned char y){
+    DrawRectangle(0,y+1,10, y + patternRowHeight - 1,WHITE);
     DrawLine(12,y,screenWidth-1,y,DARKGRAY);
 }
 

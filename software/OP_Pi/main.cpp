@@ -79,21 +79,7 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             break;
 
         const struct SoundIoChannelLayout *layout = &outstream->layout;
-        /*
-        for (int frame = 0; frame < frame_count; frame += 1) {
-            //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
-            double time = seconds_offset + frame * 1.0/sample_rate;
-            double sample = daw.PlayActiveSynth(time, seconds_offset, 0);
-            //Avoid clipping
-            if(sample<-1)
-                sample=-1;
-            else if(sample>1)
-                sample=1;
-            for (int channel = 0; channel < layout->channel_count; channel += 1) {
-                write_sample(areas[channel].ptr, sample);
-                areas[channel].ptr += areas[channel].step;
-            }
-        }*/
+
         float *outputs = new float[frame_count];
         if(daw!= nullptr)
             daw->GenerateAudio(seconds_offset, outputs, frame_count);
@@ -301,7 +287,7 @@ int main(int argc, char **argv) {
             case ACTION_TYPE::NONE:
                 break;
             case ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT:
-                if(!daw->SetIndexActiveInstrument(action.value)){
+                if(!daw->setIndexActiveInstrument(action.value)){
                     fprintf(stderr, "Error when selecting instrument: instrument %d not initialized\n", action.value);
                 }else{
                     printf("NEW ACTIVE INSTRUMENT: %d\n",action.value);
@@ -314,7 +300,7 @@ int main(int argc, char **argv) {
             case ACTION_TYPE::CHANGE_VIEW:
                 if(action.value ==-1)
 
-                    daw->activeView = static_cast<DAW_VIEW>((daw->activeView + 1)%DAW_VIEW::ENUM_SIZE_INDICATOR);
+                    daw->activeView = static_cast<DAW_VIEW>((daw->activeView + 1)%DAW_VIEW::DAW_VIEW_SIZE_INDICATOR);
                 else
                     daw->activeView = static_cast<DAW_VIEW>(action.value);
                 printf("ACTIVE VIEW CHANGED TO: %i\n", daw->activeView);

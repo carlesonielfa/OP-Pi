@@ -14,7 +14,7 @@ namespace OP_Pi
                const double LFOHertz = 0.0, const double LFOAmplitude = 0.0)
     {
 
-        double dFreq = w(freq) * time + LFOAmplitude * freq * (sin(w(LFOHertz) * time));
+        double dFreq = W(freq) * time + LFOAmplitude * freq * (sin(W(LFOHertz) * time));
         switch (type)
         {
             case OSC_TYPE::SINE: // Sine wave bewteen -1 and +1
@@ -42,13 +42,13 @@ namespace OP_Pi
         }
         float GenerateSound(double time,Note n, bool &noteFinished) override{
             //Apply Envelope
-            float output = GetEnvelopeAmplitude(time,n);
+            float output = getEnvelopeAmplitude(time, n);
 
             if (output == 0 && n.off !=0){
                 noteFinished = true;
             }
             //Apply oscillator
-            output*= Osc(time, midi_to_freq(n.number), OSC_TYPE::SINE);
+            output*= Osc(time, midiToFreq(n.getNumber()), OSC_TYPE::SINE);
             return output;
         }
     };
@@ -59,14 +59,14 @@ namespace OP_Pi
         }
         float GenerateSound(double time, Note n, bool &noteFinished) override{
             //Apply Envelope
-            float output = GetEnvelopeAmplitude(time,n);
+            float output = getEnvelopeAmplitude(time, n);
             //If volume is zero and note has been released stop sound
             if (output == 0 && n.off !=0)
                 noteFinished = true;
             //Apply oscillator
-            output*= Osc(time, midi_to_freq(n.number), OSC_TYPE::SINE)
-                     +0.5*Osc(time, midi_to_freq(n.number+24))
-                     +0.25*Osc(time, midi_to_freq(n.number+36));
+            output*= Osc(time, midiToFreq(n.getNumber()), OSC_TYPE::SINE)
+                     +0.5*Osc(time, midiToFreq(n.getNumber() + 24))
+                     +0.25*Osc(time, midiToFreq(n.getNumber() + 36));
 
             return output*0.5;
         }
@@ -77,17 +77,17 @@ namespace OP_Pi
             name = "HARMONICA";
         }
         float GenerateSound(double time, Note n, bool &noteFinished) override{
-            double output = GetEnvelopeAmplitude(time,n);
+            double output = getEnvelopeAmplitude(time, n);
             //Apply Envelope
 
             if (output == 0 && n.off !=0){
                 noteFinished = true;
             }
             //Apply oscillator
-            output*= Osc(time, midi_to_freq(n.number-12), OSC_TYPE::SAW)
-                     + Osc(time, midi_to_freq(n.number),OSC_TYPE::SQUARE)
-                     + 0.5* Osc(time, midi_to_freq(n.number+12),OSC_TYPE::SQUARE)
-                     +0.05* Osc(time, midi_to_freq(n.number+24),OSC_TYPE::NOISE);
+            output*= Osc(time, midiToFreq(n.getNumber() - 12), OSC_TYPE::SAW)
+                     + Osc(time, midiToFreq(n.getNumber()), OSC_TYPE::SQUARE)
+                     + 0.5* Osc(time, midiToFreq(n.getNumber() + 12), OSC_TYPE::SQUARE)
+                     +0.05* Osc(time, midiToFreq(n.getNumber() + 24), OSC_TYPE::NOISE);
             return output*0.2;
         }
     };
@@ -95,7 +95,7 @@ namespace OP_Pi
     class Synth: public Instrument
     {
     public:
-        Synth(double sampleRate, InstrumentDef *instrumentDef);
+        Synth(double sampleRate, InstrumentDef *instrumentDef, unsigned short *rootNote, SCALE *scale);
 
         float GenerateNoteSound(double time, Note n, bool &noteFinished) override;
 

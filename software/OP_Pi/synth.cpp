@@ -3,7 +3,8 @@
 
 using namespace OP_Pi;
 
-Synth::Synth(double sampleRate, InstrumentDef *instrumentDef):Instrument(sampleRate){
+Synth::Synth(double sampleRate, InstrumentDef *instrumentDef, unsigned short *rootNote, SCALE *scale)
+        : Instrument(sampleRate, rootNote, scale) {
     this->instrumentDef = instrumentDef;
 
     //TODO Remove hardcoded effect

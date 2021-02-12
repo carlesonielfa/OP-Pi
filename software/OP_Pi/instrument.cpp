@@ -4,18 +4,18 @@
 using namespace OP_Pi;
 using namespace std;
 // Call when key is pressed
-void Instrument::NoteOn(int noteNumber, double timeOn){
-    noteNumber+=octave*12;
+void Instrument::NoteOn(int noteIndex, double timeOn, unsigned short *rootNote, SCALE *scale) {
+    noteIndex+= octave * 7;
     muxNotes.lock();
-    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber; });
+    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteIndex](Note const& item) { return item.index == noteIndex; });
 
 
     // Note not found in vector
     if (noteFound == vecNotes.end())
     {
         //Create a new note
-        Note n;
-        n.number = noteNumber;
+        Note n(rootNote,scale);
+        n.index = noteIndex;
         n.on = timeOn;
         n.active = true;
 
@@ -41,10 +41,10 @@ void Instrument::NoteOn(int noteNumber, double timeOn){
 }
 
 // Call when key is released
-void Instrument::NoteOff(int noteNumber, double timeOff){
-    noteNumber+=octave*12;
+void Instrument::NoteOff(int noteIndex, double timeOff){
+    noteIndex+= octave * 7;
     muxNotes.lock();
-    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber;});
+    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteIndex](Note const& item) { return item.index == noteIndex;});
 
     if (noteFound != vecNotes.end())
     {
@@ -94,8 +94,8 @@ Envelope *Instrument::GetEnvelope() {
     return instrumentDef->env;
 }
 
-Instrument::Instrument(int sampleRate) {
-    this->sampleRate = sampleRate;
+Instrument::Instrument(int sampleRate, unsigned short *rootNote, SCALE *scale)
+                        :sampleRate(sampleRate), rootNote(rootNote), scale(scale) {
 }
 
 void Instrument::ApplyEffects(float *outputs, int nSamples) {
