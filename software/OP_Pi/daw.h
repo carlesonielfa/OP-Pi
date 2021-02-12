@@ -41,6 +41,8 @@ namespace OP_Pi{
         double getBeatDuration();                   //Returns beat duration in seconds
         double getBarDuration();                    //Returns bar duration in seconds
 
+        void ChangeScale(int rootNote, SCALE scale);
+
         std::vector<Hit> getHitsInActivePattern();
 
         double sampleRate;
@@ -49,11 +51,13 @@ namespace OP_Pi{
         float** instrumentOutputs;
         DAW_VIEW activeView = DAW_VIEW::INSTRUMENT;
         float cursor;
-        SCALE scale=SCALE::MAJOR;
-        unsigned short rootNote = 64;
+
         double latency = 0;
         bool play=false;
+        string noteNames [7];
     private:
+        SCALE scale;
+        unsigned short rootNote;
         vector<Instrument*> instruments;
         vector<Pattern*> patterns;
         unsigned char activeInstrument;

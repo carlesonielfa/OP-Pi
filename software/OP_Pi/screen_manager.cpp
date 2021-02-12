@@ -35,7 +35,7 @@ void ScreenManager::Draw() {
 }
 void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
 
-    DrawText(0, 5, WHITE, const_cast<char *>(std::to_string(bpm).c_str()), FONT_SIZE::MEDIUM, FONT_ALIGN::CENTER);
+    DrawText(0, 5, WHITE, to_string(bpm), FONT_SIZE::MEDIUM, FONT_ALIGN::CENTER);
     DrawText(0,20,CYAN, "BPM", FONT_SIZE::TINY, FONT_ALIGN::CENTER);
     DrawRectangle(screenWidth/2-17, 2, screenWidth/2+17, 30, CYAN, false);
 
@@ -47,7 +47,7 @@ void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
             DrawChannel(12+40*(i%3),38+27*(i/3), channels[i], 0, 0);
     }
 }
-void ScreenManager::DrawChannel(unsigned char x, unsigned char y, const char* name, const float output, const float gain, bool active) {
+void ScreenManager::DrawChannel(unsigned char x, unsigned char y, string name, const float output, const float gain, bool active) {
 
     DrawText(x,y+6,active ? WHITE : DARKGRAY,name,FONT_SIZE::BIG);
     DrawRectangle(x+20, y, x+20+mixerGainWidth, y+24, GRAY);
@@ -67,7 +67,7 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
 
 
     unsigned short notesStart = (screenHeight - patternRowHeight) * 7;
-    unsigned short xBarStart = 12;
+    unsigned short xBarStart = 24;
     //1 BAR per pattern, 4 beats per bar 4 step per beat, 4 divisons per step
     unsigned short xPosLine=0;
     for(int i=0; i<=16;i++){
@@ -78,7 +78,7 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
 
     //Draw note row
     for(int i=0; i<7;i++){
-        DrawNoteRow((screenHeight - patternRowHeight) * 7 + i * patternRowHeight);
+        DrawNoteRow((screenHeight - patternRowHeight) * 7 + i * patternRowHeight,daw->noteNames[6-i]);
     }
     //Draw Cursor
     unsigned short xCursor = xBarStart + daw->cursor * (screenWidth - xBarStart);
@@ -95,9 +95,10 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
                       CYAN);
     }
 }
-void ScreenManager::DrawNoteRow(unsigned char y){
-    DrawRectangle(0,y+1,10, y + patternRowHeight - 1,WHITE);
-    DrawLine(12,y,screenWidth-1,y,DARKGRAY);
+void ScreenManager::DrawNoteRow(unsigned char y, string noteName){
+    DrawRectangle(0,y+1,23, y + patternRowHeight - 1,WHITE);
+    DrawText(1,y+2,BLACK, noteName,FONT_SIZE::TINY);
+    DrawLine(24,y,screenWidth-1,y,DARKGRAY);
 }
 
 void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveOffset, float attack, float decay,
@@ -212,8 +213,8 @@ void ScreenManagerX11::DrawRectangle(unsigned char x1, unsigned char y1, unsigne
     else
         XDrawRectangle(display, window,gc, x1,y1,x2-x1,y2-y1);
 }
-unsigned short ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
-    unsigned short textWidth = XTextWidth(fonts[size].font, text, strlen(text));
+unsigned short ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsigned long color, string text, FONT_SIZE size, FONT_ALIGN align) {
+    unsigned short textWidth = XTextWidth(fonts[size].font, text.c_str(), text.length());
     if(align==FONT_ALIGN::CENTER) {
         x = (screenWidth - x) / 2 - textWidth / 2;
     }
@@ -221,7 +222,7 @@ unsigned short ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsi
 
     XSetFont(display,gc, fonts[size].font->fid);
     XSetForeground(display, gc, color);
-    XDrawString(display,window, gc, x,y,text, strlen(text));
+    XDrawString(display,window, gc, x,y,text.c_str(), text.length());
     return  textWidth;
 }
 void ScreenManagerX11::Draw() {
@@ -246,7 +247,7 @@ void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsign
 void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned long color) {
 
 }
-unsigned short ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, const char* text, FONT_SIZE size, FONT_ALIGN align) {
+unsigned short ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, string text, FONT_SIZE size, FONT_ALIGN align) {
 
 }
 void ScreenManagerOLED::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,

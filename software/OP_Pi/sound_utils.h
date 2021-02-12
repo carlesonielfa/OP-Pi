@@ -2,6 +2,9 @@
 #define SOUNDUTILS_H
 
 #include <math.h>
+#include <string.h>
+#include <string>
+using namespace std;
 namespace OP_Pi{
     static const double PI = 3.14159265358979323846264338328;
 
@@ -33,6 +36,26 @@ namespace OP_Pi{
 
         return 12*octave+root+scales[scale][index];
     }
+    static string noteNames[]={
+            "C ", "C#","D ","D#","E ","F ","F#","G ","G#","A ","A#","B ",
+    };
+    static void getNamesInScale(string* names,int root, SCALE scale){
+
+        int index;
+        char octave;
+        for(int i=0;i<7;i++){
+            index = root-60+scales[scale][i];
+            octave = index/7;
+            names[i] = noteNames[index] + to_string(octave + 4);
+        }
+    }
+    /*
+    static string getIndexName(int root, SCALE scale, int index){
+        index = root-60+scales[scale][index];
+        char octave = index/7;
+        //index = fmod(index,7);
+        return noteNames[index] + to_string(octave + 4);
+    }*
     /*static int getIndexInScale(int root, SCALE scale, int midiNote){
 
         for(int i=0; i<7; i++){

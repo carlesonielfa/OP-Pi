@@ -6,6 +6,8 @@
 using namespace OP_Pi;
 Daw::Daw(double sampleRate) {
     this->sampleRate = sampleRate;
+
+    //Create Initial instruments
     instruments.push_back(new Synth(sampleRate, new SynthDefSine(), &rootNote, &scale));
     instruments.push_back(new Synth(sampleRate, new SynthDefBell(), &rootNote, &scale));
     instruments.push_back(new Synth(sampleRate, new SynthDefHarmonica(), &rootNote, &scale));
@@ -16,8 +18,11 @@ Daw::Daw(double sampleRate) {
         instrumentOutputs[i] = &instruments[i]->lastOutput;
     }
     activeInstrument = 0;
-    patterns.push_back(new Pattern);
 
+    ChangeScale(60,SCALE::MINOR);
+
+    //Pattern tests
+    patterns.push_back(new Pattern);
     //patterns[0]->AddNote(instruments[2], 6, 0, (60.0 / 100), &rootNote, &scale);
     patterns[0]->AddNote(instruments[2], 2, 60.0 / 100, 2 * (60.0 / 100), &rootNote, &scale);
     patterns[0]->AddNote(instruments[2], 0, 2 * (60.0 / 100), 3 * (60.0 / 100), &rootNote, &scale);
@@ -110,6 +115,12 @@ double Daw::getBarDuration() {
 
 std::vector<Hit> Daw::getHitsInActivePattern() {
     return patterns[activePattern]->hits;
+}
+
+void Daw::ChangeScale(int rootNote, SCALE scale){
+    this->rootNote = rootNote;
+    this->scale = scale;
+    getNamesInScale(noteNames, rootNote, scale);
 }
 
 
