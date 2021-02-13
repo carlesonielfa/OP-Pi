@@ -23,10 +23,6 @@ Daw::Daw(double sampleRate) {
 
     //Pattern tests
     patterns.push_back(new Pattern);
-    //patterns[0]->AddNote(instruments[2], 6, 0, (60.0 / 100), &rootNote, &scale);
-    patterns[0]->AddNote(instruments[2], 2, 60.0 / 100, 2 * (60.0 / 100), &rootNote, &scale);
-    patterns[0]->AddNote(instruments[2], 0, 2 * (60.0 / 100), 3 * (60.0 / 100), &rootNote, &scale);
-    //patterns[0]->AddNote(instruments[2], 4, 3 * (60.0 / 100), 4 * (60.0 / 100)-0.01, &rootNote, &scale);
 }
 Daw::~Daw() {
     for(Instrument* i: instruments){
@@ -56,11 +52,19 @@ void Daw::GenerateAudio(double time, float *outputs, int nSamples) {
 
 
 void Daw::NoteOn(int noteIndex, double timeOn) {
-    return instruments[activeInstrument]->NoteOn(noteIndex, timeOn);
+    //TODO Check if we are recording
+    if(activeView==DAW_VIEW::PATTERN){
+        patterns[activePattern]->AddNote(getActiveInstrument(), noteIndex,
+                                            BarPositionToTime(cursor),
+                                            BarPositionToTime(cursor)+0.5,
+                                            &rootNote, &scale);
+    }
+    else
+        getActiveInstrument()->NoteOn(noteIndex, timeOn);
 }
 
 void Daw::NoteOff(int noteIndex, double timeOff) {
-    return instruments[activeInstrument]->NoteOff(noteIndex, timeOff);
+    getActiveInstrument()->NoteOff(noteIndex, timeOff);
 }
 
 unsigned int Daw::getNInstruments() {
@@ -81,19 +85,19 @@ unsigned int Daw::getIndexActiveInstrument() const {
 }
 
 void Daw::IncrementOctave(int increment) {
-    instruments[activeInstrument]->octave+=increment;
+    getActiveInstrument()->octave+=increment;
 }
 
 char Daw::getOctaveCurrentInstrument() {
-    return instruments[activeInstrument]->octave;
+    return getActiveInstrument()->octave;
 }
 
 Envelope *Daw::getInstrumentEnvelope() {
-    return instruments[activeInstrument]->GetEnvelope();
+    return getActiveInstrument()->GetEnvelope();
 }
 
 char * Daw::getActiveInstrumentPresetName() {
-    return instruments[activeInstrument]->GetPresetName();
+    return getActiveInstrument()->GetPresetName();
 }
 
 double Daw::TimeToBarPosition(double time) {
@@ -139,6 +143,21 @@ void Daw::TogglePlay() {
 
 void Daw::EncoderRotation(unsigned char encoder, char value) {
     switch(activeView){
+        case DAW_VIEW::PATTERN: {
+            //Move cursor to next division
+            float division = 1.0 / 16;
+            if (encoder == 0) {
+                float progressInDivision = fmod(cursor, division);
+                if (progressInDivision != 0){
+                    cursor -= progressInDivision;
+                    cursor += value>0 ? division:0;
+                }
+                else
+                    cursor += value*division;
+                cursor = fmod(cursor,1);
+            }
+            break;
+        }
         case DAW_VIEW::MIXER:
             //Change bpm
             if(encoder==0)
@@ -181,6 +200,10 @@ void Daw::EncoderRotation(unsigned char encoder, char value) {
 
 void Daw::EncoderPressed(unsigned char encoder) {
 
+}
+
+Instrument* Daw::getActiveInstrument() const {
+    return instruments[activeInstrument];
 }
 
 

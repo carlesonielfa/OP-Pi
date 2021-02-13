@@ -31,6 +31,7 @@ namespace OP_Pi{
 
         bool setIndexActiveInstrument(int n);
         unsigned int getIndexActiveInstrument() const;
+        Instrument* getActiveInstrument() const;
         char getOctaveCurrentInstrument();
         char * getActiveInstrumentPresetName();
         Envelope* getInstrumentEnvelope();

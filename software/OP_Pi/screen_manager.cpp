@@ -85,14 +85,16 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
     DrawLine(xCursor,notesStart-4,xCursor, screenHeight-1,DIAL0COLOR);
 
     //Draw Pattern notes
-    unsigned short noteRow=0;
+    unsigned short noteRow;
     for(Hit h: daw->getHitsInActivePattern()){
-        noteRow = (screenHeight - patternRowHeight) * 7 + (6 - h.note.index) * patternRowHeight;
-        DrawRectangle(xBarStart + daw->TimeToBarPosition(h.note.on) * (screenWidth - xBarStart),
-                      noteRow + 2,
-                      xBarStart + daw->TimeToBarPosition(h.note.off) * (screenWidth - xBarStart)-2,
-                      noteRow + patternRowHeight - 2,
-                      GRAY);
+        if(h.instrument==daw->getActiveInstrument()){
+            noteRow = (screenHeight - patternRowHeight) * 7 + (6 - h.note.index) * patternRowHeight;
+            DrawRectangle(xBarStart + daw->TimeToBarPosition(h.note.on) * (screenWidth - xBarStart),
+                          noteRow + 2,
+                          xBarStart + daw->TimeToBarPosition(h.note.off) * (screenWidth - xBarStart)-2,
+                          noteRow + patternRowHeight - 2,
+                          GRAY);
+        }
     }
 }
 void ScreenManager::DrawNoteRow(unsigned char y, string noteName){
