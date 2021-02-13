@@ -15,6 +15,10 @@ namespace OP_Pi
         INCREMENT_OCTAVE,
         CHANGE_VIEW,
         PLAY,
+        ENC_SWITCH,
+        ENC0_ROTATE,
+        ENC1_ROTATE,
+        ENC2_ROTATE,
     };
     struct ACTION{
         ACTION_TYPE type = ACTION_TYPE::NONE;
@@ -32,6 +36,8 @@ namespace OP_Pi
         InputManagerKeyboard(Display *display);
         ~InputManagerKeyboard();
     private:
+        //WER TYU IOP
+        unsigned short encoderKeyCodes[3][3]={{25,26,27},{28,29,30},{31,32,33}}; //COUNTERCLOCKWISE-SWITCH-CLOCKWISE
         XEvent event;
         Display* display;
     };

@@ -123,6 +123,20 @@ void Daw::ChangeScale(int rootNote, SCALE scale){
     getNamesInScale(noteNames, rootNote, scale);
 }
 
+void Daw::ChangeActiveView(DAW_VIEW newView) {
+    activeView=newView;
+    cursor=0;
+}
+
+void Daw::ChangeActiveView() {
+    ChangeActiveView(static_cast<DAW_VIEW>((activeView + 1) % DAW_VIEW::DAW_VIEW_SIZE_INDICATOR));
+}
+
+void Daw::TogglePlay() {
+    play = !play;
+    //TODO: Add code for computing time offset
+}
+
 
 
 

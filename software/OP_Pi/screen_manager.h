@@ -17,6 +17,9 @@ namespace OP_Pi{
     #define CYAN        0x00FFFF
     #define YELLOW      0xFFFF00
     #define BLACK       0X000000
+    #define DIAL0COLOR  CYAN
+    #define DIAL1COLOR  MAGENTA
+    #define DIAL2COLOR  YELLOW
 
     enum FONT_SIZE{
         TINY, //8pt

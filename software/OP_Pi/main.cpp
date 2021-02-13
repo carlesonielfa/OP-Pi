@@ -299,17 +299,29 @@ int main(int argc, char **argv) {
                 break;
             case ACTION_TYPE::CHANGE_VIEW:
                 if(action.value ==-1)
-
-                    daw->activeView = static_cast<DAW_VIEW>((daw->activeView + 1)%DAW_VIEW::DAW_VIEW_SIZE_INDICATOR);
+                    daw->ChangeActiveView();
                 else
-                    daw->activeView = static_cast<DAW_VIEW>(action.value);
+                    daw->ChangeActiveView(static_cast<DAW_VIEW>(action.value));
                 printf("ACTIVE VIEW CHANGED TO: %i\n", daw->activeView);
                 break;
             case ACTION_TYPE::PLAY:
-                daw->play = !daw->play;
+                daw->TogglePlay();
+                printf("PLAY TOGGLE");
+                break;
+            case ACTION_TYPE::ENC_SWITCH:
+                printf("ENCODER %i SWITCH PRESSED\n", action.value);
+                break;
+            case ACTION_TYPE::ENC0_ROTATE:
+                printf("ENCODER 0 ROTATION: %i\n", action.value);
+                break;
+            case ACTION_TYPE::ENC1_ROTATE:
+                printf("ENCODER 1 ROTATION: %i\n", action.value);
+                break;
+            case ACTION_TYPE::ENC2_ROTATE:
+                printf("ENCODER 2 ROTATION: %i\n", action.value);
                 break;
             default:
-                printf("Action not yet implemented\n", action.type);
+                printf("Action not yet implemented %i\n", action.type);
                 break;
         }
         //usleep(1000000/60);

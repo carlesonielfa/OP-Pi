@@ -36,15 +36,34 @@ ACTION InputManagerKeyboard::ProcessInput() {
             action.type=ACTION_TYPE::INCREMENT_OCTAVE;
             action.value=-1;
         }
+        //QUIT
         if (event.xkey.keycode == XKeysymToKeycode(display, 'q'))
             action.type = ACTION_TYPE::QUIT;
-        if (event.xkey.keycode == XKeysymToKeycode(display, 'u') && event.type == KeyPress){
+
+        //CHANGE VIEW
+        if (event.xkey.keycode == XKeysymToKeycode(display, 'a') && event.type == KeyPress){
             action.type = ACTION_TYPE::CHANGE_VIEW;
             action.value = -1;
         }
         //If spacebar pressed toogle play
         if (event.xkey.keycode == 65 && event.type == KeyPress){
             action.type = ACTION_TYPE::PLAY;
+        }
+
+        //ROTARY ENCODER ACTIONS
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if (event.xkey.keycode == encoderKeyCodes[i][j] && event.type == KeyPress){
+                    if(j==1) {
+                        action.type = ACTION_TYPE::ENC_SWITCH;
+                        action.value = i;
+                    }
+                    else{
+                        action.type = static_cast<ACTION_TYPE>(ACTION_TYPE::ENC0_ROTATE + i);
+                        action.value = -1+2*j/2;
+                    }
+                }
+            }
         }
     }
     return action;

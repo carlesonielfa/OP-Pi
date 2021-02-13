@@ -45,6 +45,11 @@ namespace OP_Pi{
 
         std::vector<Hit> getHitsInActivePattern();
 
+        void ChangeActiveView(DAW_VIEW newView);
+        void ChangeActiveView();
+
+        void TogglePlay();
+
         double sampleRate;
         unsigned short bpm;
         float** instrumentGains;

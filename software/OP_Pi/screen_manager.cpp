@@ -36,8 +36,8 @@ void ScreenManager::Draw() {
 void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
 
     DrawText(0, 5, WHITE, to_string(bpm), FONT_SIZE::MEDIUM, FONT_ALIGN::CENTER);
-    DrawText(0,20,CYAN, "BPM", FONT_SIZE::TINY, FONT_ALIGN::CENTER);
-    DrawRectangle(screenWidth/2-17, 2, screenWidth/2+17, 30, CYAN, false);
+    DrawText(0,20,DIAL0COLOR, "BPM", FONT_SIZE::TINY, FONT_ALIGN::CENTER);
+    DrawRectangle(screenWidth/2-17, 2, screenWidth/2+17, 30, DIAL0COLOR, false);
 
     for(int i=0; i<sizeof(channels)/sizeof(char*); i++){
         if(i< daw->getNInstruments())
@@ -52,7 +52,7 @@ void ScreenManager::DrawChannel(unsigned char x, unsigned char y, string name, c
     DrawText(x,y+6,active ? WHITE : DARKGRAY,name,FONT_SIZE::BIG);
     DrawRectangle(x+20, y, x+20+mixerGainWidth, y+24, GRAY);
     DrawRectangle(x+20, y+24*(1-output), x+20+mixerGainWidth, y+24, RED);
-    DrawRectangle(x+18, y+24*(1-gain), x+22+mixerGainWidth, y+24*(1-gain)+1, MAGENTA);
+    DrawRectangle(x+18, y+24*(1-gain), x+22+mixerGainWidth, y+24*(1-gain)+1, DIAL1COLOR);
 
 }
 
@@ -62,8 +62,8 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
     DrawText(10,10, WHITE,"INSTRUMENT ",FONT_SIZE::SMALL);
     w1 = DrawText(screenWidth-24,17, WHITE, channels[activeInstrument],FONT_SIZE::BIG);
     DrawRectangle(screenWidth-30, 9, screenWidth-18+w1, 28+10, DARKGRAY, false);
-    unsigned short w0 = DrawText(10,28, MAGENTA,"PATTERN ",FONT_SIZE::SMALL);
-    DrawText(10+w0-1,28, MAGENTA, std::to_string(patternNumber).c_str(),FONT_SIZE::SMALL);
+    unsigned short w0 = DrawText(10,28, DIAL1COLOR,"PATTERN ",FONT_SIZE::SMALL);
+    DrawText(10+w0-1,28, DIAL1COLOR, std::to_string(patternNumber).c_str(),FONT_SIZE::SMALL);
 
 
     unsigned short notesStart = (screenHeight - patternRowHeight) * 7;
@@ -82,7 +82,7 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
     }
     //Draw Cursor
     unsigned short xCursor = xBarStart + daw->cursor * (screenWidth - xBarStart);
-    DrawLine(xCursor,notesStart-4,xCursor, screenHeight-1,YELLOW);
+    DrawLine(xCursor,notesStart-4,xCursor, screenHeight-1,DIAL0COLOR);
 
     //Draw Pattern notes
     unsigned short noteRow=0;
@@ -92,7 +92,7 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
                       noteRow + 2,
                       xBarStart + daw->TimeToBarPosition(h.note.off) * (screenWidth - xBarStart)-2,
                       noteRow + patternRowHeight - 2,
-                      CYAN);
+                      GRAY);
     }
 }
 void ScreenManager::DrawNoteRow(unsigned char y, string noteName){
@@ -119,7 +119,7 @@ void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveO
     DrawText(10+w1+8,30, GRAY, octaveOffsetString.c_str(), FONT_SIZE::TINY);
 
     //Draw Preset name
-    DrawText(0,50, WHITE, presetName, FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+    DrawText(0,50, DIAL0COLOR, presetName, FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
 
     //Draw Envelope
     float totalTime = attack+decay+release;
@@ -138,25 +138,25 @@ void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveO
              frameXEnd,
              frameXStart+frameWidth*attack/totalTime,
              frameYStart,
-             YELLOW);
+             daw->cursor==0? DIAL1COLOR : WHITE);
     //Decay
     DrawLine(frameXStart+frameWidth*attack/totalTime,
              frameYStart,
              frameXStart+frameWidth*((attack+decay)/totalTime),
              frameYStart+frameHeight*(1-sustain),
-             CYAN);
+             daw->cursor==1? DIAL1COLOR : WHITE);
     //Sustain
     DrawLine(frameXStart+frameWidth*(attack+decay)/totalTime,
              frameYStart+frameHeight*(1-sustain),
              frameXStart+frameWidth*((attack+decay+sustainTime)/totalTime),
              frameYStart+frameHeight*(1-sustain),
-             MAGENTA);
+             daw->cursor==2? DIAL1COLOR : WHITE);
     //Release
     DrawLine(frameXStart+frameWidth*(attack+decay+sustainTime)/totalTime,
              frameYStart+frameHeight*(1-sustain),
              frameXStart+frameWidth*1,//(attack+decay+sustainTime+decay)/totalTime,
              frameYEnd,
-             RED);
+             daw->cursor==3? DIAL1COLOR : WHITE);
 
 
 }
