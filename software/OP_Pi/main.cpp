@@ -3,11 +3,10 @@
 #include "daw.h"
 #include <soundio/soundio.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-#include <unistd.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cstdint>
 using namespace OP_Pi;
 /*
  * TODO:Task list
@@ -115,9 +114,9 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
 int main(int argc, char **argv) {
     char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
-    char *device_id = NULL;
+    char *device_id = nullptr;
     bool raw = false;
-    char *stream_name = NULL;
+    char *stream_name = nullptr;
     double latency = 0.0;
     int sample_rate = 48000;
     daw = new Daw(sample_rate);

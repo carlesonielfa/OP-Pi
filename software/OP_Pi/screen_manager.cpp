@@ -1,9 +1,8 @@
 #include "screen_manager.h"
 
-#include <unistd.h>
-#include <cstdio>
 #include <string>
-#include <string.h>
+#include <utility>
+
 using namespace OP_Pi;
 ScreenManager::ScreenManager(Daw *daw) {
     this->daw = daw;
@@ -14,10 +13,10 @@ void ScreenManager::Draw() {
             DrawMixer(daw->bpm, daw->instrumentOutputs, daw->instrumentGains);
             break;
         case DAW_VIEW::PATTERN:
-            DrawPattern(0, daw->getIndexActiveInstrument());
+            DrawPattern(daw->getIndexActivePattern(), daw->getIndexActiveInstrument());
             break;
         case DAW_VIEW::INSTRUMENT: {
-            EnvelopeADSR *env = (EnvelopeADSR *) daw->getInstrumentEnvelope();
+            auto env = (EnvelopeADSR *) daw->getInstrumentEnvelope();
             DrawInstrument(daw->getIndexActiveInstrument(),
                            daw->getOctaveCurrentInstrument(),
                            env->attackTime, env->decayTime, env->sustainAmplitude, env->releaseTime,
@@ -49,7 +48,7 @@ void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
 }
 void ScreenManager::DrawChannel(unsigned char x, unsigned char y, string name, const float output, const float gain, bool active) {
 
-    DrawText(x,y+6,active ? WHITE : DARKGRAY,name,FONT_SIZE::BIG);
+    DrawText(x,y+6,active ? WHITE : DARKGRAY,std::move(name),FONT_SIZE::BIG);
     DrawRectangle(x+20, y, x+20+mixerGainWidth, y+24, GRAY);
     DrawRectangle(x+20, y+24*(1-output), x+20+mixerGainWidth, y+24, RED);
     DrawRectangle(x+18, y+24*(1-gain), x+22+mixerGainWidth, y+24*(1-gain)+1, DIAL1COLOR);
@@ -63,13 +62,13 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
     w1 = DrawText(screenWidth-24,17, WHITE, channels[activeInstrument],FONT_SIZE::BIG);
     DrawRectangle(screenWidth-30, 9, screenWidth-18+w1, 28+10, DARKGRAY, false);
     unsigned short w0 = DrawText(10,28, DIAL1COLOR,"PATTERN ",FONT_SIZE::SMALL);
-    DrawText(10+w0-1,28, DIAL1COLOR, std::to_string(patternNumber).c_str(),FONT_SIZE::SMALL);
+    DrawText(10+w0-1,28, DIAL1COLOR, std::to_string(patternNumber),FONT_SIZE::SMALL);
 
 
     unsigned short notesStart = (screenHeight - patternRowHeight) * 7;
     unsigned short xBarStart = 24;
-    //1 BAR per pattern, 4 beats per bar 4 step per beat, 4 divisons per step
-    unsigned short xPosLine=0;
+    //1 BAR per pattern, 4 beats per bar 4 step per beat, 4 divisions per step
+    unsigned short xPosLine;
     for(int i=0; i<=16;i++){
         //Draw beats and steps
         xPosLine = xBarStart + i*(screenWidth - xBarStart) / 16;
@@ -99,7 +98,7 @@ void ScreenManager::DrawPattern(unsigned char patternNumber, unsigned char activ
 }
 void ScreenManager::DrawNoteRow(unsigned char y, string noteName){
     DrawRectangle(0,y+1,23, y + patternRowHeight - 1,WHITE);
-    DrawText(1,y+2,BLACK, noteName,FONT_SIZE::TINY);
+    DrawText(1,y+2,BLACK, std::move(noteName),FONT_SIZE::TINY);
     DrawLine(24,y,screenWidth-1,y,DARKGRAY);
 }
 
@@ -118,7 +117,7 @@ void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveO
         octaveOffsetString = " "+octaveOffsetString;
     if(octaveOffset>0)
         octaveOffsetString = "+"+octaveOffsetString;
-    DrawText(10+w1+8,30, GRAY, octaveOffsetString.c_str(), FONT_SIZE::TINY);
+    DrawText(10+w1+8,30, GRAY, octaveOffsetString, FONT_SIZE::TINY);
 
     //Draw Preset name
     DrawText(0,50, DIAL0COLOR, presetName, FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
@@ -163,10 +162,14 @@ void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveO
 
 }
 
+ScreenManager::ScreenManager() {
+
+}
+
 ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
     //this->daw = daw;
     //Create window
-    display = XOpenDisplay(0);
+    display = XOpenDisplay(nullptr);
     int s = DefaultScreen(display);
     window = XCreateSimpleWindow(display, DefaultRootWindow(display), 0, 0, screenWidth, screenHeight, 0,
                                         BlackPixel(display, s), BlackPixel(display, s));
@@ -174,7 +177,7 @@ ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
     XMapWindow(display, window);
 
     //Create Graphics context for drawing
-    gc = XCreateGC(display, window, 0, 0);
+    gc = XCreateGC(display, window, 0, nullptr);
     XSetForeground(display, gc, WhitePixel(display,s));
 
     for(;;) {
@@ -250,7 +253,7 @@ void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned lon
 
 }
 unsigned short ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, string text, FONT_SIZE size, FONT_ALIGN align) {
-
+    return 0;
 }
 void ScreenManagerOLED::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
                                  unsigned long color) {

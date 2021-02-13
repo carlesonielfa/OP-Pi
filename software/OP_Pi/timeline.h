@@ -16,7 +16,7 @@ namespace OP_Pi{
     };
     class Pattern {
     public:
-        void PlayPattern(double time, float *output, int nSamples, int bpm); //Play looping pattern
+        void PlayPattern(double time, float *output, int nSamples); //Play looping pattern
         void AddNote(Instrument *instrument, int noteIndex, float noteStart, float noteEnd, unsigned short *rootNote,
                      SCALE *scale);
         std::vector<Hit> hits;

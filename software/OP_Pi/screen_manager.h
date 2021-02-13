@@ -69,7 +69,7 @@ namespace OP_Pi{
     };
     class ScreenManagerX11: public ScreenManager{
     public:
-        ScreenManagerX11(Daw* daw);
+        explicit ScreenManagerX11(Daw* daw);
         ~ScreenManagerX11();
         void Draw() override;
         Display* display;

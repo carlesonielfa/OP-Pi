@@ -1,5 +1,5 @@
 #include "input_manager.h"
-#include <stdio.h>
+#include <cstdio>
 
 using namespace OP_Pi;
 using namespace std;

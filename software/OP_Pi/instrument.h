@@ -2,7 +2,7 @@
 #define INSTRUMENT_H
 
 #include "sound_utils.h"
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include <mutex>
 #include <algorithm>
@@ -31,9 +31,7 @@ namespace OP_Pi
 			off = 0.0;
 			active = false;
 		}
-		int getNumber(){
-		    return getNoteInScale(*rootNote,*scale,index);
-		}
+		int getNumber() const;
 	};
 
     //For removing notes that are no longer playing
@@ -132,7 +130,7 @@ namespace OP_Pi
         }
 
 	};
-    // Abstract class that represents an oject that plays sounds
+    // Abstract class that represents an object that plays sounds
     // It contains an ADSR envelope and basic sound output methods
     class Instrument
     {

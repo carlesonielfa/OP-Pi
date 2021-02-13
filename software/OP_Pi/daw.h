@@ -26,25 +26,26 @@ namespace OP_Pi{
         // Call when key is pressed
         void NoteOn(int noteIndex, double timeOn);
         // Call when key is released
-        void NoteOff(int noteIndex, double timeOff);
+        void NoteOff(int noteIndex, double timeOff) const;
         unsigned int getNInstruments();
 
         bool setIndexActiveInstrument(int n);
         unsigned int getIndexActiveInstrument() const;
         Instrument* getActiveInstrument() const;
-        char getOctaveCurrentInstrument();
-        char * getActiveInstrumentPresetName();
-        Envelope* getInstrumentEnvelope();
-        void IncrementOctave(int increment);
+        char getOctaveCurrentInstrument() const;
+        void IncrementOctave(int increment) const;
+        char * getActiveInstrumentPresetName() const;
+        Envelope* getInstrumentEnvelope() const;
 
-        double TimeToBarPosition(double time);      //Converts from seconds to position in bar 0-1
-        double BarPositionToTime(double position);  //Converts from position in bar 0-1 to seconds
-        double getBeatDuration();                   //Returns beat duration in seconds
-        double getBarDuration();                    //Returns bar duration in seconds
+        double TimeToBarPosition(double time) const;      //Converts from seconds to position in bar 0-1
+        double BarPositionToTime(double position) const;  //Converts from position in bar 0-1 to seconds
+        double getBeatDuration() const;                   //Returns beat duration in seconds
+        double getBarDuration() const;                    //Returns bar duration in seconds
 
         void ChangeScale(int rootNote, SCALE scale);
 
         std::vector<Hit> getHitsInActivePattern();
+        unsigned char getIndexActivePattern() const;
 
         void ChangeActiveView(DAW_VIEW newView);
         void ChangeActiveView();
@@ -59,6 +60,8 @@ namespace OP_Pi{
         float** instrumentOutputs;
         DAW_VIEW activeView = DAW_VIEW::INSTRUMENT;
         float cursor;
+
+
 
         double latency = 0;
         bool play=false;

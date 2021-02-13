@@ -33,7 +33,7 @@ namespace OP_Pi
     class InputManagerKeyboard: public InputManager{
     public:
         ACTION ProcessInput() override;
-        InputManagerKeyboard(Display *display);
+        explicit InputManagerKeyboard(Display *display);
         ~InputManagerKeyboard();
     private:
         //WER TYU IOP

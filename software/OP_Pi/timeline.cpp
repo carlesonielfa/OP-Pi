@@ -5,9 +5,7 @@
 #include "timeline.h"
 using namespace OP_Pi;
 
-void Pattern::PlayPattern(double time, float *output, int nSamples, int bpm) {
-    //TODO: Fix sound cutting in loop
-    //time = fmod(time, 4*60.0/bpm);
+void Pattern::PlayPattern(double time, float *output, int nSamples) {
     for(Hit h:hits){
         bool noteFinished = false;
         if(time>=h.note.on)

@@ -1,5 +1,4 @@
 #include "instrument.h"
-#include <numeric>
 
 using namespace OP_Pi;
 using namespace std;
@@ -115,4 +114,7 @@ void Instrument::setGain(float gain) {
     else if(gain<0)
         this->gain=0;
 }
-            
+
+int Note::getNumber() const {
+    return getNoteInScale(*rootNote,*scale,index);
+}
