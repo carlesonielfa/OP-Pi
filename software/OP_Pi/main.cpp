@@ -306,18 +306,22 @@ int main(int argc, char **argv) {
                 break;
             case ACTION_TYPE::PLAY:
                 daw->TogglePlay();
-                printf("PLAY TOGGLE");
+                printf("PLAY TOGGLE\n");
                 break;
             case ACTION_TYPE::ENC_SWITCH:
+                daw->EncoderPressed(action.value);
                 printf("ENCODER %i SWITCH PRESSED\n", action.value);
                 break;
             case ACTION_TYPE::ENC0_ROTATE:
+                daw->EncoderRotation(0,action.value);
                 printf("ENCODER 0 ROTATION: %i\n", action.value);
                 break;
             case ACTION_TYPE::ENC1_ROTATE:
+                daw->EncoderRotation(1,action.value);
                 printf("ENCODER 1 ROTATION: %i\n", action.value);
                 break;
             case ACTION_TYPE::ENC2_ROTATE:
+                daw->EncoderRotation(2,action.value);
                 printf("ENCODER 2 ROTATION: %i\n", action.value);
                 break;
             default:

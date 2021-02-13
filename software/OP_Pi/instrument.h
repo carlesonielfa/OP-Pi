@@ -152,13 +152,17 @@ namespace OP_Pi
             void GenerateNoteSounds(double time, float *outputs, int nSamples, Note n, bool &noteFinished);
             char* GetPresetName();
             Envelope* GetEnvelope();
-            float lastOutput = 0;
+
+            void setGain(float gain);
             float gain=0.5;
+            float lastOutput = 0;
+
             char octave=0;
             unsigned short* rootNote;
             SCALE *scale;
             int sampleRate;
         protected:
+
             void ApplyEffects(float *outputs, int nSamples);
             InstrumentDef* instrumentDef;
             std::vector<Effect*> effects;

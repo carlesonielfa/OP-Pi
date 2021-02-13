@@ -137,6 +137,52 @@ void Daw::TogglePlay() {
     //TODO: Add code for computing time offset
 }
 
+void Daw::EncoderRotation(unsigned char encoder, char value) {
+    switch(activeView){
+        case DAW_VIEW::MIXER:
+            //Change bpm
+            if(encoder==0)
+                bpm+=value;
+            //Change active instrument gain
+            if(encoder==1)
+                instruments[activeInstrument]->setGain(instruments[activeInstrument]->gain+value*0.05);
+            break;
+        case DAW_VIEW::INSTRUMENT:
+            //Change active instrument preset
+            if(encoder==0)
+            {
+                //TODO: Change active instrument preset
+            }
+            //Change cursor position
+            if(encoder==1)
+            {
+                cursor = fmod(cursor+value,4);
+            }
+            //Change envelope values
+            if(encoder==2)
+            {
+                //TODO: Work with any envelope
+                EnvelopeADSR* env = static_cast<EnvelopeADSR*>(instruments[activeInstrument]->GetEnvelope());
+                //Attack
+                if(cursor==0)
+                    env->attackTime+=value*0.01;
+                //Decay
+                else if(cursor==1)
+                    env->decayTime+=value*0.01;
+                else if(cursor==2)
+                    env->sustainAmplitude+=value*0.01;
+                else if(cursor==3)
+                    env->releaseTime+=value*0.01;
+
+            }
+            break;
+    }
+}
+
+void Daw::EncoderPressed(unsigned char encoder) {
+
+}
+
 
 
 

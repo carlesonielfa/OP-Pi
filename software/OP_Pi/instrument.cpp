@@ -107,4 +107,12 @@ void Instrument::ApplyEffects(float *outputs, int nSamples) {
 Instrument::~Instrument() {
     effects.clear();
 }
+
+void Instrument::setGain(float gain) {
+    this->gain = gain;
+    if(gain>1)
+        this->gain=1;
+    else if(gain<0)
+        this->gain=0;
+}
             
