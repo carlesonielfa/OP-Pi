@@ -1,0 +1,10 @@
+^E:\ONEDRIVE - UNIVERSITAT DE BARCELONA\OP-PI\SOFTWARE\OP_PI\BUILD\CMAKEFILES\1ECD2A9A8E94B63766C2AF107502B70E\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SE:/OneDrive - Universitat de Barcelona/OP-Pi/software/OP_Pi" "-BE:/OneDrive - Universitat de Barcelona/OP-Pi/software/OP_Pi/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "E:/OneDrive - Universitat de Barcelona/OP-Pi/software/OP_Pi/build/OP_Pi.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
