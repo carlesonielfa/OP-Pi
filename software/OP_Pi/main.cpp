@@ -1,16 +1,24 @@
-#include "synth.h"
 #include "input_manager.h"
 #include "screen_manager.h"
+#include "daw.h"
 #include <soundio/soundio.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-#include <thread>
-
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cstdint>
 using namespace OP_Pi;
-
+/*
+ * TODO:Task list
+ * - SEQUENCER
+ * - RECORD
+ * - QUANTIZE
+ * - RENDER
+ * - TIMELINE ADD PATTERNS
+ * - MODIFY INSTRUMENTS
+ * - SAMPLE LOADING AND PLAYING
+ * - EFFECTS
+ */
 static int usage(char *exe) {
     fprintf(stderr, "Usage: %s [options]\n"
             "Options:\n"
@@ -49,11 +57,11 @@ static void write_sample_float64ne(char *ptr, double sample) {
 }
 static void (*write_sample)(char *ptr, double sample);
 
-Synth s;
+Daw* daw;
 
-static long double seconds_offset = 0.0;
+static double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
-    double sample_rate = outstream->sample_rate;
+    int sample_rate = outstream->sample_rate;
     struct SoundIoChannelArea *areas;
     int err;
 
@@ -70,17 +78,19 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
             break;
 
         const struct SoundIoChannelLayout *layout = &outstream->layout;
-        
-        for (int frame = 0; frame < frame_count; frame += 1) {
-            //double sample = sin((seconds_offset + frame * 1.0/sample_rate) * radians_per_second);
-            double time = seconds_offset + frame * 1.0/sample_rate;
-            double sample = s.PlayNotes(time, seconds_offset);
-            for (int channel = 0; channel < layout->channel_count; channel += 1) {
-                write_sample(areas[channel].ptr, sample);
+
+        float *outputs = new float[frame_count];
+        if(daw!= nullptr)
+            daw->GenerateAudio(seconds_offset, outputs, frame_count);
+        for (int channel = 0; channel < layout->channel_count; channel += 1) {
+            for(int i=0;i<frame_count;i++) {
+                write_sample(areas[channel].ptr, outputs[i]);
                 areas[channel].ptr += areas[channel].step;
             }
+
         }
-    
+        //delete instrumentOutputs;
+
         //seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
         seconds_offset = seconds_offset + 1.0/sample_rate * frame_count;
         if ((err = soundio_outstream_end_write(outstream))) {
@@ -102,13 +112,18 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
 }
 
 int main(int argc, char **argv) {
-        char *exe = argv[0];
+    char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
-    char *device_id = NULL;
+    char *device_id = nullptr;
     bool raw = false;
-    char *stream_name = NULL;
+    char *stream_name = nullptr;
     double latency = 0.0;
-    int sample_rate = 0;
+    int sample_rate = 48000;
+    daw = new Daw(sample_rate);
+    daw->bpm = 100;
+    ScreenManagerX11 screenManagerX11(daw);
+    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];
         if (arg[0] == '-' && arg[1] == '-') {
@@ -248,9 +263,8 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to start device: %s\n", soundio_strerror(err));
         return 1;
     }
-    ScreenManagerX11 screenManagerX11;
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
 
+    daw->latency = outstream->software_latency;
     bool quit=false;
     while(!quit) {
         soundio_flush_events(soundio);
@@ -262,28 +276,67 @@ int main(int argc, char **argv) {
                 quit=true;
                 break;
             case ACTION_TYPE::NOTEON:
-                //TODO: change to midi note number
-                s.NoteOn(action.value, seconds_offset);
-                //s.NoteOn(seconds_offset);
-                printf("NOTEON: %d\n",action.value);
+                daw->NoteOn(action.value, seconds_offset);
+                printf("NOTE ON: %d\n",action.value);
                 break;
             case ACTION_TYPE::NOTEOFF:
-                s.NoteOff(action.value, seconds_offset);
-                //s.NoteOff(seconds_offset);
-                printf("NOTEOFF: %d\n",action.value);
+                daw->NoteOff(action.value, seconds_offset);
+                printf("NOTE OFF: %d\n",action.value);
                 break;
             case ACTION_TYPE::NONE:
                 break;
+            case ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT:
+                if(!daw->setIndexActiveInstrument(action.value)){
+                    fprintf(stderr, "Error when selecting instrument: instrument %d not initialized\n", action.value);
+                }else{
+                    printf("NEW ACTIVE INSTRUMENT: %d\n",action.value);
+                }
+                break;
+            case ACTION_TYPE::INCREMENT_OCTAVE:
+                daw->IncrementOctave(action.value);
+                printf("OCTAVE INCREMENTED: %i\n", action.value);
+                break;
+            case ACTION_TYPE::CHANGE_VIEW:
+                if(action.value ==-1)
+                    daw->ChangeActiveView();
+                else
+                    daw->ChangeActiveView(static_cast<DAW_VIEW>(action.value));
+                printf("ACTIVE VIEW CHANGED TO: %i\n", daw->activeView);
+                break;
+            case ACTION_TYPE::PLAY:
+                daw->TogglePlay();
+                printf("PLAY TOGGLE\n");
+                break;
+            case ACTION_TYPE::ENC_SWITCH:
+                daw->EncoderPressed(action.value);
+                printf("ENCODER %i SWITCH PRESSED\n", action.value);
+                break;
+            case ACTION_TYPE::ENC0_ROTATE:
+                daw->EncoderRotation(0,action.value);
+                printf("ENCODER 0 ROTATION: %i\n", action.value);
+                break;
+            case ACTION_TYPE::ENC1_ROTATE:
+                daw->EncoderRotation(1,action.value);
+                printf("ENCODER 1 ROTATION: %i\n", action.value);
+                break;
+            case ACTION_TYPE::ENC2_ROTATE:
+                daw->EncoderRotation(2,action.value);
+                printf("ENCODER 2 ROTATION: %i\n", action.value);
+                break;
             default:
-                printf("Action not yet implemented\n", action.type);
+                printf("Action not yet implemented %i\n", action.type);
                 break;
         }
+        //usleep(1000000/60);
         //Redraw scren
         screenManagerX11.Draw();
+
+
     }
 
     soundio_outstream_destroy(outstream);
     soundio_device_unref(device);
     soundio_destroy(soundio);
+    delete daw;
     return 0;
 }

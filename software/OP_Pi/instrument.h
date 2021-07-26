@@ -2,30 +2,36 @@
 #define INSTRUMENT_H
 
 #include "sound_utils.h"
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include <mutex>
 #include <algorithm>
 #include <vector>
+#include "effect.h"
+#include "eq.h"
+#include "sound_utils.h"
 namespace OP_Pi
 {
-    struct InstrumentDef;
     struct Note
 	{
-		int number;		// Midi note number
+		int index;		// Midi note number
 		double on;	// Time note was activated
 		double off;	// Time note was deactivated
 		bool active;
-
-		Note()
+		unsigned short* rootNote;
+		SCALE* scale;
+		Note(int index, double on, double off, unsigned short* rootNote, SCALE* scale)
+		: index(index), on(on), off(off), rootNote(rootNote), scale(scale){
+		    active= true;
+		}
+		Note(unsigned short* rootNote, SCALE* scale):rootNote(rootNote), scale(scale)
 		{
-			number = 0;
+            index = 0;
 			on = 0.0;
 			off = 0.0;
 			active = false;
 		}
-
-		//bool operator==(const note& n1, const note& n2) { return n1.id == n2.id; }
+		int getNumber() const;
 	};
 
     //For removing notes that are no longer playing
@@ -75,8 +81,7 @@ namespace OP_Pi
             {
                 double amp = 0.0;
                 double releaseAmplitude = 0.0;
-
-                if (timeOn > timeOff) // Note is on
+                if (timeOn > timeOff ||  (time >= timeOn && time < timeOff)) // Note is on
                 {
                     double lifeTime = time - timeOn;
 
@@ -115,41 +120,54 @@ namespace OP_Pi
     struct InstrumentDef
 	{
 		Envelope* env;
-		double maxLifeTime;
-		std::wstring name;
-		virtual double GenerateSound(const double dTime, Note n, bool &bNoteFinished) = 0;
+		char* name="PRESET";
+		virtual float GenerateSound(double time, Note n, bool &noteFinished) = 0;
         ~InstrumentDef(){
             delete env;
         }
+        float getEnvelopeAmplitude(double time, Note n) const{
+            return  env->Amplitude(time,n.on,n.off);
+        }
+
 	};
-    // Abstract class that represents an oject that plays sounds
+    // Abstract class that represents an object that plays sounds
     // It contains an ADSR envelope and basic sound output methods
     class Instrument
     {
         public:
-
+            Instrument(int sampleRate, unsigned short *rootNote, SCALE *scale);
+            ~Instrument();
             // Call when key is pressed
-            void NoteOn(int noteNumber,double timeOn);
+            void NoteOn(int noteIndex, double timeOn);
 
             // Call when key is released
-            void NoteOff(int noteNumber,double timeOff);
+            void NoteOff(int noteIndex, double timeOff);
 
             //virtual double ProcessSound(int frame, double seconds_offset, double sample_rate) = 0;
             
-            double PlayNotes(double time, double seconds_offset);
+            void PlayNotes(double time, float *outputs, int nSamples);
+            virtual float GenerateNoteSound(double time, Note n, bool &noteFinished)=0;
+            void GenerateNoteSounds(double time, float *outputs, int nSamples, Note n, bool &noteFinished);
+            char* GetPresetName();
+            Envelope* GetEnvelope();
 
-            void SetGain(double new_gain);
-            float GetGain();
+            void setGain(float gain);
+            float gain=0.5;
+            float lastOutput = 0;
+            char octave=0;
+            unsigned short* rootNote;
+            SCALE *scale;
+            int sampleRate;
         protected:
-            virtual double GenerateNoteSound(double time, double seconds_offset, Note n, bool& noteFinished) = 0;
-            bool noteOn = false;
-            float triggerOffTime = 0.0;
-            float triggerOnTime = 0.0;
-        private:
 
+            void ApplyEffects(float *outputs, int nSamples);
+            InstrumentDef* instrumentDef;
+            std::vector<Effect*> effects;
+        private:
             std::vector<Note> vecNotes;
             std::mutex muxNotes;
-            float gain=0.5;
+
+
 
     };
 }

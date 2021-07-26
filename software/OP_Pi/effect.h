@@ -5,9 +5,20 @@ namespace OP_Pi
 {
     class Effect 
     {
-        public:
-            double applyEffect(double source);
-            float wet=1.0;
+
+    public:
+        Effect(int sampleRate);
+        virtual void ApplyEffect(float *outputs, int nSamples) =0;
+        float wet=0.5;
+    protected:
+        int sampleRate;
+    };
+
+    class Delay: public Effect{
+
+    };
+    class Distortion: public Effect{
+
     };
 }
 

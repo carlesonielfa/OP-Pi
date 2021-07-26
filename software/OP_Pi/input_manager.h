@@ -7,14 +7,22 @@ namespace OP_Pi
 {
     enum ACTION_TYPE
     {   
-        NONE = 0, 
-        QUIT = 1, 
-        NOTEON = 2,
-        NOTEOFF = 3,
+        NONE,
+        QUIT,
+        NOTEON,
+        NOTEOFF,
+        CHANGE_ACTIVE_INSTRUMENT,//TODO: Change for colored encoders
+        INCREMENT_OCTAVE,
+        CHANGE_VIEW,
+        PLAY,
+        ENC_SWITCH,
+        ENC0_ROTATE,
+        ENC1_ROTATE,
+        ENC2_ROTATE,
     };
     struct ACTION{
         ACTION_TYPE type = ACTION_TYPE::NONE;
-        unsigned char value = 0;
+        short value = 0;
     };
     class InputManager
     {
@@ -25,8 +33,11 @@ namespace OP_Pi
     class InputManagerKeyboard: public InputManager{
     public:
         ACTION ProcessInput() override;
-        InputManagerKeyboard(Display* display);
+        explicit InputManagerKeyboard(Display *display);
+        ~InputManagerKeyboard();
     private:
+        //WER TYU IOP
+        unsigned short encoderKeyCodes[3][3]={{25,26,27},{28,29,30},{31,32,33}}; //COUNTERCLOCKWISE-SWITCH-CLOCKWISE
         XEvent event;
         Display* display;
     };

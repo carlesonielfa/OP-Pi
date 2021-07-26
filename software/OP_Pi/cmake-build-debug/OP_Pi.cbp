@@ -802,6 +802,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/effect.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/effect.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/eq.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/eq.h">
+			<Option target="OP_Pi"/>
+		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>
@@ -928,6 +946,12 @@
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/main.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/reverb.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/reverb.h">
+			<Option target="OP_Pi"/>
+		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/screen_manager.cpp">
 			<Option target="OP_Pi"/>
 		</Unit>
@@ -938,6 +962,12 @@
 			<Option target="OP_Pi"/>
 		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/synth.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/timeline.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/timeline.h">
 			<Option target="OP_Pi"/>
 		</Unit>
 		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/CMakeLists.txt">

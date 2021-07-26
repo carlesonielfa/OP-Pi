@@ -2,31 +2,69 @@
 #define SOUNDUTILS_H
 
 #include <math.h>
+#include <string.h>
+#include <string>
+using namespace std;
 namespace OP_Pi{
     static const double PI = 3.14159265358979323846264338328;
 
-    static double midi_to_freq(unsigned char midi_note){
+    static double midiToFreq(unsigned char midi_note){
         return exp2((midi_note - 69)/12.0)*440.0;
     };
-    static unsigned char freq_to_midi(double freq){
+    static unsigned char freqToMidi(double freq){
         return (unsigned char)(69+lrint(12*log2(freq/440.0)));
     };
 
-    // Scale to Frequency conversion
-
-    const int SCALE_DEFAULT = 0;
-
-    static double scale(const int nNoteID, const int nScaleID = SCALE_DEFAULT)
-    {
-        switch (nScaleID)
-        {
-        case SCALE_DEFAULT: default:
-            return 8 * pow(1.0594630943592952645618252949463, nNoteID);
-        }		
+    enum SCALE{
+        MAJOR,
+        MINOR,
+        MELODIC_MINOR,
+        MELODIC_MAJOR,
+        SCALE_SIZE_INDICATOR, //Always last
     };
+    static unsigned char scales [SCALE::SCALE_SIZE_INDICATOR][7]={
+        {0, 2, 4, 5, 7, 9, 11},
+        {0, 2, 3, 5, 7, 8, 10},
+    };
+    static int getNoteInScale(int root, SCALE scale,int index){
+        char octave = index/7;
+        index = fmod(index,7);
+        if(index<0) {
+            index = 7 + index;
+            octave-=1;
+        }
 
+        return 12*octave+root+scales[scale][index];
+    }
+    static string noteNames[]={
+            "C ", "C#","D ","D#","E ","F ","F#","G ","G#","A ","A#","B ",
+    };
+    static void getNamesInScale(string* names,int root, SCALE scale){
+
+        int index;
+        char octave;
+        for(int i=0;i<7;i++){
+            index = root-60+scales[scale][i];
+            octave = index/7;
+            names[i] = noteNames[index] + to_string(octave + 4);
+        }
+    }
+    /*
+    static string getIndexName(int root, SCALE scale, int index){
+        index = root-60+scales[scale][index];
+        char octave = index/7;
+        //index = fmod(index,7);
+        return noteNames[index] + to_string(octave + 4);
+    }*
+    /*static int getIndexInScale(int root, SCALE scale, int midiNote){
+
+        for(int i=0; i<7; i++){
+            if(root+scales[scale][i] == midiNote)
+                return i;
+        }
+    }*/
     // Converts frequency (Hz) to angular velocity
-	static double w(const double dHertz)
+	static double W(const double dHertz)
 	{
 		return dHertz * 2.0 * PI;
 	};

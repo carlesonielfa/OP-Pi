@@ -1,19 +1,20 @@
 #include "instrument.h"
 
-
 using namespace OP_Pi;
 using namespace std;
 // Call when key is pressed
-void Instrument::NoteOn(int noteNumber, double timeOn){
+void Instrument::NoteOn(int noteIndex, double timeOn) {
+    noteIndex+= octave * 7;
     muxNotes.lock();
-    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber; });
-    
+    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteIndex](Note const& item) { return item.index == noteIndex; });
+
+
     // Note not found in vector
     if (noteFound == vecNotes.end())
     {
         //Create a new note
-        Note n;
-        n.number = noteNumber;
+        Note n(rootNote,scale);
+        n.index = noteIndex;
         n.on = timeOn;
         n.active = true;
 
@@ -28,19 +29,21 @@ void Instrument::NoteOn(int noteNumber, double timeOn){
         {
             
             noteFound->on = timeOn;
+            noteFound->off = 0;
             noteFound->active = true;
         }
         // Key is still held, so do nothing
 
     }
-    printf("Vector length %d\n", vecNotes.size());
+
     muxNotes.unlock();
 }
 
 // Call when key is released
-void Instrument::NoteOff(int noteNumber, double timeOff){
+void Instrument::NoteOff(int noteIndex, double timeOff){
+    noteIndex+= octave * 7;
     muxNotes.lock();
-    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteNumber](Note const& item) { return item.number == noteNumber;});
+    auto noteFound = find_if(vecNotes.begin(), vecNotes.end(), [&noteIndex](Note const& item) { return item.index == noteIndex;});
 
     if (noteFound != vecNotes.end())
     {
@@ -50,42 +53,68 @@ void Instrument::NoteOff(int noteNumber, double timeOff){
     }
     muxNotes.unlock();
 }
-void Instrument::SetGain(double new_gain){
-    gain = new_gain;
-    if(gain>1){
-        fprintf(stderr, "Tried to assign gain bigger than 1");
-        gain = 1;
+void Instrument::GenerateNoteSounds(double time, float *outputs, int nSamples, Note n, bool &noteFinished) {
+    for(int i=0; i<nSamples; i++){
+        outputs[i] += GenerateNoteSound(time+1.0*i/sampleRate,n,noteFinished);
     }
-    else if(gain<0){
-        fprintf(stderr, "Tried to assign gain smaller than 0");
-        gain = 0;  
-    }
-                            
-};
-float Instrument::GetGain(){
-    return gain;
-};
-double Instrument::PlayNotes(double time, double seconds_offset){
+    ApplyEffects(outputs,nSamples);
+
+}
+void Instrument::PlayNotes(double time, float *outputs, int nSamples) {
     unique_lock<mutex> lm(muxNotes);
-    double output = 0.0;
     // Iterate through all active notes, and mix together
 	for (auto &n : vecNotes)
 	{
 		bool noteFinished = false;
-		double noteSound = 0;
+		//double noteSound = 0;
 
 		// Get sample for this note by using the correct instrument and envelope
         //sound = n.channel->sound(dTime, n, noteFinished);
-		noteSound = GenerateNoteSound(time, seconds_offset, n, noteFinished);
-		// Mix into output
-		output += noteSound;
+        GenerateNoteSounds(time, outputs, nSamples, n, noteFinished);
         
 		if (noteFinished) // Flag note to be removed
 			n.active = false;
         
 	}
 	safe_remove<vector<Note>>(vecNotes, [](Note const& item) { return item.active; });
-    //vecNotes.erase(remove_if(begin(vecNotes), end(vecNotes),[](Note& v){return !v.active;}));
-	return output;
+
+    //Calculate output level mean of the recent 10 instrumentOutputs
+    lastOutput=0;
+    for(int i=0; i<nSamples;i++){
+        lastOutput+=abs(outputs[i])/nSamples;
+    }
 }
-            
+
+char *Instrument::GetPresetName() {
+    return instrumentDef->name;
+}
+
+Envelope *Instrument::GetEnvelope() {
+    return instrumentDef->env;
+}
+
+Instrument::Instrument(int sampleRate, unsigned short *rootNote, SCALE *scale)
+                        : sampleRate(sampleRate), rootNote(rootNote), scale(scale){
+}
+
+void Instrument::ApplyEffects(float *outputs, int nSamples) {
+    for(Effect* e:effects){
+        e->ApplyEffect(outputs,nSamples);
+    }
+}
+
+Instrument::~Instrument() {
+    effects.clear();
+}
+
+void Instrument::setGain(float gain) {
+    this->gain = gain;
+    if(gain>1)
+        this->gain=1;
+    else if(gain<0)
+        this->gain=0;
+}
+
+int Note::getNumber() const {
+    return getNoteInScale(*rootNote,*scale,index);
+}
