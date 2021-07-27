@@ -150,7 +150,7 @@ try:
         OLED.Device_Init()
         print("TEST")
         #-------------Draw Pictures------------#
-        Test_Pattern()
+        '''Test_Pattern()
         OLED.Delay(2000)
         Test_Text()
         OLED.Delay(2000)
@@ -165,7 +165,7 @@ try:
         Test_Circles()
         OLED.Delay(2000)
         Test_Triangles()
-        OLED.Delay(2000)
+        OLED.Delay(2000)'''
 
         '''while (True):
             Display_Picture("picture1.jpg")

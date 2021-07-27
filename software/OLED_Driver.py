@@ -59,9 +59,9 @@ color_fill_byte = [0x00, 0x00]*(SSD1351_WIDTH)
 #GPIO Set
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-OLED_RST_PIN = 16
+OLED_RST_PIN = 25
 OLED_DC_PIN  = 24
-OLED_CS_PIN  = 7
+OLED_CS_PIN  = 8
 GPIO.setup(OLED_RST_PIN, GPIO.OUT)
 GPIO.setup(OLED_DC_PIN, GPIO.OUT)
 GPIO.setup(OLED_CS_PIN, GPIO.OUT)
