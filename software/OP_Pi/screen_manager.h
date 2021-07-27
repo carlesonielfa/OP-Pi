@@ -3,12 +3,17 @@
 
 #include <X11/Xlib.h>
 #include "daw.h"
+#include "OLED_Driver.h"
+#include "OLED_GFX.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 
 namespace OP_Pi{
 
     //Color defines
     #define WHITE       0xFFFFFF
-    #define RED         0xFF0000
+    #define RED         0xF800
     #define MAGENTA     0xFF00FF
     #define GREEN       0x00FF00
     #define GRAY        0xA9A9A9

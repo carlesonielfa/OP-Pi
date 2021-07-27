@@ -3,6 +3,7 @@
 #include <string>
 #include <utility>
 
+
 using namespace OP_Pi;
 ScreenManager::ScreenManager(Daw *daw) {
     this->daw = daw;
@@ -245,7 +246,17 @@ void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned cha
     XDrawLine(display,window,gc,x1,y1,x2,y2);
 }
 
-
+ScreenManagerOLED::ScreenManagerOLED(Daw* daw):ScreenManager(daw) {
+    printf("Started Screen\n");
+    DEV_ModuleInit();
+    Device_Init();
+    DEV_Delay_ms(20);
+    Set_Color(RED);
+    
+    Fill_Circle(64, 64, 50);
+    DEV_Delay_ms(2000);
+    //Clear_Screen();
+}
 void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
 
 }

@@ -121,8 +121,9 @@ int main(int argc, char **argv) {
     int sample_rate = 48000;
     daw = new Daw(sample_rate);
     daw->bpm = 100;
-    ScreenManagerX11 screenManagerX11(daw);
-    InputManagerKeyboard inputManagerKeyboard = InputManagerKeyboard(screenManagerX11.display);
+    //ScreenManager* screenManager = new ScreenManagerX11(daw);
+    ScreenManager* screenManager = new ScreenManagerOLED(daw);
+    InputManager* inputManager = new InputManagerGPIO();
 
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];
@@ -269,7 +270,7 @@ int main(int argc, char **argv) {
     while(!quit) {
         soundio_flush_events(soundio);
         //Check input
-        ACTION action = inputManagerKeyboard.ProcessInput();
+        ACTION action = inputManager->ProcessInput();
         switch(action.type){
             case ACTION_TYPE::QUIT:
                 printf("QUIT\n");
@@ -329,7 +330,7 @@ int main(int argc, char **argv) {
         }
         //usleep(1000000/60);
         //Redraw scren
-        screenManagerX11.Draw();
+        //screenManager->Draw();
 
 
     }
@@ -338,5 +339,7 @@ int main(int argc, char **argv) {
     soundio_device_unref(device);
     soundio_destroy(soundio);
     delete daw;
+    delete inputManager;
+    delete screenManager;
     return 0;
 }
