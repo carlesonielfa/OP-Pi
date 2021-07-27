@@ -1,4 +1,4 @@
-# Install script for directory: /home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio
+# Install script for directory: /home/carles/OP-Pi/software/OP_Pi/lib/libsoundio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,8 +50,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.so.2.0.0"
-    "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.so.2"
+    "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.so.2.0.0"
+    "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.so.2"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsoundio.so.2.0.0"
@@ -73,7 +73,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsoundio.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsoundio.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsoundio.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -83,13 +83,13 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/libsoundio.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/soundio" TYPE FILE FILES
-    "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/soundio/soundio.h"
-    "/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/soundio/endian.h"
+    "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/soundio/soundio.h"
+    "/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/soundio/endian.h"
     )
 endif()
 
@@ -100,12 +100,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_sine"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_sine")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_sine")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_sine" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_sine")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_sine"
-         OLD_RPATH "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
+         OLD_RPATH "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_sine")
@@ -120,12 +120,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_list_devices"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_list_devices")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_list_devices")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_list_devices" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_list_devices")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_list_devices"
-         OLD_RPATH "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
+         OLD_RPATH "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_list_devices")
@@ -140,12 +140,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_microphone"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_microphone")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_microphone")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_microphone" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_microphone")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_microphone"
-         OLD_RPATH "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
+         OLD_RPATH "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_microphone")
@@ -160,12 +160,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_record"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_record")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio/sio_record")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_record" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_record")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_record"
-         OLD_RPATH "/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
+         OLD_RPATH "/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/sio_record")

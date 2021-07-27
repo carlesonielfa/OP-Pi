@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/carles/Documents/OP-Pi/software/OP_Pi
-BuildDirectory: /home/carles/Documents/OP-Pi/software/OP_Pi/build
+SourceDirectory: /home/carles/OP-Pi/software/OP_Pi
+BuildDirectory: /home/carles/OP-Pi/software/OP_Pi/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -36,7 +36,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/carles/Documents/OP-Pi/software/OP_Pi"
+ConfigureCommand: "/usr/bin/cmake" "/home/carles/OP-Pi/software/OP_Pi"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -81,7 +81,7 @@ ValgrindCommand:
 ValgrindCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: /usr/bin/valgrind
+MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 

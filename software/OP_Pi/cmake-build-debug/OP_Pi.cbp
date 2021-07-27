@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="OP_Pi"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\lib\;CMake Files\lib\libsoundio\;CMake Files\lib\libsoundio\cmake\;CMake Files\lib\libsoundio\src\;CMake Files\lib\libsoundio\doc\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="OP_Pi">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/OP_Pi" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DSOUNDIO_STATIC_LIBRARY"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 OP_Pi"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="OP_Pi/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/OP_Pi" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DSOUNDIO_STATIC_LIBRARY"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 OP_Pi/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nightly">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Continuous">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package_source">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Experimental">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="doc">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 doc"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_list_devices">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_list_devices" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_list_devices"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_list_devices/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_list_devices" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_list_devices/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_sine">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_sine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_sine"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_sine/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_sine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_sine/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libsoundio_shared">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/libsoundio.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 libsoundio_shared"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libsoundio_shared/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/libsoundio.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 libsoundio_shared/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libsoundio_static">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/libsoundio.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 libsoundio_static"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libsoundio_static/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/libsoundio.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 libsoundio_static/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="coverage">
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 coverage"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="underflow">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/underflow" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 underflow"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="underflow/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/underflow" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 underflow/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_microphone">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_microphone" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_microphone"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_microphone/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_microphone" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_microphone/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_record">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_record" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_record"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sio_record/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/sio_record" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 sio_record/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="unit_tests">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/unit_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 unit_tests"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="unit_tests/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/unit_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 unit_tests/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="overflow">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/overflow" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 overflow"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="overflow/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/overflow" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 overflow/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="latency">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/latency" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 latency"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="latency/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/latency" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 latency/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="backend_disconnect_recover">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/backend_disconnect_recover" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 backend_disconnect_recover"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="backend_disconnect_recover/fast">
+				<Option output="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/backend_disconnect_recover" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test"/>
+					<Add directory="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 backend_disconnect_recover/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/carles/OP-Pi/software/OP_Pi/cmake-build-debug/lib/libsoundio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/daw.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/effect.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/effect.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/eq.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/eq.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/input_manager.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/input_manager.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/instrument.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/instrument.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_list_devices.c">
+			<Option target="sio_list_devices"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_microphone.c">
+			<Option target="sio_microphone"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_record.c">
+			<Option target="sio_record"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/example/sio_sine.c">
+			<Option target="sio_sine"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/alsa.h">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/channel_layout.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/dummy.h">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/jack.h">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/os.h">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/ring_buffer.h">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/soundio.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.c">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/util.h">
+			<Option target="libsoundio_shared"/>
+			<Option target="libsoundio_static"/>
+			<Option target="unit_tests"/>
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/backend_disconnect_recover.c">
+			<Option target="backend_disconnect_recover"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/latency.c">
+			<Option target="latency"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/overflow.c">
+			<Option target="overflow"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/underflow.c">
+			<Option target="underflow"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test/unit_tests.c">
+			<Option target="unit_tests"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/main.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/reverb.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/reverb.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/screen_manager.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/screen_manager.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/synth.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/synth.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/timeline.cpp">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/timeline.h">
+			<Option target="OP_Pi"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\libsoundio\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/cmake/FindCoreAudio.cmake">
+			<Option virtualFolder="CMake Files\lib\libsoundio\cmake\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/cmake/FindJACK.cmake">
+			<Option virtualFolder="CMake Files\lib\libsoundio\cmake\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/cmake/FindPulseAudio.cmake">
+			<Option virtualFolder="CMake Files\lib\libsoundio\cmake\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/cmake/FindWASAPI.cmake">
+			<Option virtualFolder="CMake Files\lib\libsoundio\cmake\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src/config.h.in">
+			<Option virtualFolder="CMake Files\lib\libsoundio\src\"/>
+		</Unit>
+		<Unit filename="/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/doc/doxygen.conf.in">
+			<Option virtualFolder="CMake Files\lib\libsoundio\doc\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

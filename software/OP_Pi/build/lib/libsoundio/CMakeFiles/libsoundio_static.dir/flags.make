@@ -6,5 +6,5 @@ C_FLAGS = -g -Werror -pedantic   -std=c11 -fvisibility=hidden -Wall -Werror=stri
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio/src 
+C_INCLUDES = -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/carles/OP-Pi/software/OP_Pi/build/lib/libsoundio -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/test -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio/src 
 

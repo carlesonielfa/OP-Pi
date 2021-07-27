@@ -6,5 +6,5 @@ CXX_FLAGS = -g
 
 CXX_DEFINES = -DSOUNDIO_STATIC_LIBRARY
 
-CXX_INCLUDES = -I/home/carles/Documents/OP-Pi/software/OP_Pi/lib/libsoundio 
+CXX_INCLUDES = -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio 
 

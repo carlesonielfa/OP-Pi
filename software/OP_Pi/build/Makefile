@@ -735,6 +735,33 @@ sio_list_devices/fast:
 	$(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/build
 .PHONY : sio_list_devices/fast
 
+daw.o: daw.cpp.o
+
+.PHONY : daw.o
+
+# target to build an object file
+daw.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.o
+.PHONY : daw.cpp.o
+
+daw.i: daw.cpp.i
+
+.PHONY : daw.i
+
+# target to preprocess a source file
+daw.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.i
+.PHONY : daw.cpp.i
+
+daw.s: daw.cpp.s
+
+.PHONY : daw.s
+
+# target to generate assembly for a file
+daw.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.s
+.PHONY : daw.cpp.s
+
 input_manager.o: input_manager.cpp.o
 
 .PHONY : input_manager.o
@@ -762,6 +789,33 @@ input_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/input_manager.cpp.s
 .PHONY : input_manager.cpp.s
 
+instrument.o: instrument.cpp.o
+
+.PHONY : instrument.o
+
+# target to build an object file
+instrument.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/instrument.cpp.o
+.PHONY : instrument.cpp.o
+
+instrument.i: instrument.cpp.i
+
+.PHONY : instrument.i
+
+# target to preprocess a source file
+instrument.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/instrument.cpp.i
+.PHONY : instrument.cpp.i
+
+instrument.s: instrument.cpp.s
+
+.PHONY : instrument.s
+
+# target to generate assembly for a file
+instrument.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/instrument.cpp.s
+.PHONY : instrument.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -788,6 +842,60 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+screen_manager.o: screen_manager.cpp.o
+
+.PHONY : screen_manager.o
+
+# target to build an object file
+screen_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.o
+.PHONY : screen_manager.cpp.o
+
+screen_manager.i: screen_manager.cpp.i
+
+.PHONY : screen_manager.i
+
+# target to preprocess a source file
+screen_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.i
+.PHONY : screen_manager.cpp.i
+
+screen_manager.s: screen_manager.cpp.s
+
+.PHONY : screen_manager.s
+
+# target to generate assembly for a file
+screen_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.s
+.PHONY : screen_manager.cpp.s
+
+sequencer.o: sequencer.cpp.o
+
+.PHONY : sequencer.o
+
+# target to build an object file
+sequencer.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.o
+.PHONY : sequencer.cpp.o
+
+sequencer.i: sequencer.cpp.i
+
+.PHONY : sequencer.i
+
+# target to preprocess a source file
+sequencer.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.i
+.PHONY : sequencer.cpp.i
+
+sequencer.s: sequencer.cpp.s
+
+.PHONY : sequencer.s
+
+# target to generate assembly for a file
+sequencer.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.s
+.PHONY : sequencer.cpp.s
 
 synth.o: synth.cpp.o
 
@@ -873,12 +981,24 @@ help:
 	@echo "... backend_disconnect_recover"
 	@echo "... coverage"
 	@echo "... sio_list_devices"
+	@echo "... daw.o"
+	@echo "... daw.i"
+	@echo "... daw.s"
 	@echo "... input_manager.o"
 	@echo "... input_manager.i"
 	@echo "... input_manager.s"
+	@echo "... instrument.o"
+	@echo "... instrument.i"
+	@echo "... instrument.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... screen_manager.o"
+	@echo "... screen_manager.i"
+	@echo "... screen_manager.s"
+	@echo "... sequencer.o"
+	@echo "... sequencer.i"
+	@echo "... sequencer.s"
 	@echo "... synth.o"
 	@echo "... synth.i"
 	@echo "... synth.s"

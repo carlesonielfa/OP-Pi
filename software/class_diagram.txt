@@ -1,0 +1,59 @@
+@startuml
+
+title OPPI - Class Diagram
+
+class OPPI
+class DisplayManager
+class InputManager
+class Timeline {
+}
+class Mixer{
+}
+abstract Instrument{
++float gain
+}
+class Synth{
++float attack
++float decay
++float sustain
++float release
+}
+class Sampler{
+}
+class Sample{
+}
+class Pattern{
+}
+class DAW{
+}
+class Sequence{
+}
+abstract Effect
+class Reverb
+class Distortion
+class Delay
+class Chorus
+
+OPPI "1"--"1" DAW
+OPPI "1"--"1" DisplayManager
+OPPI "1"--"1" InputManager
+
+DAW "1"--"1" Timeline
+DAW "1"--"1" Mixer
+
+Mixer "1"--"n" Instrument
+
+Timeline "1"--"n" Pattern
+Pattern  "1"--"n" Sequence
+Sequence "n"--"1" Instrument
+
+Instrument <|-- Synth
+Instrument <|-- Sampler
+Effect <|-- Reverb
+Effect <|-- Distortion
+Effect <|-- Chorus
+Effect <|-- Delay
+
+Instrument "1"--"n" Effect
+Sampler <-- Sample
+@enduml
