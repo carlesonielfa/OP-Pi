@@ -13,15 +13,11 @@ namespace OP_Pi
         ACTION ProcessInput() override;
         explicit InputManagerGPIO();
     private:
-    
-        static void TransitionOcurred();
+        int counter = 0;
         ACTION ProcessEncoder(unsigned short i);
         unsigned short encoderPins[3][3]={{6,26,5},{4,22,27},{12,21,20}}; //A-SWITCH-B    
-        unsigned short encoderStates[3] = {0,0,0};
-        //short rotaryCounters[3] = {0,0,0};
-        unsigned short stateMachineNext[4] = {1,3,0,2};
-        unsigned short stateMachinePrev[4] = {2,0,3,1};
-        bool encoderDirections[3]={0,0,0}; //0 right 1 left
+        unsigned short encoderStates[3] = {2,2,2};
+        bool encoderDirections[3]={0,0,0}; //0 CW 1 CCW
 
         unsigned short mcpBasePin = 64;
         unsigned short keyPadRows[5] = {3, 4, 0, 1, 2};

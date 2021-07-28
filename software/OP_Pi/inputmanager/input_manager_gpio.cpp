@@ -18,7 +18,7 @@ ACTION InputManagerGPIO::ProcessInput() {
         }
     }
     
-    for(int i=1;i<2;i++){
+    for(int i=0;i<3;i++){
         ProcessEncoder(i);
     }
 
@@ -41,32 +41,31 @@ ACTION InputManagerGPIO::ProcessInput() {
 
 ACTION InputManagerGPIO::ProcessEncoder(unsigned short i){
     ACTION action;
-    int newState = (1-digitalRead(encoderPins[i][0]))*2 + 1 - digitalRead(encoderPins[i][2]);
-    //printf("%i \n",newState);
-    //printf("%i \n",digitalRead(encoderPins[i][2]));
-    if(newState == stateMachineNext[encoderStates[i]])
-        encoderDirections[i]=1;
-        if(newState==0){
-            action.type = ACTION_TYPE::ENC0_ROTATE;
-            action.value = (i+1) * (2 *encoderDirections[i]-1);
-        }
-
-    
-    else if(newState == stateMachinePrev[encoderStates[i]])
-        encoderDirections[i]=0;
-        if(newState==0){
-            action.type = ACTION_TYPE::ENC0_ROTATE;
-            action.value = (i+1) * (2*encoderDirections[i]-1);
-        }
-
-    encoderStates[i] = newState;
-    return action;
-} 
-void InputManagerGPIO::TransitionOcurred(){
-    bool aState = 0;//digitalRead(encoderPins[1][0]);
-    bool bState = 0;//digitalRead(encoderPins[1][2]);
+    unsigned short aState = digitalRead(encoderPins[i][0]);
+    unsigned short bState = digitalRead(encoderPins[i][2]);
     unsigned short seq = (aState ^ bState) | bState << 1;
-    printf("%i \n", seq);
+    if(seq != encoderStates[i]){
+        short delta = (seq - encoderStates[i]) % 4;
+        if(delta < 0)
+            delta+=4;
+
+        if(delta==1){
+            counter++;
+            encoderDirections[i] = 0;
+        }
+        else if(delta==3){
+            counter--;
+            encoderDirections[i] = 1;
+        }
+        else if(encoderDirections[i] == 0)
+            counter++;
+        else
+            counter--;
+
+        encoderStates[i]=seq;
+    }
+
+    return action;
 }
 InputManagerGPIO::InputManagerGPIO() {
 
@@ -83,16 +82,9 @@ InputManagerGPIO::InputManagerGPIO() {
         }
         //Enable pulldown/pullup and interrupts
         pullUpDnControl(encoderPins[i][0], PUD_UP);
-        if(wiringPiISR(encoderPins[i][0], INT_EDGE_BOTH, &TransitionOcurred)<0){
-            printf("Error setting encoder interrupt\n");
-        }
-
         pullUpDnControl(encoderPins[i][1], PUD_DOWN);
-
         pullUpDnControl(encoderPins[i][2], PUD_UP);
-        if(wiringPiISR(encoderPins[i][2], INT_EDGE_BOTH, &TransitionOcurred)<0){
-            printf("Error setting encoder interrupt\n");
-        }
+
     }
 
     //Setup button matrix
