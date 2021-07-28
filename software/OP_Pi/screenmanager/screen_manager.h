@@ -2,7 +2,7 @@
 #define SCREENMANAGER_H
 
 #include <X11/Xlib.h>
-#include "daw.h"
+#include "../daw.h"
 #include "OLED_Driver.h"
 #include "OLED_GFX.h"
 #include <stdio.h>

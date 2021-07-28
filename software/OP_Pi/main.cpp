@@ -1,4 +1,4 @@
-#include "input_manager.h"
+#include "input_manager_gpio.h"
 #include "screen_manager.h"
 #include "daw.h"
 #include <soundio/soundio.h>
@@ -122,7 +122,7 @@ int main(int argc, char **argv) {
     daw = new Daw(sample_rate);
     daw->bpm = 100;
     //ScreenManager* screenManager = new ScreenManagerX11(daw);
-    ScreenManager* screenManager = new ScreenManagerOLED(daw);
+    ScreenManager* screenManager; //= new ScreenManagerOLED(daw);
     InputManager* inputManager = new InputManagerGPIO();
 
     for (int i = 1; i < argc; i += 1) {
