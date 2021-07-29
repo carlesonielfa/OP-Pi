@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cstdint>
+#include <signal.h>
 using namespace OP_Pi;
 /*
  * TODO:Task list
@@ -58,6 +59,8 @@ static void write_sample_float64ne(char *ptr, double sample) {
 static void (*write_sample)(char *ptr, double sample);
 
 Daw* daw;
+InputManager* inputManager;
+ScreenManager* screenManager;
 
 static double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
@@ -121,9 +124,9 @@ int main(int argc, char **argv) {
     int sample_rate = 48000;
     daw = new Daw(sample_rate);
     daw->bpm = 100;
-    //ScreenManager* screenManager = new ScreenManagerX11(daw);
-    ScreenManager* screenManager; //= new ScreenManagerOLED(daw);
-    InputManager* inputManager = new InputManagerGPIO();
+    inputManager = new InputManagerGPIO();
+    screenManager = new ScreenManagerOLED(daw);
+
 
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];

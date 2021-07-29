@@ -248,26 +248,30 @@ void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned cha
 
 ScreenManagerOLED::ScreenManagerOLED(Daw* daw):ScreenManager(daw) {
     printf("Started Screen\n");
-    DEV_ModuleInit();
     Device_Init();
-    DEV_Delay_ms(20);
-    Set_Color(RED);
-    
-    Fill_Circle(64, 64, 50);
-    DEV_Delay_ms(2000);
-    //Clear_Screen();
+    delay(20);
+    Clear_Screen();
 }
 void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
-
+    Set_Color(color);
+    if(fill)
+        Fill_Rect(x1, y1, x2-x1, y2-y1);
+    else
+        Draw_Rect(x1, y1, x2-x1, y2-y1);
 }
 void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned long color) {
-
+    Set_Color(color);
+    Draw_Pixel(x,y);
 }
 unsigned short ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, string text, FONT_SIZE size, FONT_ALIGN align) {
     return 0;
 }
 void ScreenManagerOLED::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
                                  unsigned long color) {
-
+    Set_Color(color);
+    Draw_Line(x1,y1,x2,y2);
+                                
 }
-
+ScreenManagerOLED::~ScreenManagerOLED() {
+    Clear_Screen();
+}
