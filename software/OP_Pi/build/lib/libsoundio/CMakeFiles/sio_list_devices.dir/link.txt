@@ -1,1 +1,0 @@
-/bin/gcc-8 -g -Werror -pedantic  -rdynamic CMakeFiles/sio_list_devices.dir/example/sio_list_devices.c.o  -o sio_list_devices -Wl,-rpath,/home/pi/OP-Pi/software/OP_Pi/build/lib/libsoundio: libsoundio.so.2.0.0 -lasound -lpthread 
