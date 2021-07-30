@@ -1,4 +1,5 @@
 #include "input_manager_gpio.h"
+#include "input_manager.h"
 #include "screen_manager.h"
 #include "daw.h"
 #include <soundio/soundio.h>
@@ -59,8 +60,6 @@ static void write_sample_float64ne(char *ptr, double sample) {
 static void (*write_sample)(char *ptr, double sample);
 
 Daw* daw;
-InputManager* inputManager;
-ScreenManager* screenManager;
 
 static double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
@@ -113,7 +112,11 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
     static int count = 0;
     fprintf(stderr, "underflow %d\n", count++);
 }
-
+bool quit = false;
+void handler(int) {
+    printf("Exiting...\n");
+    quit = true;
+}
 int main(int argc, char **argv) {
     char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
@@ -124,8 +127,9 @@ int main(int argc, char **argv) {
     int sample_rate = 48000;
     daw = new Daw(sample_rate);
     daw->bpm = 100;
-    inputManager = new InputManagerGPIO();
-    screenManager = new ScreenManagerOLED(daw);
+    signal(SIGINT, &handler);
+    InputManagerGPIO inputManager;
+    ScreenManagerOLED screenManager(daw);
 
 
     for (int i = 1; i < argc; i += 1) {
@@ -269,11 +273,11 @@ int main(int argc, char **argv) {
     }
 
     daw->latency = outstream->software_latency;
-    bool quit=false;
+
     while(!quit) {
         soundio_flush_events(soundio);
         //Check input
-        ACTION action = inputManager->ProcessInput();
+        ACTION action = inputManager.ProcessInput();
         switch(action.type){
             case ACTION_TYPE::QUIT:
                 printf("QUIT\n");
@@ -333,7 +337,7 @@ int main(int argc, char **argv) {
         }
         //usleep(1000000/60);
         //Redraw scren
-        //screenManager->Draw();
+        //screenManager.Draw();
 
 
     }
@@ -341,8 +345,5 @@ int main(int argc, char **argv) {
     soundio_outstream_destroy(outstream);
     soundio_device_unref(device);
     soundio_destroy(soundio);
-    delete daw;
-    delete inputManager;
-    delete screenManager;
     return 0;
 }

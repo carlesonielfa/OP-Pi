@@ -126,7 +126,7 @@ namespace OP_Pi{
         ~ScreenManagerOLED();
         void Draw() override;
     protected:
-        
+        DisplaySSD1351_128x128x16_SPI* display;
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
         void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill = true) override;
         unsigned short

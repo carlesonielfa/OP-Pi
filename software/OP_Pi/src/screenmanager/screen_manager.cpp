@@ -248,9 +248,11 @@ void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned cha
 
 ScreenManagerOLED::ScreenManagerOLED(Daw* daw):ScreenManager(daw) {
     printf("Started Screen\n");
-    DisplaySSD1351_128x128x16_SPI display(25, {-1, 0, 24, 0, -1, -1});
-    display.begin();
-    display.clear();
+    //Initialize display on spi 0.0 rst 25 dc 24
+    display = new DisplaySSD1351_128x128x16_SPI(25, {-1, 0, 24, 0, -1, -1});
+    display->begin();
+    display->clear();
+    display->fill(MAGENTA);
 }
 void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
         
@@ -271,5 +273,8 @@ void ScreenManagerOLED::Draw() {
     delay(20);
 }
 ScreenManagerOLED::~ScreenManagerOLED() {
-
+    display->clear();
+    display->end();
+    delete display;
+    printf("Display terminated\n");
 }
