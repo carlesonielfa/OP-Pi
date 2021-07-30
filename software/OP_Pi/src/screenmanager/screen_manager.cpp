@@ -308,7 +308,7 @@ bool ScreenManagerOLED::DrawCallback(){
     auto canvas = dynamic_cast<ScreenManagerOLED*>(screenManager)->engine->getCanvas();
     canvas.clear();
     ScreenManager::Draw();
-    delay(5);
+    //delay(5);
     return true;
 }
 ScreenManagerOLED::~ScreenManagerOLED() {

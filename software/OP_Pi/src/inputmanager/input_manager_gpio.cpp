@@ -9,7 +9,7 @@ ACTION InputManagerGPIO::ProcessInput() {
 
     //ENCODER SWITCHES
     
-    for(int i=0;i<3;i++){
+    for(int i=1;i<3;i++){
         if(digitalRead(encoderPins[i][1])==HIGH)
         {
             action.type = ACTION_TYPE::ENC_SWITCH;
