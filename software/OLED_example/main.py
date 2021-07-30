@@ -174,9 +174,9 @@ try:
             OLED.Delay(2000)
             Display_Picture("picture3.jpg")
             OLED.Delay(2000)'''
-        while(True):
-            Display_Picture("sammy.jpg")
-            OLED.Delay(5000)
+        Display_Picture("sammy.jpg")
+        OLED.Delay(5000)
+        OLED.Clear_Screen()
     if __name__ == '__main__':
         main()
 

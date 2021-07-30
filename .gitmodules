@@ -4,3 +4,6 @@
 [submodule "software/OP_Pi/lib/ssd1306"]
 	path = software/OP_Pi/lib/ssd1306
 	url = https://github.com/lexus2k/ssd1306.git
+[submodule "software/OP_Pi/lib/lcdgfx"]
+	path = software/OP_Pi/lib/lcdgfx
+	url = https://github.com/lexus2k/lcdgfx.git

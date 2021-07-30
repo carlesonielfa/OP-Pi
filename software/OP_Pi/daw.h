@@ -58,7 +58,7 @@ namespace OP_Pi{
         unsigned short bpm;
         float** instrumentGains;
         float** instrumentOutputs;
-        DAW_VIEW activeView = DAW_VIEW::INSTRUMENT;
+        DAW_VIEW activeView = DAW_VIEW::MIXER;
         float cursor;
 
 

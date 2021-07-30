@@ -27,8 +27,28 @@ ACTION InputManagerGPIO::ProcessInput() {
         digitalWrite(mcpBasePin + keyPadRows[i], LOW);
         for(int j=0; j<4; j++){
             if(digitalRead(mcpBasePin + keyPadCols[j])==LOW){
-                action.type = ACTION_TYPE::ENC_SWITCH;
-                action.value = i*4 + j;
+                int n = i*4 + j;
+                if(n == 11){
+                    action.type = ACTION_TYPE::CHANGE_VIEW;
+                    action.value = 0;
+                }
+                if(n == 15){
+                    action.type = ACTION_TYPE::CHANGE_VIEW;
+                    action.value = 1;
+                }
+                if(n == 19){
+                    action.type = ACTION_TYPE::CHANGE_VIEW;
+                    action.value = 2;
+                }
+                if(n == 3){
+                    action.type = ACTION_TYPE::CHANGE_VIEW;
+                    action.value = 3;
+                }
+                if(n == 7){
+                    action.type = ACTION_TYPE::CHANGE_VIEW;
+                    action.value = 4;
+                }
+
                 digitalWrite(mcpBasePin + keyPadRows[i], HIGH);
                 return action;
             }

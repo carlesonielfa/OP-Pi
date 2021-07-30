@@ -2,11 +2,12 @@ cmake_minimum_required(VERSION 3.0.0)
 project(OP_Pi VERSION 0.1.0)
 
 add_subdirectory(lib/libsoundio)
-#add_subdirectory(OLEDdriver)
+add_subdirectory(lib/lcdgfx)
 
 include(CTest)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/libsoundio/
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/lcdgfx/src
     #${CMAKE_CURRENT_SOURCE_DIR}/OLEDdriver/
     #${CMAKE_CURRENT_SOURCE_DIR}/OLEDdriver/Fonts
     ${CMAKE_CURRENT_SOURCE_DIR}/inputmanager/
@@ -40,4 +41,5 @@ target_link_libraries(OP_Pi
     X11
     wiringPi
     m
+    lcdgfx
 )

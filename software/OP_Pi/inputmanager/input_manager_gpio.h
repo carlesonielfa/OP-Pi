@@ -15,6 +15,8 @@ namespace OP_Pi
     private:
         int counter = 0;
         ACTION ProcessEncoder(unsigned short i);
+
+
         unsigned short encoderPins[3][3]={{6,26,5},{4,22,27},{12,21,20}}; //A-SWITCH-B    
         unsigned short encoderStates[3] = {2,2,2};
         bool encoderDirections[3]={0,0,0}; //0 CW 1 CCW

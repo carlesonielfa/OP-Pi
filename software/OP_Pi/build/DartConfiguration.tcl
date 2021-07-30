@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/carles/OP-Pi/software/OP_Pi
-BuildDirectory: /home/carles/OP-Pi/software/OP_Pi/build
+SourceDirectory: /home/pi/OP-Pi/software/OP_Pi
+BuildDirectory: /home/pi/OP-Pi/software/OP_Pi/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: carles-pc
+Site: raspberrypi
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-g++-8
@@ -36,7 +36,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/carles/OP-Pi/software/OP_Pi"
+ConfigureCommand: "/usr/bin/cmake" "/home/pi/OP-Pi/software/OP_Pi"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 

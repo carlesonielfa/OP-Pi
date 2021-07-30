@@ -6,5 +6,5 @@ CXX_FLAGS = -g
 
 CXX_DEFINES = -DSOUNDIO_STATIC_LIBRARY
 
-CXX_INCLUDES = -I/home/carles/OP-Pi/software/OP_Pi/lib/libsoundio 
+CXX_INCLUDES = -I/home/pi/OP-Pi/software/OP_Pi/lib/libsoundio -I/home/pi/OP-Pi/software/OP_Pi/lib/lcdgfx/src -I/home/pi/OP-Pi/software/OP_Pi/inputmanager -I/home/pi/OP-Pi/software/OP_Pi/screenmanager 
 

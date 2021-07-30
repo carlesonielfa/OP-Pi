@@ -5,7 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/libsoundio_shared.dir/src/dummy.c.o"
   "CMakeFiles/libsoundio_shared.dir/src/channel_layout.c.o"
   "CMakeFiles/libsoundio_shared.dir/src/ring_buffer.c.o"
-  "CMakeFiles/libsoundio_shared.dir/src/jack.c.o"
   "CMakeFiles/libsoundio_shared.dir/src/alsa.c.o"
   "libsoundio.pdb"
   "libsoundio.so.2.0.0"

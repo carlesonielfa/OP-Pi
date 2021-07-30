@@ -735,6 +735,19 @@ sio_list_devices/fast:
 	$(MAKE) -f lib/libsoundio/CMakeFiles/sio_list_devices.dir/build.make lib/libsoundio/CMakeFiles/sio_list_devices.dir/build
 .PHONY : sio_list_devices/fast
 
+#=============================================================================
+# Target rules for targets named lcdgfx
+
+# Build rule for target.
+lcdgfx: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lcdgfx
+.PHONY : lcdgfx
+
+# fast build rule for target.
+lcdgfx/fast:
+	$(MAKE) -f lib/lcdgfx/CMakeFiles/lcdgfx.dir/build.make lib/lcdgfx/CMakeFiles/lcdgfx.dir/build
+.PHONY : lcdgfx/fast
+
 daw.o: daw.cpp.o
 
 .PHONY : daw.o
@@ -762,32 +775,113 @@ daw.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/daw.cpp.s
 .PHONY : daw.cpp.s
 
-input_manager.o: input_manager.cpp.o
+effect.o: effect.cpp.o
 
-.PHONY : input_manager.o
+.PHONY : effect.o
 
 # target to build an object file
-input_manager.cpp.o:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/input_manager.cpp.o
-.PHONY : input_manager.cpp.o
+effect.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/effect.cpp.o
+.PHONY : effect.cpp.o
 
-input_manager.i: input_manager.cpp.i
+effect.i: effect.cpp.i
 
-.PHONY : input_manager.i
+.PHONY : effect.i
 
 # target to preprocess a source file
-input_manager.cpp.i:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/input_manager.cpp.i
-.PHONY : input_manager.cpp.i
+effect.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/effect.cpp.i
+.PHONY : effect.cpp.i
 
-input_manager.s: input_manager.cpp.s
+effect.s: effect.cpp.s
 
-.PHONY : input_manager.s
+.PHONY : effect.s
 
 # target to generate assembly for a file
-input_manager.cpp.s:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/input_manager.cpp.s
-.PHONY : input_manager.cpp.s
+effect.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/effect.cpp.s
+.PHONY : effect.cpp.s
+
+eq.o: eq.cpp.o
+
+.PHONY : eq.o
+
+# target to build an object file
+eq.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/eq.cpp.o
+.PHONY : eq.cpp.o
+
+eq.i: eq.cpp.i
+
+.PHONY : eq.i
+
+# target to preprocess a source file
+eq.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/eq.cpp.i
+.PHONY : eq.cpp.i
+
+eq.s: eq.cpp.s
+
+.PHONY : eq.s
+
+# target to generate assembly for a file
+eq.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/eq.cpp.s
+.PHONY : eq.cpp.s
+
+inputmanager/input_manager_gpio.o: inputmanager/input_manager_gpio.cpp.o
+
+.PHONY : inputmanager/input_manager_gpio.o
+
+# target to build an object file
+inputmanager/input_manager_gpio.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/inputmanager/input_manager_gpio.cpp.o
+.PHONY : inputmanager/input_manager_gpio.cpp.o
+
+inputmanager/input_manager_gpio.i: inputmanager/input_manager_gpio.cpp.i
+
+.PHONY : inputmanager/input_manager_gpio.i
+
+# target to preprocess a source file
+inputmanager/input_manager_gpio.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/inputmanager/input_manager_gpio.cpp.i
+.PHONY : inputmanager/input_manager_gpio.cpp.i
+
+inputmanager/input_manager_gpio.s: inputmanager/input_manager_gpio.cpp.s
+
+.PHONY : inputmanager/input_manager_gpio.s
+
+# target to generate assembly for a file
+inputmanager/input_manager_gpio.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/inputmanager/input_manager_gpio.cpp.s
+.PHONY : inputmanager/input_manager_gpio.cpp.s
+
+inputmanager/input_manager_keyboard.o: inputmanager/input_manager_keyboard.cpp.o
+
+.PHONY : inputmanager/input_manager_keyboard.o
+
+# target to build an object file
+inputmanager/input_manager_keyboard.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/inputmanager/input_manager_keyboard.cpp.o
+.PHONY : inputmanager/input_manager_keyboard.cpp.o
+
+inputmanager/input_manager_keyboard.i: inputmanager/input_manager_keyboard.cpp.i
+
+.PHONY : inputmanager/input_manager_keyboard.i
+
+# target to preprocess a source file
+inputmanager/input_manager_keyboard.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/inputmanager/input_manager_keyboard.cpp.i
+.PHONY : inputmanager/input_manager_keyboard.cpp.i
+
+inputmanager/input_manager_keyboard.s: inputmanager/input_manager_keyboard.cpp.s
+
+.PHONY : inputmanager/input_manager_keyboard.s
+
+# target to generate assembly for a file
+inputmanager/input_manager_keyboard.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/inputmanager/input_manager_keyboard.cpp.s
+.PHONY : inputmanager/input_manager_keyboard.cpp.s
 
 instrument.o: instrument.cpp.o
 
@@ -843,59 +937,86 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-screen_manager.o: screen_manager.cpp.o
+reverb.o: reverb.cpp.o
 
-.PHONY : screen_manager.o
-
-# target to build an object file
-screen_manager.cpp.o:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.o
-.PHONY : screen_manager.cpp.o
-
-screen_manager.i: screen_manager.cpp.i
-
-.PHONY : screen_manager.i
-
-# target to preprocess a source file
-screen_manager.cpp.i:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.i
-.PHONY : screen_manager.cpp.i
-
-screen_manager.s: screen_manager.cpp.s
-
-.PHONY : screen_manager.s
-
-# target to generate assembly for a file
-screen_manager.cpp.s:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screen_manager.cpp.s
-.PHONY : screen_manager.cpp.s
-
-sequencer.o: sequencer.cpp.o
-
-.PHONY : sequencer.o
+.PHONY : reverb.o
 
 # target to build an object file
-sequencer.cpp.o:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.o
-.PHONY : sequencer.cpp.o
+reverb.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/reverb.cpp.o
+.PHONY : reverb.cpp.o
 
-sequencer.i: sequencer.cpp.i
+reverb.i: reverb.cpp.i
 
-.PHONY : sequencer.i
+.PHONY : reverb.i
 
 # target to preprocess a source file
-sequencer.cpp.i:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.i
-.PHONY : sequencer.cpp.i
+reverb.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/reverb.cpp.i
+.PHONY : reverb.cpp.i
 
-sequencer.s: sequencer.cpp.s
+reverb.s: reverb.cpp.s
 
-.PHONY : sequencer.s
+.PHONY : reverb.s
 
 # target to generate assembly for a file
-sequencer.cpp.s:
-	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/sequencer.cpp.s
-.PHONY : sequencer.cpp.s
+reverb.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/reverb.cpp.s
+.PHONY : reverb.cpp.s
+
+screenmanager/oled_driver.o: screenmanager/oled_driver.cpp.o
+
+.PHONY : screenmanager/oled_driver.o
+
+# target to build an object file
+screenmanager/oled_driver.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screenmanager/oled_driver.cpp.o
+.PHONY : screenmanager/oled_driver.cpp.o
+
+screenmanager/oled_driver.i: screenmanager/oled_driver.cpp.i
+
+.PHONY : screenmanager/oled_driver.i
+
+# target to preprocess a source file
+screenmanager/oled_driver.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screenmanager/oled_driver.cpp.i
+.PHONY : screenmanager/oled_driver.cpp.i
+
+screenmanager/oled_driver.s: screenmanager/oled_driver.cpp.s
+
+.PHONY : screenmanager/oled_driver.s
+
+# target to generate assembly for a file
+screenmanager/oled_driver.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screenmanager/oled_driver.cpp.s
+.PHONY : screenmanager/oled_driver.cpp.s
+
+screenmanager/screen_manager.o: screenmanager/screen_manager.cpp.o
+
+.PHONY : screenmanager/screen_manager.o
+
+# target to build an object file
+screenmanager/screen_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screenmanager/screen_manager.cpp.o
+.PHONY : screenmanager/screen_manager.cpp.o
+
+screenmanager/screen_manager.i: screenmanager/screen_manager.cpp.i
+
+.PHONY : screenmanager/screen_manager.i
+
+# target to preprocess a source file
+screenmanager/screen_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screenmanager/screen_manager.cpp.i
+.PHONY : screenmanager/screen_manager.cpp.i
+
+screenmanager/screen_manager.s: screenmanager/screen_manager.cpp.s
+
+.PHONY : screenmanager/screen_manager.s
+
+# target to generate assembly for a file
+screenmanager/screen_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/screenmanager/screen_manager.cpp.s
+.PHONY : screenmanager/screen_manager.cpp.s
 
 synth.o: synth.cpp.o
 
@@ -923,6 +1044,33 @@ synth.s: synth.cpp.s
 synth.cpp.s:
 	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/synth.cpp.s
 .PHONY : synth.cpp.s
+
+timeline.o: timeline.cpp.o
+
+.PHONY : timeline.o
+
+# target to build an object file
+timeline.cpp.o:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/timeline.cpp.o
+.PHONY : timeline.cpp.o
+
+timeline.i: timeline.cpp.i
+
+.PHONY : timeline.i
+
+# target to preprocess a source file
+timeline.cpp.i:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/timeline.cpp.i
+.PHONY : timeline.cpp.i
+
+timeline.s: timeline.cpp.s
+
+.PHONY : timeline.s
+
+# target to generate assembly for a file
+timeline.cpp.s:
+	$(MAKE) -f CMakeFiles/OP_Pi.dir/build.make CMakeFiles/OP_Pi.dir/timeline.cpp.s
+.PHONY : timeline.cpp.s
 
 # Help Target
 help:
@@ -981,27 +1129,43 @@ help:
 	@echo "... backend_disconnect_recover"
 	@echo "... coverage"
 	@echo "... sio_list_devices"
+	@echo "... lcdgfx"
 	@echo "... daw.o"
 	@echo "... daw.i"
 	@echo "... daw.s"
-	@echo "... input_manager.o"
-	@echo "... input_manager.i"
-	@echo "... input_manager.s"
+	@echo "... effect.o"
+	@echo "... effect.i"
+	@echo "... effect.s"
+	@echo "... eq.o"
+	@echo "... eq.i"
+	@echo "... eq.s"
+	@echo "... inputmanager/input_manager_gpio.o"
+	@echo "... inputmanager/input_manager_gpio.i"
+	@echo "... inputmanager/input_manager_gpio.s"
+	@echo "... inputmanager/input_manager_keyboard.o"
+	@echo "... inputmanager/input_manager_keyboard.i"
+	@echo "... inputmanager/input_manager_keyboard.s"
 	@echo "... instrument.o"
 	@echo "... instrument.i"
 	@echo "... instrument.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... screen_manager.o"
-	@echo "... screen_manager.i"
-	@echo "... screen_manager.s"
-	@echo "... sequencer.o"
-	@echo "... sequencer.i"
-	@echo "... sequencer.s"
+	@echo "... reverb.o"
+	@echo "... reverb.i"
+	@echo "... reverb.s"
+	@echo "... screenmanager/oled_driver.o"
+	@echo "... screenmanager/oled_driver.i"
+	@echo "... screenmanager/oled_driver.s"
+	@echo "... screenmanager/screen_manager.o"
+	@echo "... screenmanager/screen_manager.i"
+	@echo "... screenmanager/screen_manager.s"
 	@echo "... synth.o"
 	@echo "... synth.i"
 	@echo "... synth.s"
+	@echo "... timeline.o"
+	@echo "... timeline.i"
+	@echo "... timeline.s"
 .PHONY : help
 
 

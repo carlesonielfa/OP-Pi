@@ -3,7 +3,9 @@
 
 #include <X11/Xlib.h>
 #include "../daw.h"
-#include "oled_driver.h"
+//#include "oled_driver.h"
+//#include "lcdgfx.h"
+#include <lcdgfx.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -122,7 +124,9 @@ namespace OP_Pi{
     public:
         ScreenManagerOLED(Daw* daw);
         ~ScreenManagerOLED();
+        void Draw() override;
     protected:
+        
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
         void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill = true) override;
         unsigned short

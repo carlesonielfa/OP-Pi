@@ -6,7 +6,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/latency.dir/src/dummy.c.o"
   "CMakeFiles/latency.dir/src/channel_layout.c.o"
   "CMakeFiles/latency.dir/src/ring_buffer.c.o"
-  "CMakeFiles/latency.dir/src/jack.c.o"
   "CMakeFiles/latency.dir/src/alsa.c.o"
   "latency.pdb"
   "latency"
