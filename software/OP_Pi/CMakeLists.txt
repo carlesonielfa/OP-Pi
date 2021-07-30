@@ -8,27 +8,35 @@ include(CTest)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/libsoundio/
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/lcdgfx/src
-    #${CMAKE_CURRENT_SOURCE_DIR}/OLEDdriver/
-    #${CMAKE_CURRENT_SOURCE_DIR}/OLEDdriver/Fonts
-    ${CMAKE_CURRENT_SOURCE_DIR}/inputmanager/
-    ${CMAKE_CURRENT_SOURCE_DIR}/screenmanager/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputmanager/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screenmanager/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/
 )
 enable_testing()
 
-
+set(
+    DAW_SOURCES
+    src/synth.cpp
+    src/instrument.cpp
+    src/daw.cpp
+    src/daw.h
+    src/timeline.cpp
+    src/effect.cpp
+    src/eq.cpp
+    src/reverb.cpp
+)
 set(
     SCREENMANAGER_SOURCES
-    screenmanager/screen_manager.cpp
-    screenmanager/oled_driver.cpp
+    src/screenmanager/screen_manager.cpp
 )
 
 set(
     INPUTMANAGER_SOURCES
-    inputmanager/input_manager_gpio.cpp
-    inputmanager/input_manager_keyboard.cpp
+    src/inputmanager/input_manager_gpio.cpp
+    src/inputmanager/input_manager_keyboard.cpp
 )
 
-add_executable(OP_Pi main.cpp synth.cpp instrument.cpp instrument.h daw.h daw.cpp timeline.cpp timeline.h effect.h effect.cpp eq.cpp eq.h reverb.cpp reverb.h ${INPUTMANAGER_SOURCES} ${SCREENMANAGER_SOURCES} )
+add_executable(OP_Pi main.cpp  ${DAW_SOURCES} ${INPUTMANAGER_SOURCES} ${SCREENMANAGER_SOURCES} )
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
