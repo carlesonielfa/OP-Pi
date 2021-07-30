@@ -63,11 +63,13 @@ namespace OP_Pi{
         CENTER,
         RIGHT,
     };
+    
     class ScreenManager{
     public:
         ScreenManager();
         ScreenManager(Daw* daw);
-        virtual void Draw();
+        void Refresh();
+        static void Draw();
 
         Daw* daw;
     protected:
@@ -76,8 +78,7 @@ namespace OP_Pi{
         virtual void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill = true)=0;
         //Draws text and returns the text width
         virtual unsigned short DrawText(unsigned char x, unsigned char y, unsigned long color, string text, FONT_SIZE size, FONT_ALIGN align= FONT_ALIGN::LEFT)=0;
-        unsigned char screenHeight=128;
-        unsigned char screenWidth=128;
+
     private:
         //MIXER VIEW
         void DrawMixer(const int bpm,float** outputs, float** gains);
@@ -93,6 +94,9 @@ namespace OP_Pi{
 
         char* channels [9] = {"A","B","C","D","E", "F","G","H","I"};
     };
+    //ScreenManager* screenManager;
+    const unsigned char screenHeight=128;
+    const unsigned char screenWidth=128;
     struct X11Font{
         XFontStruct* font;
         unsigned char size;
@@ -101,7 +105,7 @@ namespace OP_Pi{
     public:
         explicit ScreenManagerX11(Daw* daw);
         ~ScreenManagerX11();
-        void Draw() override;
+        static void Draw();
         Display* display;
     protected:
         void
@@ -120,13 +124,18 @@ namespace OP_Pi{
         X11Font fonts[4];
     };
 
+
     class ScreenManagerOLED: public ScreenManager{
     public:
         ScreenManagerOLED(Daw* daw);
         ~ScreenManagerOLED();
-        void Draw() override;
+        static bool DrawCallback();
+        static void Draw();
     protected:
+        const uint8_t* fonts[4];
+        unsigned short fontSizes[4];
         DisplaySSD1351_128x128x16_SPI* display;
+        NanoEngine16<DisplaySSD1351_128x128x16_SPI>* engine;
         void DrawPixel(unsigned char x, unsigned char y, unsigned long color) override;
         void DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,unsigned long color, bool fill = true) override;
         unsigned short

@@ -112,11 +112,14 @@ static void underflow_callback(struct SoundIoOutStream *outstream) {
     static int count = 0;
     fprintf(stderr, "underflow %d\n", count++);
 }
+
+//Handles ^C exit
 bool quit = false;
 void handler(int) {
     printf("Exiting...\n");
     quit = true;
 }
+
 int main(int argc, char **argv) {
     char *exe = argv[0];
     enum SoundIoBackend backend = SoundIoBackendNone;
@@ -337,8 +340,7 @@ int main(int argc, char **argv) {
         }
         //usleep(1000000/60);
         //Redraw scren
-        //screenManager.Draw();
-
+        screenManager.Draw();
 
     }
 

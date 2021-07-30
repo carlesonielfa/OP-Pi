@@ -5,20 +5,26 @@
 
 
 using namespace OP_Pi;
+ScreenManager* screenManager = nullptr; 
 ScreenManager::ScreenManager(Daw *daw) {
     this->daw = daw;
 }
 void ScreenManager::Draw() {
+    if(screenManager==nullptr)
+        printf("Screen manager not initalized");
+
+
+    Daw* daw = screenManager->daw;
     switch (daw->activeView) {
         case DAW_VIEW::MIXER:
-            DrawMixer(daw->bpm, daw->instrumentOutputs, daw->instrumentGains);
+            screenManager->DrawMixer(daw->bpm, daw->instrumentOutputs, daw->instrumentGains);
             break;
         case DAW_VIEW::PATTERN:
-            DrawPattern(daw->getIndexActivePattern(), daw->getIndexActiveInstrument());
+            screenManager->DrawPattern(daw->getIndexActivePattern(), daw->getIndexActiveInstrument());
             break;
         case DAW_VIEW::INSTRUMENT: {
             auto env = (EnvelopeADSR *) daw->getInstrumentEnvelope();
-            DrawInstrument(daw->getIndexActiveInstrument(),
+            screenManager->DrawInstrument(daw->getIndexActiveInstrument(),
                            daw->getOctaveCurrentInstrument(),
                            env->attackTime, env->decayTime, env->sustainAmplitude, env->releaseTime,
                            daw->getActiveInstrumentPresetName());
@@ -26,12 +32,11 @@ void ScreenManager::Draw() {
         }
         default:
             //View not implemented
-            DrawText(0,screenHeight/2-28,WHITE,"VIEW", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
-            DrawText(0,screenHeight/2-14,WHITE,"NOT", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
-            DrawText(0,screenHeight/2,WHITE,"IMPLEMENTED", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+            screenManager->DrawText(0,screenHeight/2-28,WHITE,"VIEW", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+            screenManager->DrawText(0,screenHeight/2-14,WHITE,"NOT", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
+            screenManager->DrawText(0,screenHeight/2,WHITE,"IMPLEMENTED", FONT_SIZE::SMALL,FONT_ALIGN::CENTER);
             break;
     }
-
 }
 void ScreenManager::DrawMixer(const int bpm,float**  outputs, float** gains) {
 
@@ -163,10 +168,6 @@ void ScreenManager::DrawInstrument(unsigned char activeInstrument, short octaveO
 
 }
 
-ScreenManager::ScreenManager() {
-
-}
-
 ScreenManagerX11::ScreenManagerX11(Daw* daw):ScreenManager(daw) {
     //this->daw = daw;
     //Create window
@@ -234,10 +235,11 @@ unsigned short ScreenManagerX11::DrawText(unsigned char x, unsigned char y, unsi
 void ScreenManagerX11::Draw() {
     //XExposeEvent e;
     //XSendEvent(display, window, 1, Expose, reinterpret_cast<XEvent *>(&e));
-    XClearWindow(display,window);
+    Display* d= dynamic_cast<ScreenManagerX11*>(screenManager)->display;
+    XClearWindow(d, dynamic_cast<ScreenManagerX11*>(screenManager)->window);
     ScreenManager::Draw();
     //XFlush(display);
-    XSync(display, false);
+    XSync(d, false);
     //XNextEvent(display, &event);
 }
 void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
@@ -246,33 +248,72 @@ void ScreenManagerX11::DrawLine(unsigned char x1, unsigned char y1, unsigned cha
     XDrawLine(display,window,gc,x1,y1,x2,y2);
 }
 
+
 ScreenManagerOLED::ScreenManagerOLED(Daw* daw):ScreenManager(daw) {
     printf("Started Screen\n");
-    //Initialize display on spi 0.0 rst 25 dc 24
+    screenManager = this;
+    fonts[0] = ssd1306xled_font5x7;
+    fontSizes[0] = 5;
+    fonts[1] = ssd1306xled_font6x8;
+    fontSizes[1] = 6;
+    fonts[2] = ssd1306xled_font8x16;
+    fontSizes[2] = 8;
+    fonts[3] = ssd1306xled_font8x16;
+    fontSizes[3] = 8;
     display = new DisplaySSD1351_128x128x16_SPI(25, {-1, 0, 24, 0, -1, -1});
+    
+    engine = new NanoEngine16<DisplaySSD1351_128x128x16_SPI> (*display);
     display->begin();
-    display->clear();
-    display->fill(MAGENTA);
-}
-void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
-        
-}
-void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned long color) {
+    display->getInterface().setRotation(2);
+    engine->drawCallback( ScreenManagerOLED::DrawCallback );
+    engine->begin();
 
 }
+void ScreenManagerOLED::DrawRectangle(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned long color, bool fill){
+    engine->getCanvas().setColor(color);
+    if(fill)
+        engine->getCanvas().fillRect(x1,y1,x2,y2);
+    else
+        engine->getCanvas().drawRect(x1,y1,x2,y2);
+}
+void ScreenManagerOLED::DrawPixel(unsigned char x, unsigned char y, unsigned long color) {
+    engine->getCanvas().setColor(color);
+    engine->getCanvas().putPixel(x,y);
+}
 unsigned short ScreenManagerOLED::DrawText(unsigned char x, unsigned char y, unsigned long color, string text, FONT_SIZE size, FONT_ALIGN align) {
-    return 0;
+    engine->getCanvas().setFixedFont(fonts[size]);
+    unsigned short textWidth = fontSizes[size]*text.length();
+    if(align==FONT_ALIGN::CENTER) {
+        x = (screenWidth - x) / 2 - textWidth / 2;
+    }
+    //y += 6/2;
+
+    engine->getCanvas().setColor(color);
+    engine->getCanvas().printFixed(x, y, text.c_str());
+    return textWidth;
 }
 void ScreenManagerOLED::DrawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2,
                                  unsigned long color) {
-
-                                
+    engine->getCanvas().setColor(color);
+    engine->getCanvas().drawLine(x1,y1,x2,y2);
 }
-void ScreenManagerOLED::Draw() {
+void ScreenManagerOLED::Draw(){
+    auto engine = dynamic_cast<ScreenManagerOLED*>(screenManager)->engine;
+    engine->refresh();
+    engine->display();
+    lcd_delay(20);
+}
+bool ScreenManagerOLED::DrawCallback(){
+
+    auto canvas = dynamic_cast<ScreenManagerOLED*>(screenManager)->engine->getCanvas();
+    canvas.clear();
     ScreenManager::Draw();
-    delay(20);
+    delay(5);
+    return true;
 }
 ScreenManagerOLED::~ScreenManagerOLED() {
+    //engine->end();
+    delete engine;
     display->clear();
     display->end();
     delete display;
