@@ -142,7 +142,7 @@ void Daw::TogglePlay() {
     //TODO: Add code for computing time offset
 }
 
-void Daw::EncoderRotation(unsigned char encoder, char value) {
+void Daw::EncoderRotation(unsigned char encoder, short value) {
     switch(activeView){
         case DAW_VIEW::PATTERN: {
             //Move cursor to next division
@@ -166,8 +166,10 @@ void Daw::EncoderRotation(unsigned char encoder, char value) {
         }
         case DAW_VIEW::MIXER:
             //Change bpm
-            if(encoder==0)
-                bpm+=value;
+            if(encoder==0){
+                bpm = bpm + value;
+                printf("%i\n", bpm);                
+            }
             //Change active instrument gain
             if(encoder==1)
                 instruments[activeInstrument]->setGain(instruments[activeInstrument]->gain+value*0.05);

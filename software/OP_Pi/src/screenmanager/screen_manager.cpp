@@ -309,6 +309,7 @@ bool ScreenManagerOLED::DrawCallback(){
     canvas.clear();
     ScreenManager::Draw();
     //delay(5);
+    delayMicroseconds(5);
     return true;
 }
 ScreenManagerOLED::~ScreenManagerOLED() {

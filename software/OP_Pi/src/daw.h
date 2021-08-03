@@ -50,7 +50,7 @@ namespace OP_Pi{
         void ChangeActiveView(DAW_VIEW newView);
         void ChangeActiveView();
 
-        void EncoderRotation(unsigned char encoder, char value);
+        void EncoderRotation(unsigned char encoder, short value);
         void EncoderPressed(unsigned char encoder);
         void TogglePlay();
 
