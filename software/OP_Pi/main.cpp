@@ -297,11 +297,15 @@ int main(int argc, char **argv) {
             case ACTION_TYPE::NONE:
                 break;
             case ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT:
+                daw->incrementActiveInstrument(action.value);
+                printf("NEW ACTIVE INSTRUMENT: %s\n",daw->getActiveInstrumentPresetName());
+                /*
                 if(!daw->setIndexActiveInstrument(action.value)){
                     fprintf(stderr, "Error when selecting instrument: instrument %d not initialized\n", action.value);
                 }else{
                     printf("NEW ACTIVE INSTRUMENT: %d\n",action.value);
-                }
+                }*/
+
                 break;
             case ACTION_TYPE::INCREMENT_OCTAVE:
                 daw->IncrementOctave(action.value);

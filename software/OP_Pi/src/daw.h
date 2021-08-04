@@ -30,9 +30,10 @@ namespace OP_Pi{
         unsigned int getNInstruments();
 
         bool setIndexActiveInstrument(int n);
+        bool incrementActiveInstrument(int delta);
         unsigned int getIndexActiveInstrument() const;
         Instrument* getActiveInstrument() const;
-        char getOctaveCurrentInstrument() const;
+        short getOctaveCurrentInstrument() const;
         void IncrementOctave(int increment) const;
         char * getActiveInstrumentPresetName() const;
         Envelope* getInstrumentEnvelope() const;

@@ -14,7 +14,7 @@ namespace OP_Pi
         explicit InputManagerGPIO();
         static InputManagerGPIO* inputManagerGPIO;
         ACTION* lastestAction;
-        void ProcessEncoder(unsigned short i, ACTION_TYPE type);
+        void ProcessEncoder(unsigned short indexEncoder, ACTION_TYPE primaryAction, ACTION_TYPE secondaryAction);
         void ProcessKeyMatrix();
         KeyState upKeys = 0;
         KeyState downKeys = 0;

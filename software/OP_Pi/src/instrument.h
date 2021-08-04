@@ -154,7 +154,7 @@ namespace OP_Pi
             void setGain(float gain);
             float gain=0.5;
             float lastOutput = 0;
-            char octave=0;
+            short octave=0;
             unsigned short* rootNote;
             SCALE *scale;
             int sampleRate;

@@ -17,14 +17,14 @@ ACTION InputManagerGPIO::ProcessInput() {
     }
     //ENCODER SWITCHES
     
-    for(int i=1;i<3;i++){
+    /*for(int i=1;i<3;i++){
         if(digitalRead(encoderPins[i][1])==HIGH)
         {
             action.type = ACTION_TYPE::ENC_SWITCH;
             action.value = i;
             return action;
         }
-    }
+    }*/
     //BUTTON MATRIX
     ProcessKeyMatrix();
     //Keys release
@@ -95,7 +95,7 @@ void InputManagerGPIO::ProcessKeyMatrix(){
 
 }
 
-void InputManagerGPIO::ProcessEncoder(unsigned short i, ACTION_TYPE type){
+void InputManagerGPIO::ProcessEncoder(unsigned short i, ACTION_TYPE primary, ACTION_TYPE secondary){
 
     unsigned short aState = digitalRead(encoderPins[i][0]);
     unsigned short bState = digitalRead(encoderPins[i][2]);
@@ -105,7 +105,10 @@ void InputManagerGPIO::ProcessEncoder(unsigned short i, ACTION_TYPE type){
         if(delta < 0)
             delta+=4;
         lastestAction = new ACTION();
-        lastestAction->type = type;
+        if(digitalRead(encoderPins[i][1])==HIGH)
+            lastestAction->type = secondary;
+        else
+            lastestAction->type = primary;
         if(delta==1){
             lastestAction->value = 1;
             encoderDirections[i] = 0;
@@ -123,9 +126,9 @@ void InputManagerGPIO::ProcessEncoder(unsigned short i, ACTION_TYPE type){
     }
 }
 
-void encoder0Action(void){InputManagerGPIO::inputManagerGPIO->ProcessEncoder(0, ACTION_TYPE::ENC0_ROTATE);};
-void encoder1Action(void){InputManagerGPIO::inputManagerGPIO->ProcessEncoder(1, ACTION_TYPE::ENC0_ROTATE);};
-void encoder2Action(void){InputManagerGPIO::inputManagerGPIO->ProcessEncoder(2, ACTION_TYPE::ENC1_ROTATE);};
+//void encoder0Action(void){InputManagerGPIO::inputManagerGPIO->ProcessEncoder(0, ACTION_TYPE::ENC0_ROTATE);};
+void encoder1Action(void){InputManagerGPIO::inputManagerGPIO->ProcessEncoder(1, ACTION_TYPE::ENC0_ROTATE,  ACTION_TYPE::ENC1_ROTATE);};
+void encoder2Action(void){InputManagerGPIO::inputManagerGPIO->ProcessEncoder(2, ACTION_TYPE::ENC2_ROTATE, ACTION_TYPE::CHANGE_ACTIVE_INSTRUMENT);};
 
 InputManagerGPIO::InputManagerGPIO() {
     inputManagerGPIO = this;

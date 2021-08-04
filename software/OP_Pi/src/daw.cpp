@@ -72,6 +72,13 @@ unsigned int Daw::getNInstruments() {
     return instruments.size();
 }
 
+bool Daw::incrementActiveInstrument(int delta) {
+    int n = (activeInstrument + delta) % instruments.size();
+    if(n < 0)
+        n+=instruments.size();
+    return setIndexActiveInstrument(n);
+}
+
 bool Daw::setIndexActiveInstrument(int n) {
     if(n<instruments.size()){
         activeInstrument = n;
@@ -89,7 +96,7 @@ void Daw::IncrementOctave(int increment) const {
     getActiveInstrument()->octave+=increment;
 }
 
-char Daw::getOctaveCurrentInstrument() const {
+short Daw::getOctaveCurrentInstrument() const {
     return getActiveInstrument()->octave;
 }
 
@@ -167,8 +174,7 @@ void Daw::EncoderRotation(unsigned char encoder, short value) {
         case DAW_VIEW::MIXER:
             //Change bpm
             if(encoder==0){
-                bpm = bpm + value;
-                printf("%i\n", bpm);                
+                bpm = bpm + value;           
             }
             //Change active instrument gain
             if(encoder==1)

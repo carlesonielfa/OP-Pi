@@ -301,7 +301,7 @@ void ScreenManagerOLED::Draw(){
     auto engine = dynamic_cast<ScreenManagerOLED*>(screenManager)->engine;
     engine->refresh();
     engine->display();
-    lcd_delay(20);
+    //lcd_delay(20);
 }
 bool ScreenManagerOLED::DrawCallback(){
 
@@ -309,7 +309,7 @@ bool ScreenManagerOLED::DrawCallback(){
     canvas.clear();
     ScreenManager::Draw();
     //delay(5);
-    delayMicroseconds(5);
+    //delayMicroseconds(5);
     return true;
 }
 ScreenManagerOLED::~ScreenManagerOLED() {
