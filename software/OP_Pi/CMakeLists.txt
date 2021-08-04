@@ -3,10 +3,12 @@ project(OP_Pi VERSION 0.1.0)
 
 add_subdirectory(lib/libsoundio)
 add_subdirectory(lib/lcdgfx)
+add_subdirectory(lib/libsndfile)
 
 include(CTest)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/libsoundio/
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libsndfile/include
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/lcdgfx/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputmanager/
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screenmanager/
@@ -50,4 +52,5 @@ target_link_libraries(OP_Pi
     wiringPi
     m
     lcdgfx
+    sndfile
 )
