@@ -3,6 +3,7 @@
 #include "screen_manager.h"
 #include "daw.h"
 #include <soundio/soundio.h>
+#include <sndfile.h>
 
 #include <cstdio>
 #include <cstdlib>
@@ -59,8 +60,9 @@ static void write_sample_float64ne(char *ptr, double sample) {
 }
 static void (*write_sample)(char *ptr, double sample);
 
-Daw* daw;
-
+static Daw* daw;
+SNDFILE* infile;
+SF_INFO sfinfo;
 static double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
     int sample_rate = outstream->sample_rate;
@@ -82,11 +84,24 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
         const struct SoundIoChannelLayout *layout = &outstream->layout;
 
         float *outputs = new float[frame_count];
+
+        int channels = sfinfo.channels;
+        float *buff = new float[channels * frame_count];
+        int read_count;
+        sf_count_t frames = frame_count;
+        //int channels = sfinfo.channels;
+
+        read_count = sf_readf_float(infile, buff, frames);
+        printf("Requested %d - Read %d\n", frame_count, read_count);
+
+
         if(daw!= nullptr)
             daw->GenerateAudio(seconds_offset, outputs, frame_count);
         for (int channel = 0; channel < layout->channel_count; channel += 1) {
             for(int i=0;i<frame_count;i++) {
-                write_sample(areas[channel].ptr, outputs[i]);
+                //write_sample(areas[channel].ptr, outputs[i]);
+                if(i < read_count)
+                    write_sample(areas[channel].ptr, buff[2*i+channel]);
                 areas[channel].ptr += areas[channel].step;
             }
 
@@ -134,6 +149,10 @@ int main(int argc, char **argv) {
     InputManagerGPIO inputManager;
     ScreenManagerOLED screenManager(daw);
 
+    
+    
+    if((infile = sf_open("808_14.wav", SFM_READ, &sfinfo))==NULL)
+        printf("Error opening sample\n");
 
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];
