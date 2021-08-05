@@ -1,3 +1,4 @@
+*.wav
 build
 cmake-build-debug
 CMakeLists.txt.user
