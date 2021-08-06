@@ -3,6 +3,7 @@
 //
 #include "daw.h"
 #include "synth.h"
+#include "sampler.h"
 using namespace OP_Pi;
 Daw::Daw(double sampleRate) {
     this->sampleRate = sampleRate;
@@ -11,6 +12,7 @@ Daw::Daw(double sampleRate) {
     instruments.push_back(new Synth(sampleRate, new SynthDefSine(), &rootNote, &scale));
     instruments.push_back(new Synth(sampleRate, new SynthDefBell(), &rootNote, &scale));
     instruments.push_back(new Synth(sampleRate, new SynthDefHarmonica(), &rootNote, &scale));
+    instruments.push_back(new Synth(sampleRate, new Sample("808_14.wav"), &rootNote, &scale));
     instrumentOutputs = new float*[instruments.size()];
     instrumentGains = new float*[instruments.size()];
     for(int i = 0; i<instruments.size(); i++){

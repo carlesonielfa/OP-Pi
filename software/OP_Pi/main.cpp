@@ -61,8 +61,6 @@ static void write_sample_float64ne(char *ptr, double sample) {
 static void (*write_sample)(char *ptr, double sample);
 
 static Daw* daw;
-SNDFILE* infile;
-SF_INFO sfinfo;
 static double seconds_offset = 0.0;
 static void write_callback(struct SoundIoOutStream *outstream, int frame_count_min, int frame_count_max) {
     int sample_rate = outstream->sample_rate;
@@ -85,28 +83,16 @@ static void write_callback(struct SoundIoOutStream *outstream, int frame_count_m
 
         float *outputs = new float[frame_count];
 
-        int channels = sfinfo.channels;
-        float *buff = new float[channels * frame_count];
-        int read_count;
-        sf_count_t frames = frame_count;
-        //int channels = sfinfo.channels;
-
-        read_count = sf_readf_float(infile, buff, frames);
-        printf("Requested %d - Read %d\n", frame_count, read_count);
-
-
         if(daw!= nullptr)
             daw->GenerateAudio(seconds_offset, outputs, frame_count);
+
         for (int channel = 0; channel < layout->channel_count; channel += 1) {
             for(int i=0;i<frame_count;i++) {
-                //write_sample(areas[channel].ptr, outputs[i]);
-                if(i < read_count)
-                    write_sample(areas[channel].ptr, buff[2*i+channel]);
+                write_sample(areas[channel].ptr, outputs[i]);
                 areas[channel].ptr += areas[channel].step;
             }
 
         }
-        //delete instrumentOutputs;
 
         //seconds_offset = fmod(seconds_offset + 1.0/sample_rate * frame_count, 1.0);
         seconds_offset = seconds_offset + 1.0/sample_rate * frame_count;
@@ -148,11 +134,6 @@ int main(int argc, char **argv) {
     signal(SIGINT, &handler);
     InputManagerGPIO inputManager;
     ScreenManagerOLED screenManager(daw);
-
-    
-    
-    if((infile = sf_open("808_14.wav", SFM_READ, &sfinfo))==NULL)
-        printf("Error opening sample\n");
 
     for (int i = 1; i < argc; i += 1) {
         char *arg = argv[i];
