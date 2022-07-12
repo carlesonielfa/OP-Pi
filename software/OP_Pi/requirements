@@ -1,0 +1,19 @@
+First init submodules 
+- git submodule init
+- git submodule update
+To compile requires
+- cmake
+- wiringpi
+- libx11-dev (for output on hdmi display)
+- libpulse
+
+- Run
+>sudo apt-get install cmake libx11-dev libpulse-dev
+>git clone https://github.com/WiringPi/WiringPi/
+>cd WiringPi
+>./build
+
+- Build target OP_Pi using cmake
+
+- To launch
+>./build/OP_Pi --latency 0.2
